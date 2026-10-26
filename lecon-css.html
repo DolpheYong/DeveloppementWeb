@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leçon CSS | Génie Logic</title>
+
+    <link rel="stylesheet" href="lecon.css">
+    <link rel="stylesheet" href="/quiz-local/assets/css/menu.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="header-container">
+
+           <script src="/quiz-local/assets/js/menu.js" defer></script>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE ================= -->
+
+    <div class="page-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h3>Dans cette leçon</h3>
+
+            <nav>
+                <a href="#css-role">1. Rôle du CSS</a>
+                <a href="#css-langage">2. Langage de style</a>
+                <a href="#css-ou">3. Où écrire le CSS ?</a>
+                <a href="#selecteurs">4. Sélecteurs CSS</a>
+                <a href="#proprietes">5. Propriétés CSS</a>
+                <a href="#devtools">6. DevTools</a>
+                <a href="#ecoconception">7. Écoconception</a>
+                <a href="#exercices">Exercices</a>
+                <a href="#resume">À retenir</a>
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTENU -->
+
+        <main class="content">
+
+            <!-- INTRODUCTION -->
+
+            <section class="hero">
+
+                <span class="chapter">
+                    LEÇON CSS
+                </span>
+
+                <h1>
+                    Bases, sélecteurs, DevTools et écoconception
+                </h1>
+
+                <p>
+                    Le CSS donne au HTML son apparence : apprenez à écrire
+                    des règles CSS, à cibler les bons éléments, à déboguer
+                    avec les DevTools et à styliser de façon sobre et lisible.
+                </p>
+
+                <p>
+                    <em>Oct 24, 2026 · @Dolphe</em>
+                </p>
+
+            </section>
+
+
+            <!-- OBJECTIFS -->
+
+            <section class="lesson-section">
+
+                <div class="section-number">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h2>
+                        Objectifs
+                    </h2>
+
+                    <p>
+                        À la fin de cette leçon, l'apprenant sera capable de :
+                    </p>
+
+                    <ul>
+                        <li>expliquer le rôle du CSS par rapport au HTML ;</li>
+                        <li>écrire une règle CSS correcte (sélecteur, propriété, valeur) ;</li>
+                        <li>choisir entre feuille externe, balise <code>&lt;style&gt;</code> et style en ligne ;</li>
+                        <li>cibler des éléments avec les sélecteurs de type, de classe, d'ID, d'attribut et les
+                            combinateurs ;</li>
+                        <li>utiliser les DevTools du navigateur pour comprendre et corriger un rendu ;</li>
+                        <li>appliquer des principes de sobriété (écoconception) à ses choix de style.</li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- 1. RÔLE DU CSS -->
+
+            <section id="css-role" class="lesson-section">
+
+                <div class="section-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h2>
+                        À quoi sert le CSS ?
+                    </h2>
+
+                    <p>
+                        Le HTML définit la structure et le sens du contenu
+                        (titres, paragraphes, images, liens), mais pas son
+                        apparence. Le CSS prend en charge la présentation :
+                        c'est l'association des deux qui transforme une simple
+                        collection de balises en une page attrayante et ergonomique.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ✨
+                </div>
+
+                <div>
+
+                    <h3>Une page bien stylisée avec CSS est…</h3>
+
+                    <ul>
+                        <li><strong>expressive</strong> : elle traduit la personnalité et le style d'une marque ;</li>
+                        <li><strong>innovante</strong> : elle permet d'expérimenter des designs créatifs ;</li>
+                        <li><strong>cohérente</strong> : des styles réutilisables garantissent la même apparence sur
+                            toutes les pages ;</li>
+                        <li><strong>équilibrée</strong> : elle maintient un équilibre visuel entre les éléments ;</li>
+                        <li><strong>professionnelle</strong> : un style soigné renforce la crédibilité du site ;</li>
+                        <li><strong>adaptative</strong> : la mise en page réactive (responsive) s'ajuste à tous les
+                            appareils et tailles d'écran.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2. LANGAGE DE STYLE -->
+
+            <section id="css-langage" class="lesson-section">
+
+                <div class="section-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h2>
+                        Le CSS : un langage de style
+                    </h2>
+
+                    <p>
+                        CSS signifie <em>Cascading Style Sheets</em>,
+                        en français « feuilles de style en cascade ».
+                        Il applique des règles de style aux éléments HTML
+                        grâce à des sélecteurs et des propriétés.
+                    </p>
+
+                    <p>
+                        Contrairement à un langage de programmation, le CSS
+                        ne prend pas de décisions conditionnelles et n'exécute
+                        pas d'instructions logiques : il fournit uniquement
+                        des règles pour mettre en forme les éléments.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="highlight">
+
+                <strong>Structure d'une règle CSS :</strong>
+
+                <pre><code>selecteur {
+  propriete: valeur;
+  autre-propriete: valeur;
+}</code></pre>
+
+                <p>Une règle se compose de quatre éléments :</p>
+
+                <ul>
+                    <li><strong>Le sélecteur</strong> désigne les éléments à styliser ;</li>
+                    <li><strong>La déclaration</strong> est un couple propriété + valeur ;</li>
+                    <li><strong>La propriété</strong> est la caractéristique visuelle à personnaliser ;</li>
+                    <li><strong>La valeur</strong> fixe le style précis de la propriété.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📐
+                </div>
+
+                <div>
+
+                    <h3>Règles de syntaxe à respecter</h3>
+
+                    <ul>
+                        <li>l'ensemble des déclarations d'une règle est placé entre accolades <code>{ }</code> ;</li>
+                        <li>la propriété est séparée de sa valeur par deux-points <code>:</code> ;</li>
+                        <li>les déclarations sont séparées par un point-virgule <code>;</code>.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3. OÙ ÉCRIRE LE CSS -->
+
+            <section id="css-ou" class="lesson-section">
+
+                <div class="section-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h2>
+                        Où écrit-on le CSS ?
+                    </h2>
+
+                    <p>
+                        Il existe trois manières d'intégrer du CSS dans un
+                        document HTML. Le bon choix dépend de la taille du
+                        projet et de la facilité de maintenance recherchée.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header front">
+
+                    <span class="tech-icon">📄</span>
+
+                    <div>
+                        <h3>a) Feuille de style externe</h3>
+                        <p>Recommandée — projets moyens et grands</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Principe</h4>
+
+                        <p>
+                            Les règles sont écrites une seule fois dans un
+                            fichier <code>.css</code>, relié à chaque page
+                            avec la balise <code>&lt;link&gt;</code> dans le
+                            <code>&lt;head&gt;</code>.
+                        </p>
+
+                        <ul>
+                            <li>Pas de duplication</li>
+                            <li>Mise à jour centralisée</li>
+                            <li>Apparence identique sur tout le site</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Exemple HTML</h4>
+
+                        <pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Une expérience avec CSS&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bonjour !&lt;/h1&gt;
+    &lt;p&gt;Ceci est un premier exemple CSS&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Fichier styles.css</h4>
+
+                        <pre><code>h1 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: red;
+}</code></pre>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header framework">
+
+                    <span class="tech-icon">📎</span>
+
+                    <div>
+                        <h3>b) Balise &lt;style&gt; dans l'en-tête</h3>
+                        <p>Acceptable — petits projets</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Principe</h4>
+
+                        <p>
+                            Les règles sont écrites directement dans le
+                            <code>&lt;head&gt;</code>, entre les balises
+                            <code>&lt;style&gt;</code> et
+                            <code>&lt;/style&gt;</code>. Elles ne s'appliquent
+                            qu'à cette page.
+                        </p>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Exemple</h4>
+
+                        <pre><code>&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;Mes expérimentations CSS&lt;/title&gt;
+  &lt;style&gt;
+    h1 {
+      color: blue;
+      background-color: yellow;
+      border: 1px solid black;
+    }
+    p { color: red; }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>⚠️ Inconvénient</h4>
+
+                        <p>
+                            Le CSS doit être recopié dans chaque page, et
+                            toute mise à jour oblige à modifier chaque fichier.
+                            Mieux vaut passer à une feuille externe.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header backend">
+
+                    <span class="tech-icon">⚠️</span>
+
+                    <div>
+                        <h3>c) Styles en ligne</h3>
+                        <p>Fortement déconseillé</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Principe</h4>
+
+                        <p>
+                            Le style est écrit directement dans l'attribut
+                            <code>style</code> d'un élément.
+                        </p>
+
+                        <pre><code>&lt;h1 style="color: blue; background-color: yellow;"&gt;
+  Bonjour !
+&lt;/h1&gt;
+&lt;p style="color: red;"&gt;Mon premier exemple CSS&lt;/p&gt;</code></pre>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Pourquoi éviter ?</h4>
+
+                        <ul>
+                            <li>Les modifications touchent chaque élément de chaque page ;</li>
+                            <li>Mélange du CSS avec le HTML, nuisible à la lisibilité ;</li>
+                            <li>Difficile à maintenir en équipe ;</li>
+                            <li>Sépare mal le contenu de la mise en forme.</li>
+                        </ul>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4. SÉLECTEURS -->
+
+            <section id="selecteurs" class="lesson-section">
+
+                <div class="section-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h2>
+                        Les sélecteurs CSS
+                    </h2>
+
+                    <p>
+                        Toute règle CSS commence par un sélecteur : une
+                        expression qui indique au navigateur à quels éléments
+                        HTML la règle s'applique. Les éléments ciblés en sont
+                        le <em>sujet</em>.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Sélecteurs simples</h3>
+
+                    <span class="generation-type">Débutant</span>
+
+                    <p>
+                        Ciblent les éléments selon leur nom, leur identifiant
+                        ou leur classe.
+                    </p>
+
+                    <ul>
+                        <li>Sélecteur de type : <code>em</code>, <code>strong</code></li>
+                        <li>Sélecteur de classe : <code>.highlight</code></li>
+                        <li>Sélecteur d'ID : <code>#one</code></li>
+                        <li>Sélecteur universel : <code>*</code></li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Combinateurs</h3>
+
+                    <span class="generation-type">Débutant</span>
+
+                    <p>
+                        Ciblent les éléments selon leur relation avec
+                        d'autres éléments.
+                    </p>
+
+                    <ul>
+                        <li>Descendant : <code>div p</code></li>
+                        <li>Enfant direct : <code>div &gt; p</code></li>
+                        <li>Frère immédiat : <code>h2 + p</code></li>
+                        <li>Frère général : <code>h2 ~ p</code></li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Sélecteurs d'attributs</h3>
+
+                    <span class="generation-type">Débutant</span>
+
+                    <p>
+                        Ciblent les éléments selon la présence ou la valeur
+                        d'un attribut.
+                    </p>
+
+                    <ul>
+                        <li><code>li[class]</code> — présence de l'attribut</li>
+                        <li><code>li[class="a"]</code> — valeur exacte</li>
+                        <li><code>li[class^="a"]</code> — commence par</li>
+                        <li><code>li[class$="a"]</code> — se termine par</li>
+                        <li><code>li[class*="a"]</code> — contient</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">04</span>
+
+                    <h3>Pseudo-classes &amp; pseudo-éléments</h3>
+
+                    <span class="generation-type">Intermédiaire</span>
+
+                    <p>
+                        Ciblent un état ou une partie d'un élément.
+                    </p>
+
+                    <ul>
+                        <li>État : <code>:hover</code>, <code>:focus</code>, <code>:visited</code></li>
+                        <li>Structure : <code>:first-child</code>, <code>:nth-child()</code></li>
+                        <li>Éléments : <code>::before</code>, <code>::after</code></li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>Cascade et spécificité :</strong>
+
+                <p>
+                    À sélecteurs équivalents, la déclaration qui apparaît
+                    <strong>en dernier</strong> dans la feuille de style
+                    remplace les précédentes. Plus un sélecteur est précis,
+                    plus sa priorité est forte ; à précision égale, la
+                    dernière règle gagne.
+                </p>
+
+                <pre><code>p { color: red; }
+p { color: blue; }       /* Le paragraphe est bleu */
+
+.special { color: red; }
+p { color: blue; }       /* Un &lt;p class="special"&gt; est rouge */</code></pre>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <h3>Groupement de sélecteurs</h3>
+
+                    <p>
+                        Quand plusieurs éléments partagent les mêmes
+                        déclarations, on regroupe les sélecteurs en les
+                        séparant par une virgule.
+                    </p>
+
+                    <pre><code>h1,
+.special {
+  color: blue;
+}</code></pre>
+
+                    <p>
+                        <strong>Attention :</strong> si un seul sélecteur
+                        du groupe est invalide, <strong>toute la règle est
+                            ignorée</strong>.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5. PROPRIÉTÉS -->
+
+            <section id="proprietes" class="lesson-section">
+
+                <div class="section-number">
+                    05
+                </div>
+                <div class="h5p-column-content h5p-advanced-text"
+                    id="h5p-interactive-book-section-14fb493a-aa68-4843-abd2-8f91467a8f81">
+                    <h2><span style="font-size:1.375em"><span style="color:#2980b9"><strong>Liste des principales
+                                    propriétés </strong></span></span></h2>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>color</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Définit la couleur du texte.</li>
+                        <li>Valeurs possibles : noms de couleur (<code>red</code>, <code>blue</code>), codes
+                            hexadécimaux (<code>#FF0000</code>), codes RGB (<code>rgb(255, 0, 0)</code>).</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>color: blue;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>font-size</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Contrôle la taille de la police.</li>
+                        <li>Valeurs possibles : pixels (<code>12px</code>), em (<code>1.5em</code>), pourcentage
+                            (<code>150%</code>).</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>font-size: 16px;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>text-align</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Aligne le texte dans un élément.</li>
+                        <li>Valeurs possibles : <code>left</code>, <code>right</code>, <code>center</code>,
+                            <code>justify</code>.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>text-align: center;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>background-color</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Définit la couleur de l'arrière-plan.</li>
+                        <li>Valeurs possibles : mêmes valeurs que pour la propriété <code>color</code>.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>background-color: #F0F0F0;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>border</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Crée une bordure autour de l'élément.</li>
+                        <li>Valeurs possibles : taille (<code>1px</code>), style (<code>solid</code>,
+                            <code>dotted</code>), couleur (valeurs de couleur).
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>border: 1px solid black;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>margin</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Espace entre l'élément et les éléments voisins.</li>
+                        <li>Valeurs possibles : pixels, pourcentage, auto.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>margin: 10px;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>padding</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Espace entre le contenu de l'élément et sa bordure.</li>
+                        <li>Valeurs possibles : pixels, pourcentage.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>padding: 20px;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>display</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Contrôle le comportement d'affichage de l'élément.</li>
+                        <li>Valeurs possibles : <code>block</code>, <code>inline</code>, <code>inline-block</code>,
+                            <code>flex</code>, <code>grid</code>, etc.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>display: inline-block;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>position</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Contrôle le positionnement de l'élément.</li>
+                        <li>Valeurs possibles : <code>static</code>, <code>relative</code>, <code>absolute</code>,
+                            <code>fixed</code>.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>position: absolute;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété : <code>width</code></strong></span></p>
+
+                    <ul>
+                        <li>Explication : Définit la largeur de l'élément.</li>
+                        <li>Valeurs possibles : pixels, pourcentage, auto.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>width: 300px;</code></li>
+                    </ul>
+
+                    <p><strong><span style="color:#8e44ad">Propriété </span>: <code>font-family</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Spécifie la police à utiliser pour le texte.</li>
+                        <li>Valeurs possibles : Noms de polices, familles génériques (<code>serif</code>,
+                            <code>sans-serif</code>, <code>monospace</code>, etc.).
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>font-family: "Arial", sans-serif;</code>
+                        </li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>line-height</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Contrôle l'espacement vertical entre les lignes de texte.</li>
+                        <li>Valeurs possibles : Valeurs numériques, valeurs sans unités, pourcentages.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>line-height: 1.5;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>font-weight</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Définit l'épaisseur de la police (gras ou normal).</li>
+                        <li>Valeurs possibles : <code>normal</code>, <code>bold</code>, <code>bolder</code>,
+                            <code>lighter</code>, valeurs numériques.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>font-weight: bold;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>text-decoration</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Ajoute ou supprime la décoration du texte, comme les soulignements.</li>
+                        <li>Valeurs possibles : <code>none</code>, <code>underline</code>, <code>overline</code>,
+                            <code>line-through</code>, <code>initial</code>.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>text-decoration: underline;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>border-radius</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Définit le rayon des coins arrondis d'un élément avec une bordure.</li>
+                        <li>Valeurs possibles : Valeurs numériques (px, em, %), valeurs multiples pour les coins
+                            individuels.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>border-radius: 10px;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>box-shadow</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Ajoute une ombre à un élément.</li>
+                        <li>Valeurs possibles : Position de l'ombre, décalage horizontal, décalage vertical, flou,
+                            couleur.</li>
+                        <li><span style="color:#27ae60">Exemple </span>:
+                            <code>box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);</code>
+                        </li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>text-transform</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Modifie la casse du texte (majuscules, minuscules, etc.).</li>
+                        <li>Valeurs possibles : <code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code>,
+                            <code>none</code>.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>text-transform: uppercase;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>position</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Définit la méthode de positionnement d'un élément.</li>
+                        <li>Valeurs possibles : <code>static</code>, <code>relative</code>, <code>absolute</code>,
+                            <code>fixed</code>, <code>sticky</code>.
+                        </li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>position: absolute;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>z-index</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Contrôle l'empilement d'éléments positionnés.</li>
+                        <li>Valeurs possibles : Valeurs numériques, <code>auto</code>.</li>
+                        <li><span style="color:#27ae60">Exemple </span>: <code>z-index: 1;</code></li>
+                    </ul>
+
+                    <p><span style="color:#8e44ad"><strong>Propriété </strong></span><strong>:
+                            <code>opacity</code></strong></p>
+
+                    <ul>
+                        <li>Explication : Contrôle le degré de transparence d'un élément.</li>
+
+            </section>
+
+
+
+            <!-- 6. DEVTOOLS -->
+
+            <section id="devtools" class="lesson-section">
+
+                <div class="section-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h2>
+                        Les DevTools : observer et corriger
+                    </h2>
+
+                    <div class="h5p-column-content h5p-advanced-text"
+                        id="h5p-interactive-book-section-d12dd479-9873-448b-ab3a-48000da41630">
+                        <p style="text-align:justify"><span><span><span>Lorsque l’on apprend à utiliser CSS3 pour
+                                        styliser une page web, on se concentre généralement sur les propriétés de base :
+                                        couleurs, marges, polices, bordures, alignements, tailles, affichage en
+                                        colonnes, responsive design, etc.<br>
+                                        Mais dans la pratique professionnelle, écrire des règles CSS ne suffit pas. Il
+                                        faut aussi apprendre à :</span></span></span></p>
+
+                        <ol>
+                            <li style="text-align:justify"><span><span><span><span>observer et corriger le rendu réel
+                                                dans le navigateur,</span></span></span></span></li>
+                            <li style="text-align:justify"><span><span><span><span>faire des choix de style
+                                                responsables, lisibles et performants.</span></span></span></span></li>
+                        </ol>
+
+                        <p style="text-align:justify"><span><span><span>C’est dans cette logique que s’inscrivent les
+                                        deux sections suivantes :</span></span></span></p>
+
+                        <ul>
+                            <li style="text-align:justify"><span><span><span><span>Utiliser les outils de développement
+                                                du navigateur (DevTools) ;</span></span></span></span></li>
+                            <li style="text-align:justify"><span><span><span><span>Appliquer des principes
+                                                d’écoconception côté CSS.</span></span></span></span></li>
+                        </ul>
+
+                        <p style="text-align:justify">&nbsp;</p>
+                        <div class="h5p-column-content h5p-image"
+                            id="h5p-interactive-book-section-f4c74054-d6c7-4184-8c8a-8578a2ab618b"><img
+                                src="Image/devOp.PNG" alt="" title=""
+                                style="width: 100%; height: 100%;"></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🛠️
+                </div>
+
+                <div>
+
+                    <h3>Pourquoi les DevTools sont indispensables</h3>
+
+                    <p>
+                        On rencontre vite des situations déroutantes : une
+                        couleur qui ne s'applique pas, un bloc qui n'a pas
+                        la bonne largeur, une marge « incompréhensible »…
+                        L'erreur fréquente est de modifier le CSS au hasard.
+                    </p>
+
+                    <p>Les DevTools permettent de :</p>
+
+                    <ul>
+                        <li>voir exactement quel élément HTML est concerné ;</li>
+                        <li>observer les règles CSS réellement appliquées ;</li>
+                        <li>repérer les propriétés ignorées ou écrasées ;</li>
+                        <li>tester une modification immédiatement ;</li>
+                        <li>vérifier le comportement responsive ;</li>
+                        <li>analyser la structure de la mise en page.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>Comment les ouvrir ?</strong>
+
+                <ul>
+                    <li>clic droit sur un élément, puis <strong>Inspecter</strong> ;</li>
+                    <li>touche <code>F12</code> ;</li>
+                    <li>raccourci <code>Ctrl + Maj + I</code>.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Éléments</h3>
+
+                    <span class="generation-type">Structure HTML</span>
+
+                    <p>
+                        Affiche la structure HTML de la page et la place
+                        de chaque élément dans la hiérarchie.
+                    </p>
+
+                    <ul>
+                        <li>Pourquoi ce bloc n'est-il pas là où je l'attends ?</li>
+                        <li>Ai-je utilisé la bonne classe ?</li>
+                        <li>L'élément est-il dans le bon conteneur ?</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Styles</h3>
+
+                    <span class="generation-type">Règles appliquées</span>
+
+                    <p>
+                        Affiche les propriétés appliquées à l'élément
+                        sélectionné, les règles héritées et les propriétés
+                        <strong>barrées</strong> (non utilisées).
+                    </p>
+
+                    <ul>
+                        <li>Quelle règle l'emporte ?</li>
+                        <li>Une règle plus spécifique écrase-t-elle la mienne ?</li>
+                        <li>Mon sélecteur est-il le bon ?</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Computed</h3>
+
+                    <span class="generation-type">Valeurs finales</span>
+
+                    <p>
+                        Affiche les valeurs finales retenues par le navigateur :
+                        taille réelle du texte, largeur finale, marges
+                        calculées, couleur finale.
+                    </p>
+
+                    <ul>
+                        <li>Quel est le résultat concret après toutes les règles ?</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">04</span>
+
+                    <h3>Modèle de boîte</h3>
+
+                    <span class="generation-type">Box Model</span>
+
+                    <p>
+                        Représente chaque élément comme une boîte :
+                        contenu, <code>padding</code>, bordure, marge.
+                    </p>
+
+                    <ul>
+                        <li>Pourquoi ce bloc prend-il trop de place ?</li>
+                        <li>Pourquoi cet espacement est-il plus grand que prévu ?</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔄
+                </div>
+
+                <div>
+
+                    <h3>La méthode à acquérir (5 étapes)</h3>
+
+                    <ol>
+                        <li><strong>Identifier</strong> l'élément concerné avant de corriger.</li>
+                        <li><strong>Observer</strong> les styles appliqués : quelles règles s'appliquent, lesquelles
+                            sont barrées.</li>
+                        <li><strong>Tester</strong> une correction directement dans le navigateur.</li>
+                        <li><strong>Vérifier</strong> le résultat, sur plusieurs tailles d'écran si nécessaire.</li>
+                        <li><strong>Reporter</strong> la correction dans le fichier source.</li>
+                    </ol>
+
+                    <p>
+                        <strong>Point essentiel :</strong> les modifications faites
+                        dans les DevTools sont <strong>temporaires</strong>.
+                        Elles disparaissent au rechargement de la page.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 7. ÉCOCONCEPTION -->
+
+            <section id="ecoconception" class="lesson-section">
+
+                <div class="section-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h2>
+                        L'écoconception côté CSS
+                    </h2>
+
+                    <p>
+                        Quand on découvre le CSS, on a souvent envie de « faire
+                        plus » : plus de couleurs, de polices, d'effets, d'ombres,
+                        d'animations. Mais en conception web, plus ne signifie
+                        pas mieux : une page chargée peut être fatigante à lire,
+                        moins claire et plus difficile à maintenir.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🌱
+                </div>
+
+                <div>
+
+                    <h3>Une sobriété intelligente, pas un site austère</h3>
+
+                    <p>
+                        Écoconcevoir ne signifie <strong>pas</strong> faire un
+                        site « sans style », triste ou sans identité visuelle.
+                        Il s'agit de styliser avec intention, de chercher
+                        l'efficacité visuelle, d'éviter la surcharge et de garder
+                        une interface simple à lire. Le CSS devient un outil de
+                        mise en forme utile, et non un simple moyen d'ajouter
+                        des effets.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header front">
+
+                    <span class="tech-icon">🎨</span>
+
+                    <div>
+                        <h3>La sobriété visuelle : quatre principes</h3>
+                        <p>Des choix graphiques raisonnés</p>
+                    </div>
+
+                </div>
+
+                <div class="framework-list">
+
+                    <div>
+                        <strong>1. Limiter le nombre de couleurs</strong>
+                        <span>
+                            Une couleur principale, une ou deux secondaires,
+                            quelques gris, éventuellement une couleur d'accent.
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>2. Limiter le nombre de polices</strong>
+                        <span>
+                            Une police principale, éventuellement une seconde
+                            pour les titres. Au-delà, l'interface devient vite
+                            désordonnée.
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>3. Espacer de façon cohérente</strong>
+                        <span>
+                            Marges, <code>padding</code>, distances régulières :
+                            une interface bien espacée est plus claire et plus
+                            facile à lire.
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>4. Réduire les effets décoratifs inutiles</strong>
+                        <span>
+                            Ombres, dégradés, animations et arrondis restent
+                            possibles, mais mesurés. Cet effet améliore-t-il
+                            vraiment l'interface, ou ajoute-t-il du bruit visuel ?
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header framework">
+
+                    <span class="tech-icon">⚡</span>
+
+                    <div>
+                        <h3>La performance côté CSS</h3>
+                        <p>Simplicité et efficacité</p>
+                    </div>
+
+                </div>
+
+                <div class="framework-list">
+
+                    <div>
+                        <strong>Éviter les styles inutiles</strong>
+                        <span>Une règle sans utilité claire n'a peut-être pas besoin d'exister.</span>
+                    </div>
+
+                    <div>
+                        <strong>Éviter la répétition excessive</strong>
+                        <span>Un CSS bien organisé est plus facile à maintenir.</span>
+                    </div>
+
+                    <div>
+                        <strong>Ne pas surcharger visuellement la page</strong>
+                        <span>Une page trop chargée est plus difficile à lire et à utiliser.</span>
+                    </div>
+
+                    <div>
+                        <strong>Limiter les animations complexes</strong>
+                        <span>Elles doivent rester utiles et raisonnables.</span>
+                    </div>
+
+                    <div>
+                        <strong>Faire des choix graphiques mesurés</strong>
+                        <span>Un design simple est souvent plus lisible, plus élégant, plus durable et plus facile à
+                            corriger.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>Exemples de décisions plus responsables :</strong>
+
+                <ul>
+                    <li><strong>Couleurs</strong> : 6 ou 7 couleurs différentes → une palette simple et cohérente ;</li>
+                    <li><strong>Typographie</strong> : multiplication des effets → des tailles cohérentes qui créent une
+                        hiérarchie claire ;</li>
+                    <li><strong>Bouton</strong> : plusieurs ombres, dégradés et animations → une bonne couleur, un
+                        contraste suffisant et un <code>padding</code> adapté ;</li>
+                    <li><strong>Sections</strong> : blocs denses et chargés → blocs courts, bien espacés, peu de
+                        surcharge visuelle.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- EXERCICES -->
+
+            <section id="exercices" class="lesson-section">
+
+                <div class="section-number">
+                    ✏️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Exercices
+                    </h2>
+
+                    <p>
+                        Trois exercices pour mettre en pratique les notions
+                        de cette leçon.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Le sélecteur descendant</h3>
+
+                    <span class="generation-type">Sélecteurs</span>
+
+                    <p>
+                        Le code ci-dessous contient seulement deux règles.
+                        Ajoutez une règle qui applique la couleur rouge aux
+                        <code>&lt;span&gt;</code> uniquement lorsqu'ils sont
+                        contenus dans un élément <code>&lt;p&gt;</code>.
+                    </p>
+
+                    <pre><code>li em {
+  color: red;
+}
+
+h1 + p {
+  font-size: 200%;
+}</code></pre>
+
+                    <p>
+                        <strong>Résultat attendu :</strong> le
+                        <code>&lt;span&gt;</code> du premier paragraphe
+                        devient rouge, tandis que celui de la liste reste
+                        inchangé.
+                    </p>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Diagnostiquer avec les DevTools</h3>
+
+                    <span class="generation-type">DevTools</span>
+
+                    <ol>
+                        <li>Ouvrez une de vos pages et faites un clic droit sur un titre, puis
+                            <strong>Inspecter</strong>.
+                        </li>
+                        <li>Dans le panneau <em>Styles</em>, repérez une propriété barrée et expliquez pourquoi elle est
+                            ignorée.</li>
+                        <li>Testez une nouvelle marge directement dans le navigateur.</li>
+                        <li>Passez en mode responsive et vérifiez l'affichage sur mobile.</li>
+                        <li>Reportez votre correction dans le fichier CSS.</li>
+                    </ol>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Alléger une page</h3>
+
+                    <span class="generation-type">Écoconception</span>
+
+                    <p>
+                        Reprenez l'une de vos pages et réduisez-la à une
+                        palette de trois couleurs et une ou deux polices.
+                        Notez, pour chaque effet supprimé, pourquoi il
+                        n'apportait rien.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <!-- RESUME -->
+
+            <section id="resume" class="summary">
+
+                <div class="summary-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    À retenir
+                </h2>
+
+                <p>
+                    Le HTML structure, le CSS présente. Un bon style est
+                    sobre, cohérent et justifié : chaque choix répond à
+                    une intention.
+                </p>
+
+                <div class="key-points">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Feuille externe</span>
+                    <span>&lt;style&gt;</span>
+                    <span>Style en ligne</span>
+                    <span>Sélecteurs</span>
+                    <span>Classes</span>
+                    <span>ID</span>
+                    <span>Combinateurs</span>
+                    <span>Cascade</span>
+                    <span>Spécificité</span>
+                    <span>DevTools</span>
+                    <span>Écoconception</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="lesson-navigation">
+
+                <a href="../index.html" class="nav-button secondary">
+                    ← Toutes les leçons
+                </a>
+
+                <a href="lecon-javascript.html" class="nav-button primary">
+                    Leçon suivante →
+                </a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <strong>GÉNIE LOGIC</strong>
+
+        <p>
+            Centre de formation — Développement Web
+        </p>
+
+        <small>
+            © 2026 Génie Logic
+        </small>
+
+    </footer>
+
+</body>
+
+</html>

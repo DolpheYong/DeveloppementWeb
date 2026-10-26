@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Formation en développement web pour débutants complets — HTML, CSS et JavaScript. Par Solofoniaina Rodolphe (Dolphe Yong), formateur en informatique.">
+
+    <title>Dolphe Yong — Formateur en Informatique | HTML, CSS, JavaScript</title>
+
+    <!-- Google Fonts : Poppins (titres) + Inter (texte) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/menu.css">
+</head>
+<script src="JS/menu.js" defer></script>
+<body>
+    <!-- ============================================================
+     MENU DE NAVIGATION — Dolphe Yong
+     Inclure dans le <body> au tout début
+     ============================================================ -->
+
+<header class="main-navbar" id="mainNavbar">
+    <div class="main-navbar__container">
+
+        <!-- Logo -->
+        <a href="index.html" class="main-navbar__logo" aria-label="Dolphe Yong — Accueil">
+            <span class="main-navbar__logo-dot" aria-hidden="true"></span>
+            Dolphe <strong>Yong</strong>
+        </a>
+
+        <!-- Bouton burger mobile -->
+        <button
+            class="main-navbar__toggle"
+            id="mainNavToggle"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mainNavMenu"
+            type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
+
+        <!-- Navigation -->
+        <nav
+            class="main-navbar__nav"
+            id="mainNavMenu"
+            aria-label="Navigation principale">
+
+            <a href="index.html" class="main-navbar__link">Accueil</a>
+            <a href="programme-formation.html" class="main-navbar__link">Programme</a>
+            <a href="lecon-css.html" class="main-navbar__link">CSS</a>
+            <a href="lecon-javascript.html" class="main-navbar__link">JavaScript</a>
+            <a href="index.html#contact" class="main-navbar__link main-navbar__cta">
+                Je m'inscris
+            </a>
+
+        </nav>
+
+    </div>
+</header>
+
+<!-- Overlay pour mobile -->
+<div class="main-navbar__overlay" id="mainNavOverlay"></div>
+
+    <!-- ============================================================
+         HEADER / NAVBAR
+    ============================================================ -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__container">
+            <a href="#accueil" class="navbar__logo">
+                <span class="navbar__logo-dot"></span>
+                Dolphe <strong>Yong</strong>
+            </a>
+
+            <button class="navbar__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar__nav" id="navMenu" aria-label="Navigation principale">
+                <a href="#accueil" class="navbar__link">Accueil</a>
+                <a href="#apropos" class="navbar__link">À propos</a>
+                <a href="#objectifs" class="navbar__link">Objectifs</a>
+                <a href="#programme" class="navbar__link">Programme</a>
+                <a href="#contact" class="navbar__link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             SECTION HERO
+        ============================================================ -->
+        <section class="hero" id="accueil">
+            <div class="hero__container">
+
+                <div class="hero__content">
+                    <p class="hero__name">Solofoniaina Rodolphe</p>
+                    <h1 class="hero__title">
+                        Formateur en <span class="hero__title-accent">Informatique</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Apprenez le développement web à votre rythme —
+                        <strong>HTML, CSS et JavaScript</strong> pour débutants complets.
+                    </p>
+
+                    <div class="hero__badges">
+                        <span class="badge">⏱️ Max 3 h / semaine</span>
+                        <span class="badge badge--cyan">🎯 Débutants acceptés</span>
+                    </div>
+
+                    <div class="hero__actions">
+                        <a href="#programme" class="btn btn--primary">
+                            Voir le programme
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero__photo-wrapper">
+                    <div class="hero__photo" role="img" aria-label="Photo de profil de Solofoniaina Rodolphe">
+                        <!-- Remplacer par la photo de Solofoniaina -->
+                        <span class="hero__photo-placeholder">👨‍💻</span>
+                    </div>
+                    <div class="hero__photo-badge">Dolphe Yong</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION À PROPOS
+        ============================================================ -->
+        <section class="about section" id="apropos">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__label">À propos</span>
+                    <h2 class="section__title">Qui suis-je&nbsp;?</h2>
+                </div>
+
+                <div class="about__content">
+                    <p class="about__text">
+                        Étudiant en informatique à l'<strong>Université de Toamasina</strong>,
+                        je suis titulaire d'une <strong>Licence en Informatique</strong>,
+                        spécialité <strong>Développement Web et Mobile</strong>.
+                        Passionné par le code et la transmission, j'accompagne
+                        les débutants complets dans leurs premiers pas
+                        en développement web.
+                    </p>
+
+                    <div class="about__badges">
+                        <span class="tag">🎓 Licence Informatique</span>
+                        <span class="tag">💻 Développement Web &amp; Mobile</span>
+                        <span class="tag">🏛️ Université de Toamasina</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION OBJECTIFS
+        ============================================================ -->
+        <section class="objectives section section--alt" id="objectifs">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__label">Objectifs</span>
+                    <h2 class="section__title">Ce que vous allez apprendre</h2>
+                    <p class="section__intro">À la fin de cette formation, vous serez capable de :</p>
+                </div>
+
+                <div class="objectives__grid">
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Comprendre le web</h3>
+                        <p class="objective-card__text">
+                            Saisir le fonctionnement du web et la structure d'une page HTML.
+                        </p>
+                    </article>
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Structurer une page</h3>
+                        <p class="objective-card__text">
+                            Utiliser les balises HTML sémantiques pour organiser votre contenu.
+                        </p>
+                    </article>
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Styliser avec CSS</h3>
+                        <p class="objective-card__text">
+                            Maîtriser les couleurs, la typographie et les mises en page modernes.
+                        </p>
+                    </article>
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Créer du responsive</h3>
+                        <p class="objective-card__text">
+                            Concevoir des designs adaptés au mobile, à la tablette et au desktop.
+                        </p>
+                    </article>
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Ajouter de l'interactivité</h3>
+                        <p class="objective-card__text">
+                            Utiliser JavaScript pour rendre vos pages vivantes et réactives.
+                        </p>
+                    </article>
+
+                    <article class="objective-card reveal">
+                        <div class="objective-card__icon">✓</div>
+                        <h3 class="objective-card__title">Réaliser un mini-projet</h3>
+                        <p class="objective-card__text">
+                            Mettre en pratique toutes les notions dans un projet complet en autonomie.
+                        </p>
+                    </article>
+
+                </div>
+
+                <div class="info-box reveal">
+                    🕒 <strong>Rythme flexible :</strong> maximum 3 heures par semaine, à votre propre vitesse.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION PROGRAMME
+        ============================================================ -->
+        <section class="program section" id="programme">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__label">Programme</span>
+                    <h2 class="section__title">Programme de la formation</h2>
+                    <p class="section__intro">Trois technologies incontournables pour devenir développeur web.</p>
+                </div>
+
+                <div class="program__grid">
+
+                    <article class="program-card reveal">
+                        <div class="program-card__icon program-card__icon--html">&lt;/&gt;</div>
+                        <h3 class="program-card__title">HTML</h3>
+                        <p class="program-card__text">
+                            Structurez vos pages web et maîtrisez les balises essentielles.
+                        </p>
+                    </article>
+
+                    <article class="program-card reveal">
+                        <div class="program-card__icon program-card__icon--css">#</div>
+                        <h3 class="program-card__title">CSS</h3>
+                        <p class="program-card__text">
+                            Stylisez vos pages, gérez les couleurs, le responsive
+                            et les mises en page modernes.
+                        </p>
+                        <a href="programme-formation.html" class="btn btn--primary">
+                            Voir le programme détaillé
+                        </a>
+                    </article>
+
+                    <article class="program-card reveal">
+                        <div class="program-card__icon program-card__icon--js">JS</div>
+                        <h3 class="program-card__title">JavaScript</h3>
+                        <p class="program-card__text">
+                            Ajoutez de l'interactivité et donnez vie à vos projets web.
+                        </p>
+                    </article>
+
+                </div>
+
+                <div class="program__cta reveal">
+                    <a href="#contact" class="btn btn--primary btn--large">Je m'inscris</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECTION CTA FINALE
+        ============================================================ -->
+        <section class="cta section" id="contact">
+            <div class="cta__container">
+                <h2 class="cta__title">Prêt à devenir développeur web&nbsp;?</h2>
+                <p class="cta__text">
+                    Rejoignez la formation et faites vos premiers pas en HTML, CSS et JavaScript.
+                </p>
+                <a href="historique.html" class="btn btn--light btn--large">
+                    Commencer maintenant
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="footer__container">
+
+            <div class="footer__brand">
+                <p class="footer__name">
+                    <strong>Solofoniaina Rodolphe</strong> — <em>Dolphe Yong</em>
+                </p>
+                <p class="footer__role">Formateur en Informatique</p>
+            </div>
+
+            <nav class="footer__nav" aria-label="Liens rapides">
+                <a href="#accueil">Accueil</a>
+                <a href="#apropos">À propos</a>
+                <a href="#objectifs">Objectifs</a>
+                <a href="#programme">Programme</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+        </div>
+
+        <div class="footer__bottom">
+            <p>© 2025 Dolphe Yong — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

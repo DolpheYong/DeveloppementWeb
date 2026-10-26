@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leçon d'initiation au HTML : balises, attributs, structure, liens, images et tableaux.">
+  <title>Génie Logic — Initiation au HTML</title>
+  <link rel="stylesheet" href="/quiz-local/assets/css/menu.css">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #0f172a;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #0f172a;
+      --success: #059669;
+      --warning: #d97706;
+      --radius: 16px;
+      --shadow: 0 8px 25px rgba(15, 23, 42, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, .96);
+      color: white;
+      backdrop-filter: blur(10px);
+      padding: 14px 24px;
+      box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    }
+
+    .topbar-inner {
+      max-width: 1450px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .3px;
+      font-size: 1.15rem;
+    }
+
+    .brand span {
+      color: #60a5fa;
+    }
+
+    .progress {
+      color: #cbd5e1;
+      font-size: .9rem;
+    }
+
+    .layout {
+      max-width: 1450px;
+      margin: 28px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 82px;
+      align-self: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      max-height: calc(100vh - 105px);
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #475569;
+      font-size: .92rem;
+    }
+
+    .sidebar a:hover {
+      background: #eff6ff;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #38bdf8);
+      color: white;
+      border-radius: 22px;
+      padding: 48px;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, .22);
+      margin-bottom: 28px;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: .82rem;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0;
+      color: #e0f2fe;
+      font-size: 1.08rem;
+    }
+
+    section, .lesson-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 24px;
+      scroll-margin-top: 90px;
+    }
+
+    h2 {
+      color: var(--secondary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #dbeafe;
+    }
+
+    h3 {
+      color: #1e3a8a;
+      margin-top: 28px;
+    }
+
+    h4 {
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    .definition {
+      border-left: 5px solid var(--primary);
+      background: #eff6ff;
+      padding: 16px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+    }
+
+    .note {
+      border-left: 5px solid var(--warning);
+      background: #fffbeb;
+      padding: 16px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+    }
+
+    .success {
+      border-left: 5px solid var(--success);
+      background: #ecfdf5;
+      padding: 16px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: #f8fafc;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      border: 1px solid #1e293b;
+      margin: 18px 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    code {
+      font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+      font-size: .9rem;
+    }
+
+    p code, li code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    .steps {
+      counter-reset: step;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 15px 18px 15px 55px;
+      margin: 10px 0;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 16px;
+      top: 13px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: .8rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-family: monospace;
+      font-size: .86rem;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 35px 15px 50px;
+    }
+
+    .back-top {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+
+      .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 5px;
+      }
+
+      .hero {
+        padding: 32px 24px;
+      }
+
+      section, .lesson-card {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        padding: 12px 15px;
+      }
+
+      .progress {
+        display: none;
+      }
+
+      .layout {
+        margin-top: 15px;
+        padding: 0 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      pre {
+        padding: 14px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <script src="/quiz-local/assets/js/menu.js" defer></script>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Génie <span>Logic</span> — Formation Web</div>
+    <div class="progress">Leçon : Initiation au HTML</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h3>Sommaire</h3>
+    <nav>
+      <a href="#introduction">1. Introduction</a>
+      <a href="#balises">2. Les balises</a>
+      <a href="#attributs">3. Les attributs</a>
+      <a href="#premiers-pas">4. Premiers pas</a>
+      <a href="#structure">5. Structure HTML</a>
+      <a href="#commentaires">6. Commentaires</a>
+      <a href="#head">7. En-tête &lt;head&gt;</a>
+      <a href="#meta">8. Balises &lt;meta&gt;</a>
+      <a href="#hyperliens">9. Hyperliens</a>
+      <a href="#chemins">10. Chemins d'accès</a>
+      <a href="#ancres">11. Ancres</a>
+      <a href="#ressources">12. Ressources non-HTML</a>
+      <a href="#email">13. Liens de courriel</a>
+      <a href="#url">14. URL absolue/relative</a>
+      <a href="#images">15. Images</a>
+      <a href="#tableaux">16. Tableaux</a>
+      <a href="#structure-tableau">17. Structure des tableaux</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <div class="hero">
+      <span class="badge">Développement Web • HTML</span>
+      <h1>Initiation au HTML</h1>
+      <p>
+        Comprendre les bases du langage HTML, créer une page web structurée,
+        utiliser les balises et attributs, gérer les liens, les images et les tableaux.
+      </p>
+    </div>
+
+    <section id="introduction">
+      <h2>1. Introduction</h2>
+
+      <p>
+        <strong>HTML</strong>, acronyme de <em>HyperText Markup Language</em>
+        (Langage de Balisage Hypertexte), est la base de tout site web.
+        Il s'agit d'un langage de balisage et non d'un langage de programmation.
+      </p>
+
+      <div class="definition">
+        <strong>À retenir :</strong> HTML définit principalement la structure et
+        le contenu d'une page web grâce à des balises.
+      </div>
+
+      <p>
+        Les balises permettent notamment d'identifier un paragraphe, une liste,
+        un titre, un lien, une image, un formulaire ou encore un contenu multimédia.
+        Elles permettent également de donner une structure sémantique au document,
+        ce qui facilite notamment l'accessibilité et l'indexation.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card">
+          <strong>HTML</strong>
+          Structure et contenu de la page.
+        </div>
+        <div class="mini-card">
+          <strong>CSS</strong>
+          Présentation, couleurs, polices, marges et mise en forme.
+        </div>
+        <div class="mini-card">
+          <strong>JavaScript</strong>
+          Interactivité et comportement dynamique.
+        </div>
+      </div>
+
+      <p>
+        L'association de HTML et CSS repose notamment sur la séparation du contenu
+        et de la présentation. JavaScript peut ensuite être associé à HTML pour
+        ajouter de l'interactivité.
+      </p>
+
+      <p>
+        Pour écrire du HTML, CSS et JavaScript, différents éditeurs de texte peuvent
+        être utilisés, notamment Visual Studio Code (VS Code), Notepad++, Sublime Text
+        ou Atom.
+      </p>
+    </section>
+
+    <section id="balises">
+      <h2>2. Les balises</h2>
+
+      <p>
+        Une balise est une suite de caractères écrite entre les chevrons
+        <code>&lt;</code> et <code>&gt;</code>. Elle indique au navigateur la nature
+        du contenu qu'elle englobe.
+      </p>
+
+      <p>
+        La casse des éléments HTML n'a pas d'incidence, mais il est recommandé
+        d'utiliser les minuscules pour conserver une bonne cohérence.
+      </p>
+
+      <h3>Balises en paire</h3>
+
+      <p>
+        Elles possèdent une balise ouvrante et une balise fermante.
+      </p>
+
+      <pre><code>&lt;p&gt;Mon premier paragraphe&lt;/p&gt;</code></pre>
+
+      <p>
+        Ici, <code>&lt;p&gt;</code> ouvre le paragraphe et
+        <code>&lt;/p&gt;</code> le ferme.
+      </p>
+
+      <h3>Balises orphelines</h3>
+
+      <p>
+        Elles ne possèdent pas de contenu à englober et ne nécessitent pas de
+        balise fermante.
+      </p>
+
+      <pre><code>&lt;img src="banniere.png"&gt;</code></pre>
+
+      <div class="note">
+        En HTML moderne, on écrit généralement <code>&lt;img&gt;</code> plutôt que
+        <code>&lt;img/&gt;</code>.
+      </div>
+    </section>
+
+    <section id="attributs">
+      <h2>3. Les attributs</h2>
+
+      <p>
+        Les attributs fournissent des informations supplémentaires concernant
+        un élément. Ils sont généralement placés dans la balise ouvrante.
+      </p>
+
+      <pre><code>&lt;p id="section2"&gt;Madagascar est un pays africain.&lt;/p&gt;</code></pre>
+
+      <p>Pour écrire un attribut :</p>
+
+      <ol>
+        <li>Insérer un espace entre le nom de l'élément et l'attribut.</li>
+        <li>Écrire le nom de l'attribut.</li>
+        <li>Ajouter le signe <code>=</code>.</li>
+        <li>Placer sa valeur entre guillemets.</li>
+      </ol>
+
+      <h3>Exemple avec un lien</h3>
+
+      <pre><code>&lt;a href="https://www.auf.org/"
+   title="Page d'accueil de l'AUF"
+   target="_blank"&gt;
+  Site Web de l'Agence universitaire de la Francophonie
+&lt;/a&gt;</code></pre>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Rôle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag">href</span></td>
+            <td>Indique l'adresse vers laquelle le lien dirige.</td>
+          </tr>
+          <tr>
+            <td><span class="tag">title</span></td>
+            <td>Fournit une information supplémentaire.</td>
+          </tr>
+          <tr>
+            <td><span class="tag">target</span></td>
+            <td>Détermine le contexte de navigation, par exemple un nouvel onglet avec <code>_blank</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Attributs booléens</h3>
+
+      <p>
+        Certains attributs fonctionnent sans valeur explicite.
+      </p>
+
+      <pre><code>&lt;input type="text" disabled&gt;</code></pre>
+
+      <p>
+        La forme <code>disabled="disabled"</code> est également possible,
+        mais la forme courte est couramment utilisée.
+      </p>
+
+      <h3>Les guillemets</h3>
+
+      <p>
+        Les valeurs d'attributs peuvent être écrites avec des guillemets doubles
+        ou simples.
+      </p>
+
+      <pre><code>&lt;a href="http://www.exemple.com"&gt;Mon exemple&lt;/a&gt;
+
+&lt;a href='http://www.exemple.com'&gt;Mon exemple&lt;/a&gt;</code></pre>
+    </section>
+
+    <section id="premiers-pas">
+      <h2>4. Premiers pas dans le code</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Préparer l'environnement :</strong> ouvrir un éditeur de texte
+          pour écrire le code.
+        </li>
+        <li>
+          <strong>Créer le fichier :</strong> utiliser l'extension
+          <code>.html</code>, par exemple <code>mon-premier-exemple.html</code>.
+        </li>
+        <li>
+          <strong>Écrire le code :</strong> ajouter les balises nécessaires
+          à la structure de la page.
+        </li>
+        <li>
+          <strong>Visualiser :</strong> ouvrir le fichier HTML dans un navigateur.
+        </li>
+      </ol>
+    </section>
+
+    <section id="structure">
+      <h2>5. Structure d'un document HTML</h2>
+
+      <p>
+        Une page HTML possède une structure générale permettant de séparer les
+        informations destinées au navigateur du contenu visible par l'utilisateur.
+      </p>
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Ma page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bienvenue&lt;/h1&gt;
+  &lt;p&gt;Ma première page HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <div class="success">
+        <strong>Structure essentielle :</strong>
+        <code>&lt;html&gt;</code> contient le document,
+        <code>&lt;head&gt;</code> contient les informations de configuration
+        et <code>&lt;body&gt;</code> contient le contenu affiché.
+      </div>
+    </section>
+
+    <section id="commentaires">
+      <h2>6. Commentaires</h2>
+
+      <p>
+        Les commentaires permettent d'ajouter des annotations dans le code.
+        Ils sont ignorés par le navigateur et ne sont pas affichés comme contenu
+        de la page.
+      </p>
+
+      <pre><code>&lt;!-- Ceci est un commentaire HTML --&gt;</code></pre>
+
+      <p>
+        Ils peuvent servir à expliquer le fonctionnement du code ou à identifier
+        les différentes parties d'un document.
+      </p>
+    </section>
+
+    <section id="head">
+      <h2>7. L'en-tête &lt;head&gt;</h2>
+
+      <p>
+        L'élément <code>&lt;head&gt;</code> contient des informations qui ne sont
+        généralement pas affichées directement dans la page.
+      </p>
+
+      <p>Il peut notamment contenir :</p>
+
+      <ul>
+        <li>le titre de la page avec <code>&lt;title&gt;</code> ;</li>
+        <li>des liens vers des feuilles de style CSS ;</li>
+        <li>des balises <code>&lt;meta&gt;</code> ;</li>
+        <li>des liens vers d'autres ressources.</li>
+      </ul>
+
+      <pre><code>&lt;head&gt;
+  &lt;!-- Auteur de la page --&gt;
+  &lt;meta name="author" content="D-CLIC"&gt;
+
+  &lt;title&gt;Ma page de test&lt;/title&gt;
+
+  &lt;!-- Feuille de style CSS --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+    </section>
+
+    <section id="meta">
+      <h2>8. La balise &lt;meta&gt;</h2>
+
+      <p>
+        Les balises <code>&lt;meta&gt;</code> définissent des métadonnées,
+        c'est-à-dire des informations destinées notamment au navigateur et
+        aux moteurs de recherche.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Exemple</th>
+            <th>Utilisation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>charset="utf-8"</code></td>
+            <td>Définit l'encodage des caractères.</td>
+          </tr>
+          <tr>
+            <td><code>name="description"</code></td>
+            <td>Définit une description de la page.</td>
+          </tr>
+          <tr>
+            <td><code>name="author"</code></td>
+            <td>Indique l'auteur.</td>
+          </tr>
+          <tr>
+            <td><code>name="viewport"</code></td>
+            <td>Configure l'affichage adapté aux appareils mobiles.</td>
+          </tr>
+          <tr>
+            <td><code>http-equiv="refresh"</code></td>
+            <td>Permet notamment de définir un rafraîchissement automatique.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre><code>&lt;meta name="description" content="Initiation en HTML"&gt;
+&lt;meta name="author" content="D-CLIC"&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    </section>
+
+    <section id="hyperliens">
+      <h2>9. Les hyperliens</h2>
+
+      <p>
+        Les hyperliens permettent de relier un document à un autre document,
+        une autre page ou une autre ressource.
+      </p>
+
+      <h3>Anatomie d'un lien</h3>
+
+      <pre><code>&lt;p&gt;
+  Je visite
+  &lt;a href="https://www.auf.org"&gt;
+    la page d'accueil de l'AUF
+  &lt;/a&gt;.
+&lt;/p&gt;</code></pre>
+
+      <h3>Ajouter un titre au lien</h3>
+
+      <pre><code>&lt;a
+  href="https://www.auf.org"
+  title="Les évènements et actualités de l'AUF"&gt;
+  Page d'accueil de l'AUF
+&lt;/a&gt;</code></pre>
+
+      <h3>Transformer une image en lien</h3>
+
+      <pre><code>&lt;a href="https://www.auf.org"&gt;
+  &lt;img src="auf.png" alt="Logo AUF"&gt;
+&lt;/a&gt;</code></pre>
+    </section>
+
+    <section id="chemins">
+      <h2>10. Liens hypertextes et chemins d'accès</h2>
+
+      <div class="grid">
+        <div class="mini-card">
+          <strong>Même dossier</strong>
+          <code>href="page2.html"</code>
+        </div>
+        <div class="mini-card">
+          <strong>Dossier parent</strong>
+          <code>href="../page2.html"</code>
+        </div>
+        <div class="mini-card">
+          <strong>Sous-dossier</strong>
+          <code>href="contenu/page2.html"</code>
+        </div>
+      </div>
+
+      <p>
+        Le navigateur utilise la position du fichier courant pour interpréter
+        un chemin relatif.
+      </p>
+    </section>
+
+    <section id="ancres">
+      <h2>11. Les liens vers une ancre</h2>
+
+      <p>
+        Une ancre permet de créer un point de repère à l'intérieur d'une page.
+        L'attribut <code>id</code> doit être unique dans la page.
+      </p>
+
+      <pre><code>&lt;h2 id="section1"&gt;Section 1&lt;/h2&gt;
+
+&lt;a href="#section1"&gt;
+  Aller à la Section 1
+&lt;/a&gt;</code></pre>
+
+      <h3>Ancre située dans une autre page</h3>
+
+      <pre><code>&lt;a href="page2.html#section2"&gt;
+  Aller à la Section 2 de la Page 2
+&lt;/a&gt;</code></pre>
+    </section>
+
+    <section id="ressources">
+      <h2>12. Liens vers des ressources non-HTML</h2>
+
+      <p>
+        Lorsqu'un lien mène vers un PDF, une vidéo, un fichier ou une autre
+        ressource, il est utile d'indiquer clairement la nature de la ressource.
+      </p>
+
+      <pre><code>&lt;a href="documents/rapport.pdf"&gt;
+  Télécharger le rapport (PDF)
+&lt;/a&gt;
+
+&lt;a href="https://www.youtube.com/" target="_blank"&gt;
+  Regarder la vidéo
+&lt;/a&gt;</code></pre>
+
+      <h3>Attribut download</h3>
+
+      <p>
+        L'attribut <code>download</code> permet d'indiquer qu'une ressource
+        est destinée au téléchargement.
+      </p>
+
+      <pre><code>&lt;a href="fichier.pdf" download&gt;
+  Télécharger le document
+&lt;/a&gt;</code></pre>
+    </section>
+
+    <section id="email">
+      <h2>13. Liens de courriel</h2>
+
+      <p>
+        Le schéma <code>mailto:</code> permet de créer un lien qui ouvre
+        le logiciel de messagerie de l'utilisateur.
+      </p>
+
+      <pre><code>&lt;a href="mailto:formation@auf.org"&gt;
+  Envoyer un courriel
+&lt;/a&gt;</code></pre>
+
+      <p>
+        Il est également possible de fournir un sujet, une copie et un corps
+        de message.
+      </p>
+
+      <pre><code>&lt;a href="mailto:formation@auf.org?subject=FormationHTML&amp;body=Bonjour"&gt;
+  Envoyer un e-mail
+&lt;/a&gt;</code></pre>
+    </section>
+
+    <section id="url">
+      <h2>14. URL absolue et URL relative</h2>
+
+      <div class="grid">
+        <div class="mini-card">
+          <strong>URL absolue</strong>
+          Contient l'adresse complète, par exemple :
+          <code>https://www.exemple.com/projets/index.html</code>
+        </div>
+
+        <div class="mini-card">
+          <strong>URL relative</strong>
+          Dépend de la position du fichier courant, par exemple :
+          <code>documents/fichier.pdf</code>
+        </div>
+      </div>
+
+      <div class="note">
+        Pour les ressources internes d'un même site, les chemins relatifs sont
+        généralement pratiques car ils permettent de conserver une structure
+        indépendante du domaine.
+      </div>
+    </section>
+
+    <section id="images">
+      <h2>15. Les images en HTML</h2>
+
+      <p>
+        L'élément <code>&lt;img&gt;</code> permet d'insérer une image dans
+        une page HTML.
+      </p>
+
+      <pre><code>&lt;img src="chemin-vers-image.jpg"
+     alt="Description de l'image"&gt;</code></pre>
+
+      <h3>Chemin d'accès</h3>
+
+      <pre><code>&lt;img src="francophonie.png" alt="Logo"&gt;
+
+&lt;img src="images/francophonie.png" alt="Logo"&gt;</code></pre>
+
+      <h3>Texte alternatif</h3>
+
+      <p>
+        L'attribut <code>alt</code> fournit une description textuelle de l'image.
+        Il est important pour l'accessibilité.
+      </p>
+
+      <pre><code>&lt;img
+  src="images/francophonie.jpg"
+  alt="Logo officiel de l'Organisation Internationale de la Francophonie"&gt;</code></pre>
+
+      <h3>Dimensions et titre</h3>
+
+      <pre><code>&lt;img
+  src="images/francophonie.png"
+  alt="Logo de la Francophonie"
+  width="600"
+  height="300"
+  title="La Francophonie"&gt;</code></pre>
+
+      <h3>Figure et légende</h3>
+
+      <pre><code>&lt;figure&gt;
+  &lt;img
+    src="images/francophonie.png"
+    alt="Logo officiel de l'Organisation Internationale de la Francophonie"&gt;
+  &lt;figcaption&gt;La Francophonie&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+      <div class="success">
+        <strong>À retenir :</strong>
+        <code>&lt;figure&gt;</code> peut contenir une image, mais également
+        d'autres contenus comme du code, des tableaux ou des médias.
+      </div>
+    </section>
+
+    <section id="tableaux">
+      <h2>16. Les tableaux en HTML</h2>
+
+      <p>
+        Les tableaux permettent de présenter des informations organisées
+        en lignes et en colonnes, par exemple un emploi du temps ou des
+        données financières.
+      </p>
+
+      <h3>Premier tableau</h3>
+
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Première cellule&lt;/td&gt;
+    &lt;td&gt;Deuxième cellule&lt;/td&gt;
+    &lt;td&gt;Troisième cellule&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Ajouter plusieurs lignes</h3>
+
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Cellule 1&lt;/td&gt;
+    &lt;td&gt;Cellule 2&lt;/td&gt;
+    &lt;td&gt;Cellule 3&lt;/td&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;td&gt;Cellule 4&lt;/td&gt;
+    &lt;td&gt;Cellule 5&lt;/td&gt;
+    &lt;td&gt;Cellule 6&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Ajouter des en-têtes avec &lt;th&gt;</h3>
+
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Spécialité&lt;/th&gt;
+    &lt;th&gt;Nom du cours&lt;/th&gt;
+    &lt;th&gt;Nombre d'apprenants&lt;/th&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;td&gt;Informatique&lt;/td&gt;
+    &lt;td&gt;Python&lt;/td&gt;
+    &lt;td&gt;22&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Exemple complet</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Spécialité</th>
+            <th>Nom du cours</th>
+            <th>Nombre d'apprenants</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Informatique</td>
+            <td>Python</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>Informatique</td>
+            <td>Java</td>
+            <td>112</td>
+          </tr>
+          <tr>
+            <td>Électrique</td>
+            <td>Système logique</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>Biologie</td>
+            <td>Génétique</td>
+            <td>13</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="structure-tableau">
+      <h2>17. Structuration et fusion des tableaux</h2>
+
+      <h3>Fusion de lignes avec rowspan</h3>
+
+      <p>
+        <code>rowspan</code> permet à une cellule de s'étendre sur plusieurs lignes.
+      </p>
+
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Cellule fusionnée&lt;/td&gt;
+    &lt;td&gt;Ligne 1, Colonne 2&lt;/td&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;td&gt;Ligne 2, Colonne 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Fusion de colonnes avec colspan</h3>
+
+      <p>
+        <code>colspan</code> permet à une cellule de couvrir plusieurs colonnes.
+      </p>
+
+      <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Colonne 1&lt;/td&gt;
+    &lt;td colspan="3"&gt;Cellule fusionnée sur trois colonnes&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h3>Utiliser &lt;thead&gt; et &lt;tbody&gt;</h3>
+
+      <p>
+        Ces éléments permettent de séparer l'en-tête du contenu principal du tableau.
+      </p>
+
+      <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Référence&lt;/th&gt;
+      &lt;th&gt;Nom&lt;/th&gt;
+      &lt;th&gt;Disponibilité&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A1-521&lt;/td&gt;
+      &lt;td&gt;Produit A1&lt;/td&gt;
+      &lt;td&gt;Oui&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;A2-224&lt;/td&gt;
+      &lt;td&gt;Produit A2&lt;/td&gt;
+      &lt;td&gt;Non&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+      <div class="definition">
+        <strong>Résumé :</strong> les balises <code>&lt;table&gt;</code>,
+        <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> et <code>&lt;td&gt;</code>
+        constituent les éléments fondamentaux des tableaux. Les éléments
+        <code>&lt;thead&gt;</code> et <code>&lt;tbody&gt;</code> permettent
+        d'organiser leur structure.
+      </div>
+    </section>
+
+    <section>
+      <h2>À retenir</h2>
+
+      <div class="grid">
+        <div class="mini-card">
+          <strong>HTML</strong>
+          Structure le contenu d'une page.
+        </div>
+        <div class="mini-card">
+          <strong>Balises</strong>
+          Définissent la nature des éléments.
+        </div>
+        <div class="mini-card">
+          <strong>Attributs</strong>
+          Ajoutent des informations aux éléments.
+        </div>
+        <div class="mini-card">
+          <strong>Liens</strong>
+          Utilisent principalement <code>&lt;a&gt;</code> et <code>href</code>.
+        </div>
+        <div class="mini-card">
+          <strong>Images</strong>
+          Utilisent <code>&lt;img&gt;</code> et l'attribut <code>alt</code>.
+        </div>
+        <div class="mini-card">
+          <strong>Tableaux</strong>
+          Utilisent <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
+          <code>&lt;th&gt;</code> et <code>&lt;td&gt;</code>.
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <strong>Génie Logic</strong> — Leçon d'initiation au HTML
+  <br>
+  <a class="back-top" href="#top">↑ Retour en haut</a>
+</footer>
+
+</body>
+</html>

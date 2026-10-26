@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Leçon JavaScript | Génie Logic</title>
+
+    <link rel="stylesheet"
+          href="CSS/lecon.css">
+    <link rel="stylesheet" href="/quiz-local/assets/css/menu.css">
+</head>
+
+<body>
+    <script src="/quiz-local/assets/js/menu.js" defer></script>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="header-container">
+
+        <a href="../index.html" class="logo">
+            GÉNIE <span>LOGIC</span>
+        </a>
+
+        <div class="course-label">
+            Développement Web
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= PAGE ================= -->
+
+<div class="page-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h3>Dans cette leçon</h3>
+
+        <nav>
+            <a href="#intro">1. Introduction</a>
+            <a href="#variables">2. Variables</a>
+            <a href="#types">3. Types et littéraux</a>
+            <a href="#operateurs">4. Opérateurs</a>
+            <a href="#conditions">5. Conditions</a>
+            <a href="#boucles">6. Boucles</a>
+            <a href="#fonctions">7. Fonctions</a>
+            <a href="#execution">8. Exécuter du code</a>
+            <a href="#objets">9. Objets intégrés</a>
+            <a href="#dom">10. Document et DOM</a>
+            <a href="#exercices">Exercices</a>
+            <a href="#resume">À retenir</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTENU -->
+
+    <main class="content">
+
+        <!-- INTRODUCTION -->
+
+        <section class="hero">
+
+            <span class="chapter">
+                LEÇON JAVASCRIPT
+            </span>
+
+            <h1>
+                Les bases du langage
+            </h1>
+
+            <p>
+                JavaScript rend les pages web interactives : cette leçon
+                présente ses concepts de base, des variables aux fonctions,
+                puis les objets intégrés les plus utilisés.
+            </p>
+
+            <p>
+                <em>Oct 24, 2026 · @Dolphe</em>
+            </p>
+
+        </section>
+
+
+        <!-- OBJECTIFS -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                🎯
+            </div>
+
+            <div>
+
+                <h2>
+                    Objectifs
+                </h2>
+
+                <p>
+                    À la fin de cette leçon, l'apprenant sera capable de :
+                </p>
+
+                <ul>
+                    <li>définir JavaScript et citer ses principaux usages ;</li>
+                    <li>déclarer des variables avec <code>var</code>, <code>let</code> et <code>const</code> et comprendre leur portée ;</li>
+                    <li>manipuler les types de données, les littéraux et les opérateurs ;</li>
+                    <li>écrire des conditions, des boucles et des fonctions ;</li>
+                    <li>exécuter du code dans le navigateur ou avec Node.js ;</li>
+                    <li>utiliser les objets <code>Date</code>, <code>String</code>, <code>Math</code> et <code>document</code>.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- 1. INTRODUCTION -->
+
+        <section id="intro" class="lesson-section">
+
+            <div class="section-number">
+                01
+            </div>
+
+            <div>
+
+                <h2>
+                    Introduction
+                </h2>
+
+                <p>
+                    JavaScript est un langage de programmation de haut
+                    niveau, interprété et orienté objet. Il a été créé
+                    pour les navigateurs web, afin de rendre les pages
+                    interactives et dynamiques, mais il s'utilise
+                    aujourd'hui dans d'autres contextes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <h3>À quoi sert JavaScript ?</h3>
+
+                <ul>
+                    <li><strong>Interactivité web</strong> : formulaires interactifs, animations, menus déroulants, mise à jour du contenu en temps réel sans recharger la page ;</li>
+                    <li><strong>Manipulation du DOM</strong> : modifier, ajouter ou supprimer dynamiquement les éléments de la page ;</li>
+                    <li><strong>Validation de formulaires</strong> : vérifier les données saisies avant leur envoi au serveur ;</li>
+                    <li><strong>Gestion d'événements</strong> : réagir aux clics, aux touches pressées, aux mouvements de la souris… ;</li>
+                    <li><strong>Applications web</strong> : avec React, Angular et Vue.js, créer des applications complexes ;</li>
+                    <li><strong>Programmation côté serveur</strong> : avec Node.js, utiliser le même langage côté serveur ;</li>
+                    <li><strong>Interfaces utilisateur</strong> : bibliothèques et frameworks pour des interfaces élégantes et réactives.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2. VARIABLES -->
+
+        <section id="variables" class="lesson-section">
+
+            <div class="section-number">
+                02
+            </div>
+
+            <div>
+
+                <h2>
+                    Les variables
+                </h2>
+
+                <p>
+                    JavaScript est <strong>sensible à la casse</strong> :
+                    <code>age</code> et <code>Age</code> sont deux variables
+                    différentes. Il existe trois façons de déclarer une
+                    variable.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">📦</span>
+
+                <div>
+                    <h3>Déclarer une variable</h3>
+                    <p>Trois mots-clés, trois comportements</p>
+                </div>
+
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology">
+
+                    <h4>var</h4>
+
+                    <p>
+                        Déclare une variable, éventuellement initialisée.
+                    </p>
+
+                    <ul>
+                        <li>Portée : fonction (ou globale)</li>
+                        <li>Peut être redéclarée</li>
+                        <li>Hoisting : élevée à <code>undefined</code></li>
+                    </ul>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>let</h4>
+
+                    <p>
+                        Déclare une variable modifiable, éventuellement initialisée.
+                    </p>
+
+                    <ul>
+                        <li>Portée : bloc courant</li>
+                        <li>Ne peut pas être redéclarée</li>
+                        <li>Hoisting mais non initialisée</li>
+                    </ul>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>const</h4>
+
+                    <p>
+                        Déclare une constante nommée, en lecture seule.
+                    </p>
+
+                    <ul>
+                        <li>Portée : bloc courant</li>
+                        <li>Doit être initialisée</li>
+                        <li>Recommandée par défaut</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>Exemple de déclaration :</strong>
+
+<pre><code>var a = 10;
+let monVariable = "Bob";
+const pi = 3.14;</code></pre>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🎯
+            </div>
+
+            <div>
+
+                <h3>Portée et hoisting</h3>
+
+                <p>
+                    Avec <code>var</code>, la variable est globale ou
+                    limitée à la fonction où elle est déclarée. Avec
+                    <code>let</code>, elle n'existe qu'à l'intérieur du
+                    bloc <code>{}</code> où elle est déclarée.
+                </p>
+
+<pre><code>if (true) {
+  var x = 5;
+}
+console.log(x); // 5 : var ignore la portée du bloc
+
+if (true) {
+  let y = 5;
+}
+console.log(y); // ReferenceError: y is not defined</code></pre>
+
+                <p>
+                    Les déclarations <code>var</code> sont « élevées » :
+                    la variable vaut <code>undefined</code> avant sa
+                    déclaration réelle. Les déclarations <code>let</code>
+                    sont aussi élevées mais non initialisées : y accéder
+                    avant provoque une erreur.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <h3>Bonne pratique</h3>
+
+                <p>
+                    En JavaScript moderne, utilisez <code>const</code> par
+                    défaut, <code>let</code> quand la valeur doit changer,
+                    et évitez <code>var</code>. Vous gardez un meilleur
+                    contrôle de la portée et évitez des erreurs courantes.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3. TYPES ET LITTÉRAUX -->
+
+        <section id="types" class="lesson-section">
+
+            <div class="section-number">
+                03
+            </div>
+
+            <div>
+
+                <h2>
+                    Types de données et littéraux
+                </h2>
+
+                <p>
+                    JavaScript est un langage à typage dynamique : une
+                    même variable peut changer de type.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">🔢</span>
+
+                <div>
+                    <h3>Les types de données</h3>
+                    <p>Les fondamentaux du langage</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>null</strong>
+                    <span>Absence volontaire de valeur — <code>let v = null;</code></span>
+                </div>
+
+                <div>
+                    <strong>undefined</strong>
+                    <span>Valeur non définie — <code>let v = undefined;</code></span>
+                </div>
+
+                <div>
+                    <strong>String</strong>
+                    <span>Texte — <code>let v = "hello";</code></span>
+                </div>
+
+                <div>
+                    <strong>Number</strong>
+                    <span>Entier ou décimal — <code>let v = 5;</code></span>
+                </div>
+
+                <div>
+                    <strong>Boolean</strong>
+                    <span><code>true</code> ou <code>false</code> — <code>let v = true;</code></span>
+                </div>
+
+                <div>
+                    <strong>Array</strong>
+                    <span>Tableau — <code>let v = ["hello", 5, 10];</code> (index à 0)</span>
+                </div>
+
+                <div>
+                    <strong>Object</strong>
+                    <span>Structure regroupant propriétés et méthodes — <code>let v = document.querySelector('h1');</code></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>Typage dynamique :</strong>
+
+<pre><code>var message = 42;
+message = "hello world"; // aucune erreur</code></pre>
+
+            <p>
+                <strong>Concaténation et conversions automatiques :</strong>
+                avec <code>+</code>, un nombre mélangé à une chaîne est
+                converti en texte. Avec <code>-</code>, c'est la chaîne
+                qui est convertie en nombre.
+            </p>
+
+<pre><code>x = "La réponse est " + 42; // "La réponse est 42"
+y = 42 + " est la réponse"; // "42 est la réponse"
+
+"37" - 7; // 30
+"37" + 7; // "377"</code></pre>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🔄
+            </div>
+
+            <div>
+
+                <h3>Conversion explicite</h3>
+
+<pre><code>// 1er paramètre : la chaîne, 2e paramètre : la base (ici base 2)
+parseInt("101", 2); // 5
+
+// Autre méthode : le + unaire devant une chaîne
++"1.1"; // 1.1</code></pre>
+
+            </div>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header framework">
+
+                <span class="tech-icon">📝</span>
+
+                <div>
+                    <h3>Les littéraux</h3>
+                    <p>Notations directes de valeurs</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>Chaînes</strong>
+                    <span><code>"Bonjour"</code>, <code>'Bonjour'</code>, <code>`Bonjour ${nom}`</code> (gabarit)</span>
+                </div>
+
+                <div>
+                    <strong>Nombres</strong>
+                    <span><code>25</code> (entier), <code>19.99</code> (décimal)</span>
+                </div>
+
+                <div>
+                    <strong>Tableaux</strong>
+                    <span><code>["pomme", "banane", "orange"]</code> — index à 0</span>
+                </div>
+
+                <div>
+                    <strong>Objets</strong>
+                    <span><code>{ nom: "Doe", prenom: "John", age: 30 }</code></span>
+                </div>
+
+                <div>
+                    <strong>Expression régulière</strong>
+                    <span><code>/[a-zA-Z]+/</code></span>
+                </div>
+
+                <div>
+                    <strong>Booléens, null, undefined</strong>
+                    <span><code>true</code>, <code>false</code>, <code>null</code>, <code>undefined</code></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🔤
+            </div>
+
+            <div>
+
+                <h3>Séquences d'échappement</h3>
+
+                <p>
+                    Caractères spéciaux utilisables dans les chaînes :
+                </p>
+
+                <ul>
+                    <li><code>\n</code> — nouvelle ligne ;</li>
+                    <li><code>\t</code> — tabulation ;</li>
+                    <li><code>\"</code> — guillemet double ;</li>
+                    <li><code>\'</code> — apostrophe ;</li>
+                    <li><code>\\</code> — barre oblique inverse.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4. OPÉRATEURS -->
+
+        <section id="operateurs" class="lesson-section">
+
+            <div class="section-number">
+                04
+            </div>
+
+            <div>
+
+                <h2>
+                    Les opérateurs
+                </h2>
+
+                <p>
+                    Un opérateur est un symbole qui effectue une opération
+                    sur des valeurs (les opérandes) et produit un résultat.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">➕</span>
+
+                <div>
+                    <h3>Opérateurs arithmétiques</h3>
+                    <p>Calculs de base</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>+ Addition</strong>
+                    <span>Ajoute deux valeurs numériques</span>
+                </div>
+
+                <div>
+                    <strong>- Soustraction</strong>
+                    <span>Soustrait la deuxième valeur de la première</span>
+                </div>
+
+                <div>
+                    <strong>* Multiplication</strong>
+                    <span>Multiplie deux valeurs</span>
+                </div>
+
+                <div>
+                    <strong>/ Division</strong>
+                    <span>Divise la première valeur par la deuxième</span>
+                </div>
+
+                <div>
+                    <strong>% Modulo</strong>
+                    <span>Reste de la division</span>
+                </div>
+
+                <div>
+                    <strong>** Exponentiation</strong>
+                    <span>Élève la première valeur à la puissance de la deuxième</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>Exemple :</strong>
+
+<pre><code>let a = 10;
+let b = 3;
+
+let addition = a + b;        // 13
+let soustraction = a - b;    // 7
+let multiplication = a * b;  // 30
+let division = a / b;        // 3.333...
+let modulo = a % b;          // 1
+let exponentiation = a ** b; // 1000</code></pre>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header framework">
+
+                <span class="tech-icon">⚖️</span>
+
+                <div>
+                    <h3>Opérateurs de comparaison</h3>
+                    <p>Attention aux conversions implicites</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>==</strong>
+                    <span>Valeurs égales (sans tenir compte du type)</span>
+                </div>
+
+                <div>
+                    <strong>===</strong>
+                    <span>Valeurs égales ET de même type — à privilégier</span>
+                </div>
+
+                <div>
+                    <strong>!=</strong>
+                    <span>Valeurs différentes (sans tenir compte du type)</span>
+                </div>
+
+                <div>
+                    <strong>!==</strong>
+                    <span>Valeurs différentes ou de types différents — à privilégier</span>
+                </div>
+
+                <div>
+                    <strong>&lt;, &gt;, &lt;=, &gt;=</strong>
+                    <span>Comparaison numérique</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <h3>Le piège des conversions</h3>
+
+<pre><code>let x = 5;
+let y = "5";
+
+console.log(x == y);  // true  (valeurs égales)
+console.log(x === y); // false (types différents)
+console.log(x != y);  // false (valeurs égales)
+console.log(x !== y); // true  (types différents)</code></pre>
+
+                <p>
+                    <strong>Conseil :</strong> préférez <code>===</code>
+                    et <code>!==</code>, qui évitent les conversions de
+                    type implicites.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header backend">
+
+                <span class="tech-icon">🔗</span>
+
+                <div>
+                    <h3>Opérateurs logiques</h3>
+                    <p>Combiner des conditions</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>&amp;&amp; ET logique</strong>
+                    <span><code>true</code> si les deux opérandes sont <code>true</code></span>
+                </div>
+
+                <div>
+                    <strong>|| OU logique</strong>
+                    <span><code>true</code> si au moins un opérande est <code>true</code></span>
+                </div>
+
+                <div>
+                    <strong>! NON logique</strong>
+                    <span>Inverse un booléen</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">📝</span>
+
+                <div>
+                    <h3>Assignation, incrémentation, ternaire</h3>
+                    <p>Opérateurs du quotidien</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>=</strong>
+                    <span>Affecte la valeur de droite à la variable de gauche</span>
+                </div>
+
+                <div>
+                    <strong>+= -= *= /= %= **=</strong>
+                    <span>Effectuent une opération puis assignent le résultat</span>
+                </div>
+
+                <div>
+                    <strong>++ / --</strong>
+                    <span>Incrémente / décrémente une variable de 1</span>
+                </div>
+
+                <div>
+                    <strong>? :</strong>
+                    <span>Ternaire — <code>condition ? valeurSiVraie : valeurSiFausse</code></span>
+                </div>
+
+                <div>
+                    <strong>+</strong>
+                    <span>Concaténation de chaînes</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5. CONDITIONS -->
+
+        <section id="conditions" class="lesson-section">
+
+            <div class="section-number">
+                05
+            </div>
+
+            <div>
+
+                <h2>
+                    Les structures conditionnelles
+                </h2>
+
+                <p>
+                    Les instructions <code>if</code> et <code>else</code>
+                    exécutent des blocs de code différents selon une
+                    condition booléenne.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">🔀</span>
+
+                <div>
+                    <h3>if... else</h3>
+                    <p>Structure 1 : un test simple</p>
+                </div>
+
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology">
+
+                    <h4>Syntaxe</h4>
+
+<pre><code>if (condition) {
+  instruction_1;
+} else {
+  instruction_2;
+}</code></pre>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>Exemple : majorité</h4>
+
+<pre><code>var age = 18;
+if (age >= 18) {
+  console.log("Vous êtes majeur.");
+}</code></pre>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header framework">
+
+                <span class="tech-icon">🎚️</span>
+
+                <div>
+                    <h3>if... else if... else</h3>
+                    <p>Structure 2 : plusieurs conditions</p>
+                </div>
+
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology">
+
+                    <h4>Syntaxe</h4>
+
+<pre><code>if (condition_1) {
+  instruction_1;
+} else if (condition_2) {
+  instruction_2;
+} else {
+  derniere_instruction;
+}</code></pre>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>Exemple : notes</h4>
+
+<pre><code>var note = 75;
+if (note >= 90) {
+  console.log("Très bien !");
+} else if (note >= 70) {
+  console.log("Bien !");
+} else if (note >= 50) {
+  console.log("Satisfaisant.");
+} else {
+  console.log("Insuffisant.");
+}</code></pre>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h3>Valeurs évaluées à false</h3>
+
+                <p>
+                    Dans une condition, les valeurs suivantes sont
+                    évaluées à <code>false</code> :
+                </p>
+
+                <ul>
+                    <li><code>false</code></li>
+                    <li><code>undefined</code></li>
+                    <li><code>null</code></li>
+                    <li><code>0</code></li>
+                    <li><code>NaN</code></li>
+                    <li><code>""</code> (chaîne vide)</li>
+                </ul>
+
+                <p>
+                    Toutes les autres valeurs, y compris les objets,
+                    sont évaluées à <code>true</code>.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header backend">
+
+                <span class="tech-icon">🎛️</span>
+
+                <div>
+                    <h3>switch</h3>
+                    <p>Choisir parmi plusieurs valeurs</p>
+                </div>
+
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology">
+
+                    <h4>Syntaxe</h4>
+
+<pre><code>switch (choix) {
+  case label_1:
+    instructions_1;
+    break;
+  case label_2:
+    instructions_2;
+    break;
+  default:
+    instructions_par_defaut;
+}</code></pre>
+
+                    <p>
+                        L'instruction <code>break</code> est importante :
+                        sans elle, les <code>case</code> suivants
+                        s'exécutent aussi.
+                    </p>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>Exemple : jour de la semaine</h4>
+
+<pre><code>var jour = "Lundi";
+
+switch (jour) {
+  case "Lundi":
+    console.log("Début de la semaine.");
+    break;
+  case "Vendredi":
+    console.log("Presque le week-end !");
+    break;
+  case "Samedi":
+  case "Dimanche":
+    console.log("C'est le week-end !");
+    break;
+  default:
+    console.log("Jour non reconnu.");
+}</code></pre>
+
+                    <p>
+                        Ici, « Samedi » et « Dimanche » partagent le
+                        même bloc : l'absence de <code>break</code>
+                        après <code>"Samedi"</code> fait enchaîner
+                        volontairement les deux <code>case</code>.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6. BOUCLES -->
+
+        <section id="boucles" class="lesson-section">
+
+            <div class="section-number">
+                06
+            </div>
+
+            <div>
+
+                <h2>
+                    Les structures itératives
+                </h2>
+
+                <p>
+                    Une boucle répète un bloc de code. Le choix dépend
+                    de ce que l'on connaît à l'avance.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="web-generations">
+
+            <article class="generation">
+
+                <span class="generation-number">01</span>
+
+                <h3>for</h3>
+
+                <span class="generation-type">Nombre connu</span>
+
+                <p>
+                    À utiliser quand le nombre d'itérations est connu.
+                </p>
+
+<pre><code>for (initialisation; condition; iteration) {
+  // bloc exécuté à chaque itération
+}
+
+var nombres = [1, 2, 3, 4, 5];
+for (var i = 0; i < nombres.length; i++) {
+  console.log(nombres[i]);
+}</code></pre>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">02</span>
+
+                <h3>while</h3>
+
+                <span class="generation-type">Condition vraie</span>
+
+                <p>
+                    On répète tant qu'une condition est vraie, sans
+                    savoir combien de fois.
+                </p>
+
+<pre><code>while (condition) {
+  // bloc exécuté
+}
+
+var compteur = 0;
+while (compteur < 5) {
+  console.log("Itération : " + compteur);
+  compteur++;
+}</code></pre>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">03</span>
+
+                <h3>do... while</h3>
+
+                <span class="generation-type">Au moins une fois</span>
+
+                <p>
+                    Le bloc s'exécute au moins une fois, quelle que
+                    soit la condition.
+                </p>
+
+<pre><code>do {
+  // bloc exécuté
+} while (condition);
+
+var compteur = 0;
+do {
+  console.log("Itération : " + compteur);
+  compteur++;
+} while (compteur < 5);</code></pre>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">04</span>
+
+                <h3>for... of / for... in</h3>
+
+                <span class="generation-type">Parcourir</span>
+
+                <p>
+                    <code>for...of</code> parcourt les valeurs ;
+                    <code>for...in</code> parcourt les propriétés.
+                </p>
+
+<pre><code>let arr = [3, 5, 7];
+arr.toto = "coucou";
+
+for (let i in arr) {
+  console.log(i); // 0, 1, 2, "toto"
+}
+
+for (let i of arr) {
+  console.log(i); // 3, 5, 7
+}</code></pre>
+
+            </article>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <h3>Boucle infinie</h3>
+
+                <p>
+                    Avec <code>while</code>, vérifiez que la condition
+                    est bien mise à jour dans la boucle pour éviter une
+                    boucle infinie.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7. FONCTIONS -->
+
+        <section id="fonctions" class="lesson-section">
+
+            <div class="section-number">
+                07
+            </div>
+
+            <div>
+
+                <h2>
+                    Les fonctions
+                </h2>
+
+                <p>
+                    Une fonction est un bloc de code nommé, réutilisable,
+                    qui peut recevoir des paramètres et renvoyer une valeur.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">⚙️</span>
+
+                <div>
+                    <h3>Définir une fonction</h3>
+                    <p>Syntaxe et variantes</p>
+                </div>
+
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology">
+
+                    <h4>Fonction nommée</h4>
+
+<pre><code>function nomDeLaFonction(parametre1, parametre2) {
+  // bloc de code à exécuter
+}
+
+function direBonjour(nom) {
+  console.log("Bonjour, " + nom + " !");
+}</code></pre>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>Fonction anonyme</h4>
+
+<pre><code>var addition = function (a, b) {
+  return a + b;
+};
+
+console.log(addition(5, 3)); // 8</code></pre>
+
+                </article>
+
+                <article class="technology">
+
+                    <h4>Récursivité</h4>
+
+<pre><code>var factorielle = function fac(n) {
+  return n < 2 ? 1 : n * fac(n - 1);
+};
+
+console.log(factorielle(3)); // 6</code></pre>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                📍
+            </div>
+
+            <div>
+
+                <h3>Où déclarer une fonction ?</h3>
+
+                <p>
+                    Une fonction doit se trouver dans la portée où elle
+                    est appelée. Elle peut être déclarée <strong>après</strong>
+                    son appel uniquement si elle est définie avec la
+                    syntaxe <code>function nomFonction() {}</code>.
+                </p>
+
+                <p>
+                    Une fonction stockée dans une variable ne peut pas
+                    être appelée avant sa déclaration :
+                </p>
+
+<pre><code>console.log(carre);    // undefined
+console.log(carre(5)); // TypeError: carre is not a function
+var carre = function (n) {
+  return n * n;
+};
+
+console.log(carre2);    // ReferenceError
+let carre2 = function (n) {
+  return n * n;
+};</code></pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- 8. EXÉCUTION -->
+
+        <section id="execution" class="lesson-section">
+
+            <div class="section-number">
+                08
+            </div>
+
+            <div>
+
+                <h2>
+                    Exécuter du code JavaScript
+                </h2>
+
+                <p>
+                    Il existe deux méthodes principales pour exécuter
+                    du code JavaScript.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">🌐</span>
+
+                <div>
+                    <h3>Méthode 1 : dans le navigateur</h3>
+                    <p>La méthode la plus simple</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>1. Éditeur de texte</strong>
+                    <span>Ouvrez Visual Studio Code ou un éditeur similaire.</span>
+                </div>
+
+                <div>
+                    <strong>2. Écrire le code</strong>
+                    <span>Écrivez votre code JavaScript.</span>
+                </div>
+
+                <div>
+                    <strong>3. Enregistrer</strong>
+                    <span>Avec l'extension <code>.js</code> (par exemple <code>monscript.js</code>).</span>
+                </div>
+
+                <div>
+                    <strong>4. Ouvrir la console</strong>
+                    <span>Touche <code>F12</code> ou <code>Ctrl + Maj + I</code>, onglet <strong>Console</strong>.</span>
+                </div>
+
+                <div>
+                    <strong>5. Lier le script</strong>
+                    <span>Avec la balise <code>&lt;script&gt;</code>, ou saisir directement dans la console.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>Exemple HTML :</strong>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      console.log("Bonjour depuis JavaScript !");
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <p>
+                Pour lier un fichier externe :
+                <code>&lt;script src="monscript.js"&gt;&lt;/script&gt;</code>.
+            </p>
+
+        </div>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header framework">
+
+                <span class="tech-icon">🖥️</span>
+
+                <div>
+                    <h3>Méthode 2 : avec Node.js</h3>
+                    <p>Côté serveur ou en ligne de commande</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>1. Installer Node.js</strong>
+                    <span>Téléchargez sur nodejs.org et installez-le.</span>
+                </div>
+
+                <div>
+                    <strong>2. Écrire le code</strong>
+                    <span>Dans un éditeur, avec l'extension <code>.js</code>.</span>
+                </div>
+
+                <div>
+                    <strong>3. Ouvrir un terminal</strong>
+                    <span>Terminal ou invite de commandes.</span>
+                </div>
+
+                <div>
+                    <strong>4. Lancer</strong>
+                    <span><code>node nomdufichier.js</code></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 9. OBJETS -->
+
+        <section id="objets" class="lesson-section">
+
+            <div class="section-number">
+                09
+            </div>
+
+            <div>
+
+                <h2>
+                    Les objets en JavaScript
+                </h2>
+
+                <p>
+                    Un objet est une structure de données qui regroupe
+                    des <strong>propriétés</strong> (des variables contenant
+                    des données) et des <strong>méthodes</strong> (des
+                    fonctions qui agissent sur l'objet).
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="web-generations">
+
+            <article class="generation">
+
+                <span class="generation-number">01</span>
+
+                <h3>Date</h3>
+
+                <span class="generation-type">Dates et heures</span>
+
+                <p>
+                    Le constructeur <code>Date()</code> sans argument
+                    renvoie la date et l'heure actuelles.
+                </p>
+
+<pre><code>const dateActuelle = new Date();
+console.log(dateActuelle);
+
+// À partir d'une chaîne ISO
+const d1 = new Date("2023-10-09T11:11:11");
+
+// Année, mois (0-11), jour
+const d2 = new Date(2023, 2, 2);
+
+// Année, mois, jour, heures, minutes, secondes
+const d3 = new Date(2023, 2, 2, 16, 50, 56);</code></pre>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">02</span>
+
+                <h3>String</h3>
+
+                <span class="generation-type">Chaînes de caractères</span>
+
+                <p>
+                    Méthodes utiles pour manipuler du texte.
+                </p>
+
+<pre><code>const myString = "Hello, world!";
+
+myString.length;              // 13
+"Hello".charAt(1);            // "e"
+myString.substring(7, 12);    // "world"
+"Hello".toUpperCase();        // "HELLO"
+"Hello".toLowerCase();        // "hello"
+"  Hi  ".trim();              // "Hi"
+myString.indexOf("world");    // 7
+"apple,banana".split(",");    // ["apple","banana"]</code></pre>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">03</span>
+
+                <h3>Math</h3>
+
+                <span class="generation-type">Calculs mathématiques</span>
+
+                <p>
+                    On ne l'instancie pas : on appelle directement
+                    <code>Math.méthode()</code>.
+                </p>
+
+<pre><code>Math.random();             // aléatoire entre 0 et 1
+Math.floor(7.85);          // 7
+Math.ceil(3.14);           // 4
+Math.round(5.6);           // 6
+Math.max(10, 5, 20, 15);   // 20
+Math.min(10, 5, 20, 15);   // 5
+Math.pow(2, 3);            // 8</code></pre>
+
+                <p>
+                    <strong>Astuce — dé à 6 faces :</strong>
+                    <code>Math.floor(Math.random() * 6) + 1</code>
+                </p>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">04</span>
+
+                <h3>Autres objets</h3>
+
+                <span class="generation-type">Préconstruits</span>
+
+                <ul>
+                    <li><code>Object</code> — tout objet JavaScript en hérite ;</li>
+                    <li><code>Array</code> — collections ordonnées ;</li>
+                    <li><code>Boolean</code> — valeurs <code>true</code> et <code>false</code> ;</li>
+                    <li><code>document</code> — le DOM de la page web.</li>
+                </ul>
+
+            </article>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                📅
+            </div>
+
+            <div>
+
+                <h3>Lire et modifier une date</h3>
+
+                <p><strong>Getters :</strong></p>
+                <ul>
+                    <li><code>getFullYear()</code> — l'année</li>
+                    <li><code>getMonth()</code> — le mois (0 à 11)</li>
+                    <li><code>getHours()</code> — l'heure (0 à 23)</li>
+                    <li><code>getMinutes()</code> — les minutes (0 à 59)</li>
+                    <li><code>toLocaleDateString()</code> — date formatée</li>
+                </ul>
+
+                <p><strong>Setters :</strong></p>
+                <ul>
+                    <li><code>setDate(X)</code> — jour du mois</li>
+                    <li><code>setHours(X)</code> — heure</li>
+                    <li><code>setMonth(X)</code> — mois (0 à 11)</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10. DOM -->
+
+        <section id="dom" class="lesson-section">
+
+            <div class="section-number">
+                10
+            </div>
+
+            <div>
+
+                <h2>
+                    L'objet document et le DOM
+                </h2>
+
+                <p>
+                    L'objet <code>document</code> représente le Document
+                    Object Model (DOM) d'une page web. Il fournit une
+                    interface pour interagir avec les éléments HTML.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="technology-block">
+
+            <div class="technology-header front">
+
+                <span class="tech-icon">🔍</span>
+
+                <div>
+                    <h3>Sélectionner des éléments</h3>
+                    <p>Les méthodes principales</p>
+                </div>
+
+            </div>
+
+            <div class="framework-list">
+
+                <div>
+                    <strong>getElementById</strong>
+                    <span>Un élément par son <code>id</code> — retourne un élément</span>
+                </div>
+
+                <div>
+                    <strong>getElementsByClassName</strong>
+                    <span>Les éléments d'une classe — retourne une collection</span>
+                </div>
+
+                <div>
+                    <strong>getElementsByTagName</strong>
+                    <span>Les éléments d'une balise — retourne une collection</span>
+                </div>
+
+                <div>
+                    <strong>querySelector</strong>
+                    <span>Le premier élément correspondant à un sélecteur CSS</span>
+                </div>
+
+                <div>
+                    <strong>querySelectorAll</strong>
+                    <span>Tous les éléments correspondant à un sélecteur CSS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <strong>Exemples :</strong>
+
+<pre><code>// Par ID
+const paragraph = document.getElementById("my-paragraph");
+paragraph.textContent = "Texte modifié.";
+
+// Par classe
+const items = document.getElementsByClassName("item");
+for (const item of items) {
+  item.style.fontWeight = "bold";
+}
+
+// Par balise
+const paragraphs = document.getElementsByTagName("p");
+for (const paragraph of paragraphs) {
+  paragraph.style.color = "red";
+}
+
+// Par sélecteur CSS
+const paragraph = document.querySelector("#container .content");
+paragraph.style.backgroundColor = "yellow";
+
+// Tous les éléments correspondants
+const listItems = document.querySelectorAll("ul li");
+for (const listItem of listItems) {
+  listItem.style.listStyleType = "square";
+}</code></pre>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🪟
+            </div>
+
+            <div>
+
+                <h3>Navigation et interaction avec la fenêtre</h3>
+
+                <ul>
+                    <li><code>document.location</code> — URL de la page courante ;</li>
+                    <li><code>window.open</code> — ouvre une nouvelle fenêtre ;</li>
+                    <li><code>window.close</code> — ferme la fenêtre ;</li>
+                    <li><code>window.history</code> — navigue dans l'historique ;</li>
+                    <li><code>window.scrollTo(x, y)</code> — défilement ;</li>
+                    <li><code>window.resizeTo(w, h)</code> — redimensionne.</li>
+                </ul>
+
+                <p>
+                    <strong>Sécurité :</strong> pour des raisons de
+                    sécurité, les navigateurs restreignent certaines de
+                    ces actions : <code>resizeTo</code> et <code>close</code>
+                    ne fonctionnent que sur des fenêtres ouvertes par le
+                    script, et <code>window.open</code> peut être bloqué
+                    par un bloqueur de fenêtres publicitaires.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXERCICES -->
+
+        <section id="exercices" class="lesson-section">
+
+            <div class="section-number">
+                ✏️
+            </div>
+
+            <div>
+
+                <h2>
+                    Exercices
+                </h2>
+
+                <p>
+                    Six exercices pour mettre en pratique les notions
+                    de cette leçon.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="web-generations">
+
+            <article class="generation">
+
+                <span class="generation-number">01</span>
+
+                <h3>Variables et opérateurs</h3>
+
+                <span class="generation-type">Bases</span>
+
+                <p>
+                    Déclarez deux constantes <code>prixHT = 100</code>
+                    et <code>tva = 0.2</code>, calculez le prix TTC,
+                    puis affichez-le dans la console avec une phrase
+                    complète (concaténation ou gabarit).
+                </p>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">02</span>
+
+                <h3>Conditions</h3>
+
+                <span class="generation-type">if... else if</span>
+
+                <p>
+                    Écrivez un programme qui affiche une mention selon
+                    une note sur 20 : « Très bien » à partir de 16,
+                    « Bien » à partir de 14, « Assez bien » à partir
+                    de 12, « Passable » à partir de 10, « Insuffisant »
+                    sinon.
+                </p>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">03</span>
+
+                <h3>Boucles</h3>
+
+                <span class="generation-type">for / while / for...of</span>
+
+                <ol>
+                    <li>Affichez les nombres de 1 à 10 avec une boucle <code>for</code>.</li>
+                    <li>Affichez la table de multiplication de 7 avec une boucle <code>while</code>.</li>
+                    <li>Parcourez le tableau <code>["pomme", "banane", "orange"]</code> avec <code>for...of</code>.</li>
+                </ol>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">04</span>
+
+                <h3>Fonctions</h3>
+
+                <span class="generation-type">Réutilisabilité</span>
+
+                <p>
+                    Écrivez une fonction <code>estPair(n)</code> qui
+                    renvoie <code>true</code> si <code>n</code> est
+                    pair, puis une fonction <code>factorielle(n)</code>
+                    récursive.
+                </p>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">05</span>
+
+                <h3>Chaînes et dates</h3>
+
+                <span class="generation-type">String / Date</span>
+
+                <p>
+                    À partir de la chaîne <code>"  Bonjour Madagascar  "</code>,
+                    supprimez les espaces, passez-la en majuscules et
+                    affichez sa longueur. Affichez ensuite l'année en
+                    cours avec l'objet <code>Date</code>.
+                </p>
+
+            </article>
+
+
+            <article class="generation">
+
+                <span class="generation-number">06</span>
+
+                <h3>Le DOM</h3>
+
+                <span class="generation-type">document</span>
+
+                <p>
+                    Dans une page HTML contenant un titre
+                    <code>&lt;h1 id="titre"&gt;</code>, écrivez un
+                    script qui change son texte et sa couleur avec
+                    <code>getElementById</code>.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <!-- RESUME -->
+
+        <section id="resume" class="summary">
+
+            <div class="summary-icon">
+                ✓
+            </div>
+
+            <h2>
+                À retenir
+            </h2>
+
+            <p>
+                JavaScript est un langage interprété, orienté objet,
+                sensible à la casse. Préférez <code>const</code> et
+                <code>let</code> à <code>var</code>, utilisez
+                <code>===</code> pour comparer sans conversion, et
+                maîtrisez les boucles et fonctions pour écrire un
+                code clair et robuste.
+            </p>
+
+            <div class="key-points">
+
+                <span>JavaScript</span>
+                <span>var / let / const</span>
+                <span>Portée</span>
+                <span>Hoisting</span>
+                <span>Types</span>
+                <span>Opérateurs</span>
+                <span>=== / !==</span>
+                <span>if / else</span>
+                <span>switch</span>
+                <span>for / while</span>
+                <span>for...of / in</span>
+                <span>Fonctions</span>
+                <span>Date</span>
+                <span>String</span>
+                <span>Math</span>
+                <span>DOM</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="lesson-navigation">
+
+            <a href="lecon-css.html" class="nav-button secondary">
+                ← Leçon précédente
+            </a>
+
+            <a href="../index.html" class="nav-button primary">
+                Toutes les leçons →
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <strong>GÉNIE LOGIC</strong>
+
+    <p>
+        Centre de formation — Développement Web
+    </p>
+
+    <small>
+        © 2026 Génie Logic
+    </small>
+
+</footer>
+
+</body>
+</html>

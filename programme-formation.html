@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formation Développement Web — Objectif et programme détaillé. Accompagnement personnalisé par Dolphe Yong, formateur en informatique.">
+
+    <title>Programme de la formation | Dolphe Yong</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARIABLES
+        ============================================================ */
+        :root {
+            --bleu-profond: #0A2540;
+            --bleu-vif: #2563EB;
+            --cyan: #06B6D4;
+            --cyan-clair: #22D3EE;
+            --fond-clair: #F8FAFC;
+            --fond-alt: #EEF2FF;
+            --blanc: #FFFFFF;
+            --gris-texte: #475569;
+            --gris-clair: #E2E8F0;
+            --gris-fonce: #1E293B;
+
+            --gradient-primary: linear-gradient(135deg, #0A2540 0%, #2563EB 100%);
+            --gradient-accent: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            --gradient-hero: linear-gradient(135deg, #0A2540 0%, #1E40AF 50%, #2563EB 100%);
+
+            --shadow-sm: 0 2px 4px rgba(10, 37, 64, 0.06);
+            --shadow-md: 0 4px 12px rgba(10, 37, 64, 0.08);
+            --shadow-lg: 0 10px 30px rgba(10, 37, 64, 0.12);
+            --shadow-xl: 0 20px 50px rgba(10, 37, 64, 0.18);
+
+            --font-titre: 'Poppins', sans-serif;
+            --font-texte: 'Inter', sans-serif;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-full: 999px;
+
+            --container: 1180px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-texte);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--gris-fonce);
+            background: var(--fond-clair);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        ul, ol { list-style: none; }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-titre);
+            line-height: 1.2;
+            color: var(--bleu-profond);
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--cyan);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .navbar--scrolled {
+            border-bottom-color: rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar__container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .navbar__logo {
+            font-family: var(--font-titre);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--bleu-profond);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar__logo strong { color: var(--bleu-vif); font-weight: 800; }
+
+        .navbar__logo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+        }
+
+        .navbar__back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gris-texte);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+            border: 1px solid var(--gris-clair);
+        }
+
+        .navbar__back:hover {
+            color: var(--bleu-vif);
+            border-color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--blanc);
+            padding: 4rem 1.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(6, 182, 212, 0.15);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .hero__container {
+            max-width: var(--container);
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan-clair);
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.4rem 1.1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero__title {
+            font-size: clamp(1.85rem, 5vw, 3rem);
+            color: var(--blanc);
+            margin-bottom: 1.25rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__title-accent {
+            background: linear-gradient(135deg, #22D3EE, #60A5FA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero__subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero__mentor {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(8px);
+            font-size: 0.95rem;
+        }
+
+        .hero__mentor-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .hero__mentor strong { color: var(--cyan-clair); }
+
+        /* ============================================================
+           SECTIONS
+        ============================================================ */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section--alt {
+            background: var(--fond-alt);
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .section__header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section__label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 1rem;
+        }
+
+        .section__title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section__intro {
+            font-size: 1.1rem;
+            color: var(--gris-texte);
+        }
+
+        /* ============================================================
+           OBJECTIF GÉNÉRAL
+        ============================================================ */
+        .objective-block {
+            background: var(--blanc);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border-top: 6px solid transparent;
+            background-image:
+                linear-gradient(var(--blanc), var(--blanc)),
+                var(--gradient-accent);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .objective-block__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .objective-block__quote {
+            font-family: var(--font-titre);
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            line-height: 1.5;
+            color: var(--bleu-profond);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .objective-block__quote strong {
+            color: var(--bleu-vif);
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           COMPÉTENCES (grille)
+        ============================================================ */
+        .skills__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--blanc);
+            padding: 1.75rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(37, 99, 235, 0.06);
+            transition: var(--transition);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-card__icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-accent);
+            color: var(--blanc);
+            font-size: 1.15rem;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .skill-card__title {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-card__text {
+            font-size: 0.92rem;
+            color: var(--gris-texte);
+        }
+
+        /* ============================================================
+           ACCOMPAGNEMENT DOLPHE YONG
+        ============================================================ */
+        .mentor-block {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin-top: 2rem;
+        }
+
+        .mentor-block__aside {
+            background: var(--gradient-primary);
+            color: var(--blanc);
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .mentor-block__avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mentor-block__name {
+            font-family: var(--font-titre);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--blanc);
+            margin-bottom: 0.35rem;
+        }
+
+        .mentor-block__pseudo {
+            font-size: 0.95rem;
+            color: var(--cyan-clair);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mentor-block__role {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .mentor-block__content {
+            padding: 3rem 2.5rem;
+        }
+
+        .mentor-block__title {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .mentor-block__text {
+            color: var(--gris-texte);
+            margin-bottom: 1.5rem;
+        }
+
+        .mentor-block__list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .mentor-block__item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: var(--gris-texte);
+        }
+
+        .mentor-block__item-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           PROGRAMME — MODULES
+        ============================================================ */
+        .module {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border-left: 6px solid transparent;
+            transition: var(--transition);
+        }
+
+        .module:hover {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .module--html { border-left-color: #E34F26; }
+        .module--css { border-left-color: #2965F1; }
+        .module--js { border-left-color: #F7DF1E; }
+        .module--projet { border-left-color: var(--cyan); }
+
+        .module__header {
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--gris-clair);
+        }
+
+        .module__number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-titre);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blanc);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .module--html .module__number { background: linear-gradient(135deg, #E34F26, #F16529); }
+        .module--css .module__number { background: linear-gradient(135deg, #264DE4, #2965F1); }
+        .module--js .module__number { background: linear-gradient(135deg, #F7DF1E, #E0C60A); color: var(--bleu-profond); }
+        .module--projet .module__number { background: var(--gradient-accent); }
+
+        .module__header-text { flex: 1; }
+
+        .module__title {
+            font-size: 1.4rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .module__desc {
+            color: var(--gris-texte);
+            font-size: 0.95rem;
+        }
+
+        .module__badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-full);
+            margin-top: 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--bleu-vif);
+        }
+
+        .module__badge--html { background: rgba(227, 79, 38, 0.1); color: #C43E1C; }
+        .module__badge--css { background: rgba(38, 77, 228, 0.1); color: #264DE4; }
+        .module__badge--js { background: rgba(247, 223, 30, 0.15); color: #A38B00; }
+        .module__badge--projet { background: rgba(6, 182, 212, 0.15); color: #0891B2; }
+
+        .module__body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .module__lessons {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .lesson-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            background: var(--fond-clair);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .lesson-row:hover {
+            background: var(--blanc);
+            border-color: var(--gris-clair);
+            transform: translateX(4px);
+        }
+
+        .lesson-row__num {
+            font-family: var(--font-titre);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .lesson-row__title {
+            font-weight: 500;
+            color: var(--gris-fonce);
+            font-size: 0.95rem;
+        }
+
+        .lesson-row__duration {
+            font-size: 0.8rem;
+            color: var(--gris-texte);
+            background: var(--blanc);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--gris-clair);
+            white-space: nowrap;
+        }
+
+        /* ============================================================
+           RYTHME — TIMELINE
+        ============================================================ */
+        .rhythm__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .rhythm-card {
+            background: var(--blanc);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid transparent;
+            background-image:
+                linear-gradient(var(--blanc), var(--blanc)),
+                var(--gradient-accent);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            transition: var(--transition);
+        }
+
+        .rhythm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .rhythm-card__icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rhythm-card__value {
+            font-family: var(--font-titre);
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--bleu-vif);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .rhythm-card__label {
+            font-size: 0.9rem;
+            color: var(--gris-texte);
+        }
+
+        /* ============================================================
+           INFO BOX
+        ============================================================ */
+        .info-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--bleu-profond);
+            font-size: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .info-box__icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .info-box strong { color: var(--bleu-vif); }
+
+        /* ============================================================
+           CTA FINALE
+        ============================================================ */
+        .cta {
+            background: var(--gradient-primary);
+            color: var(--blanc);
+            padding: 5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta__container {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta__title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--blanc);
+            margin-bottom: 1rem;
+        }
+
+        .cta__text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            font-family: var(--font-texte);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn--light {
+            background: var(--blanc);
+            color: var(--bleu-vif);
+        }
+
+        .btn--light:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .footer {
+            background: var(--bleu-profond);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 2.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer__name {
+            font-family: var(--font-titre);
+            font-size: 1.05rem;
+            color: var(--blanc);
+            margin-bottom: 0.35rem;
+        }
+
+        .footer__role {
+            font-size: 0.9rem;
+            color: var(--cyan-clair);
+            margin-bottom: 1rem;
+        }
+
+        .footer__bottom {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================================
+           ANIMATIONS
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 768px) {
+            .section { padding: 3.5rem 1.25rem; }
+            .section__header { margin-bottom: 2.5rem; }
+
+            .mentor-block {
+                grid-template-columns: 1fr;
+            }
+
+            .mentor-block__aside {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .mentor-block__content {
+                padding: 2rem 1.5rem;
+            }
+
+            .module__header {
+                padding: 1.5rem 1.5rem 1rem;
+                flex-wrap: wrap;
+            }
+
+            .module__body {
+                padding: 1rem 1.5rem 1.5rem;
+            }
+
+            .lesson-row {
+                grid-template-columns: auto 1fr;
+                gap: 0.5rem;
+            }
+
+            .lesson-row__duration {
+                grid-column: 1 / -1;
+                justify-self: start;
+                margin-top: 0.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 15px; }
+
+            .navbar__container { padding: 0.85rem 1rem; }
+            .navbar__logo { font-size: 1.15rem; }
+
+            .hero { padding: 3rem 1rem 4rem; }
+
+            .objective-block { padding: 2rem 1.5rem; }
+
+            .module__number {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+            }
+
+            .module__title { font-size: 1.2rem; }
+
+            .info-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVBAR
+    ============================================================ -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <span class="navbar__logo-dot"></span>
+                Dolphe <strong>Yong</strong>
+            </a>
+            <a href="index.html" class="navbar__back">← Retour à l'accueil</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO
+        ============================================================ -->
+        <section class="hero">
+            <div class="hero__container">
+                <span class="hero__label">Formation Développement Web</span>
+                <h1 class="hero__title">
+                    Objectif &amp; Programme de la <span class="hero__title-accent">formation</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Devenez développeur web en apprenant HTML, CSS et JavaScript —
+                    avec un accompagnement personnalisé, à votre rythme.
+                </p>
+
+                <div class="hero__mentor">
+                    <div class="hero__mentor-avatar">👨‍💻</div>
+                    <span>Accompagnement par <strong>Dolphe Yong</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             OBJECTIF GÉNÉRAL
+        ============================================================ -->
+        <section class="section" id="objectif">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__label">Objectif général</span>
+                    <h2 class="section__title">Le cap de la formation</h2>
+                </div>
+
+                <div class="objective-block reveal">
+                    <div class="objective-block__icon">🎯</div>
+                    <blockquote class="objective-block__quote">
+                        Former des <strong>débutants complets</strong> à créer des pages web
+                        <strong>modernes, interactives et responsives</strong>, en maîtrisant
+                        les trois technologies fondamentales du web — <strong>HTML, CSS, JavaScript</strong> —
+                        jusqu'à la réalisation autonome d'un <strong>mini-projet complet</strong>.
+                    </blockquote>
+                </div>
+
+                <div class="section__header reveal" style="margin-top: 3rem;">
+                    <h3 class="section__title" style="font-size: 1.5rem;">
+                        Ce que vous saurez faire
+                    </h3>
+                </div>
+
+                <div class="skills__grid">
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">🧠</div>
+                        <div>
+                            <h4 class="skill-card__title">Comprendre le web</h4>
+                            <p class="skill-card__text">
+                                Internet, Web, navigateur, serveur : les fondamentaux expliqués simplement.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">🏗️</div>
+                        <div>
+                            <h4 class="skill-card__title">Créer une page complète</h4>
+                            <p class="skill-card__text">
+                                De la structure HTML à la présentation CSS et à l'interactivité JavaScript.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">🔍</div>
+                        <div>
+                            <h4 class="skill-card__title">Lire et déboguer du code</h4>
+                            <p class="skill-card__text">
+                                Modifier et corriger du code dans le navigateur avec les DevTools.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">📱</div>
+                        <div>
+                            <h4 class="skill-card__title">Concevoir du responsive</h4>
+                            <p class="skill-card__text">
+                                Des interfaces adaptées au mobile, à la tablette et au desktop.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">🚀</div>
+                        <div>
+                            <h4 class="skill-card__title">Réaliser un mini-projet</h4>
+                            <p class="skill-card__text">
+                                Un projet personnel complet, en autonomie, à présenter fièrement.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-card__icon">📈</div>
+                        <div>
+                            <h4 class="skill-card__title">Poursuivre son parcours</h4>
+                            <p class="skill-card__text">
+                                Une base solide pour aborder les frameworks et le back-end.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ACCOMPAGNEMENT DOLPHE YONG
+        ============================================================ -->
+        <section class="section section--alt" id="accompagnement">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__label">Accompagnement</span>
+                    <h2 class="section__title">Un mentor à vos côtés</h2>
+                    <p class="section__intro">
+                        Chaque apprenant est suivi personnellement tout au long de la formation.
+                    </p>
+                </div>
+
+                <div class="mentor-block reveal">
+                    <aside class="mentor-block__aside">
+                        <div class="mentor-block__avatar">👨‍💻</div>
+                        <p class="mentor-block__name">Solofoniaina Rodolphe</p>
+                        <p class="mentor-block__pseudo">Dolphe Yong</p>
+                        <p class="mentor-block__role">
+                            Formateur en Informatique<br>
+                            Licence en Informatique<br>
+                            Spécialité Web &amp; Mobile
+                        </p>
+                    </aside>
+
+                    <div class="mentor-block__content">
+                        <h3 class="mentor-block__title">Comment Dolphe Yong vous accompagne</h3>
+                        <p class="mentor-block__text">
+                            Étudiant en informatique à l'Université de Toamasina et
+                            titulaire d'une Licence en Informatique, spécialité
+                            Développement Web et Mobile, je vous accompagne à chaque
+                            étape de votre progression.
+                        </p>
+
+                        <ul class="mentor-block__list">
+                            <li class="mentor-block__item">
+                                <span class="mentor-block__item-icon">✓</span>
+                                <span><strong>Cours particuliers</strong> — sessions adaptées à votre niveau et à vos objectifs.</span>
+                            </li>
+                            <li class="mentor-block__item">
+                                <span class="mentor-block__item-icon">✓</span>
+                                <span><strong>Rythme flexible</strong> — maximum 3 h/semaine, vous avancez à votre propre vitesse.</span>
+                            </li>
+                            <li class="mentor-block__item">
+                                <span class="mentor-block__item-icon">✓</span>
+                                <span><strong>Corrections personnalisées</strong> — retours détaillés sur vos exercices et projets.</span>
+                            </li>
+                            <li class="mentor-block__item">
+                                <span class="mentor-block__item-icon">✓</span>
+                                <span><strong>Accompagnement de A à Z</strong> — du premier <code>&lt;h1&gt;</code> jusqu'à votre mini-projet final.</span>
+                            </li>
+                            <li class="mentor-block__item">
+                                <span class="mentor-block__item-icon">✓</span>
+                                <span><strong>Disponibilité pour vos questions</strong> — un suivi régulier, pas de décrochage.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROGRAMME — MODULES
+        ============================================================ -->
+        <section class="section" id="programme">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__label">Programme</span>
+                    <h2 class="section__title">Le programme détaillé</h2>
+                    <p class="section__intro">
+                        4 modules progressifs, conçus pour les débutants complets.
+                    </p>
+                </div>
+
+                <!-- MODULE 1 — HTML -->
+                <article class="module module--html reveal">
+                    <header class="module__header">
+                        <div class="module__number">1</div>
+                        <div class="module__header-text">
+                            <h3 class="module__title">HTML — La structure du web</h3>
+                            <p class="module__desc">
+                                Comprendre le web et structurer une page HTML valide avec les balises sémantiques.
+                            </p>
+                            <span class="module__badge module__badge--html">Module 1 · ~5 h</span>
+                        </div>
+                    </header>
+                    <div class="module__body">
+                        <div class="module__lessons">
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">1.1</span>
+                                <span class="lesson-row__title">Un peu d'historique — Internet, Web et évolution</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">1.2</span>
+                                <span class="lesson-row__title">Les bases du HTML — structure, balises, attributs</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">1.3</span>
+                                <span class="lesson-row__title">Texte, liens, images et tableaux</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">1.4</span>
+                                <span class="lesson-row__title">Formulaires et validation HTML</span>
+                                <span class="lesson-row__duration">~45 min</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">1.5</span>
+                                <span class="lesson-row__title">HTML sémantique — header, nav, main, section, footer</span>
+                                <span class="lesson-row__duration">~45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- MODULE 2 — CSS -->
+                <article class="module module--css reveal">
+                    <header class="module__header">
+                        <div class="module__number">2</div>
+                        <div class="module__header-text">
+                            <h3 class="module__title">CSS — L'apparence et la mise en page</h3>
+                            <p class="module__desc">
+                                Styliser une page web, maîtriser les sélecteurs, la cascade, les DevTools et l'écoconception.
+                            </p>
+                            <span class="module__badge module__badge--css">Module 2 · ~8 h</span>
+                        </div>
+                    </header>
+                    <div class="module__body">
+                        <div class="module__lessons">
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.1</span>
+                                <span class="lesson-row__title">Rôle du CSS — où écrire le CSS</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.2</span>
+                                <span class="lesson-row__title">Sélecteurs, cascade et spécificité</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.3</span>
+                                <span class="lesson-row__title">Propriétés CSS — texte, boîte, couleurs</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.4</span>
+                                <span class="lesson-row__title">Mise en page moderne — flexbox, grid, positionnement</span>
+                                <span class="lesson-row__duration">~2 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.5</span>
+                                <span class="lesson-row__title">Responsive design — media queries, mobile-first</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.6</span>
+                                <span class="lesson-row__title">DevTools — inspecter, tester, corriger</span>
+                                <span class="lesson-row__duration">~45 min</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">2.7</span>
+                                <span class="lesson-row__title">Écoconception — sobriété et performance</span>
+                                <span class="lesson-row__duration">~45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- MODULE 3 — JAVASCRIPT -->
+                <article class="module module--js reveal">
+                    <header class="module__header">
+                        <div class="module__number">3</div>
+                        <div class="module__header-text">
+                            <h3 class="module__title">JavaScript — L'interactivité</h3>
+                            <p class="module__desc">
+                                Ajouter de l'interactivité aux pages web et manipuler le DOM avec JavaScript.
+                            </p>
+                            <span class="module__badge module__badge--js">Module 3 · ~11 h</span>
+                        </div>
+                    </header>
+                    <div class="module__body">
+                        <div class="module__lessons">
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.1</span>
+                                <span class="lesson-row__title">Introduction — usages, où exécuter du JS</span>
+                                <span class="lesson-row__duration">~45 min</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.2</span>
+                                <span class="lesson-row__title">Variables — var, let, const, portée, hoisting</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.3</span>
+                                <span class="lesson-row__title">Types et littéraux — chaînes, tableaux, objets</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.4</span>
+                                <span class="lesson-row__title">Opérateurs — arithmétiques, comparaison, logiques</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.5</span>
+                                <span class="lesson-row__title">Conditions — if/else, switch, valeurs falsy</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.6</span>
+                                <span class="lesson-row__title">Boucles — for, while, do…while, for…of, for…in</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.7</span>
+                                <span class="lesson-row__title">Fonctions — déclaration, anonymes, récursivité</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.8</span>
+                                <span class="lesson-row__title">Objets intégrés — Date, String, Math</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.9</span>
+                                <span class="lesson-row__title">DOM — sélectionner et manipuler les éléments</span>
+                                <span class="lesson-row__duration">~2 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">3.10</span>
+                                <span class="lesson-row__title">Événements — addEventListener, clic, soumission</span>
+                                <span class="lesson-row__duration">~1 h 30</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- MODULE 4 — PROJET -->
+                <article class="module module--projet reveal">
+                    <header class="module__header">
+                        <div class="module__number">4</div>
+                        <div class="module__header-text">
+                            <h3 class="module__title">Mini-projet final</h3>
+                            <p class="module__desc">
+                                Réaliser un projet complet en autonomie et consolider tout ce qui a été appris.
+                            </p>
+                            <span class="module__badge module__badge--projet">Module 4 · ~9 h</span>
+                        </div>
+                    </header>
+                    <div class="module__body">
+                        <div class="module__lessons">
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">4.1</span>
+                                <span class="lesson-row__title">Choix et cadrage du projet personnel</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">4.2</span>
+                                <span class="lesson-row__title">Conception et développement (HTML/CSS/JS)</span>
+                                <span class="lesson-row__duration">~5 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">4.3</span>
+                                <span class="lesson-row__title">Tests, responsive et corrections</span>
+                                <span class="lesson-row__duration">~2 h</span>
+                            </div>
+                            <div class="lesson-row">
+                                <span class="lesson-row__num">4.4</span>
+                                <span class="lesson-row__title">Présentation du projet et bilan</span>
+                                <span class="lesson-row__duration">~1 h</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="info-box reveal" style="margin-top: 2rem;">
+                    <span class="info-box__icon">💡</span>
+                    <p>
+                        <strong>Exemples de projets possibles :</strong>
+                        portfolio personnel, todo-list, quiz interactif, calculatrice, formulaire de contact.
+                        Vous choisissez selon vos envies !
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             RYTHME
+        ============================================================ -->
+        <section class="section section--alt" id="rythme">
+            <div class="container">
+                <div class="section__header reveal">
+                    <span class="section__label">Rythme</span>
+                    <h2 class="section__title">Une formation flexible</h2>
+                    <p class="section__intro">
+                        Conçue pour s'adapter à votre emploi du temps et à votre rythme.
+                    </p>
+                </div>
+
+                <div class="rhythm__grid">
+                    <div class="rhythm-card reveal">
+                        <div class="rhythm-card__icon">⏱️</div>
+                        <p class="rhythm-card__value">3 h</p>
+                        <p class="rhythm-card__label">Maximum par semaine</p>
+                    </div>
+
+                    <div class="rhythm-card reveal">
+                        <div class="rhythm-card__icon">📅</div>
+                        <p class="rhythm-card__value">12</p>
+                        <p class="rhythm-card__label">Semaines estimées</p>
+                    </div>
+
+                    <div class="rhythm-card reveal">
+                        <div class="rhythm-card__icon">🎓</div>
+                        <p class="rhythm-card__value">4</p>
+                        <p class="rhythm-card__label">Modules progressifs</p>
+                    </div>
+
+                    <div class="rhythm-card reveal">
+                        <div class="rhythm-card__icon">🚀</div>
+                        <p class="rhythm-card__value">1</p>
+                        <p class="rhythm-card__label">Mini-projet final</p>
+                    </div>
+                </div>
+
+                <div class="info-box reveal">
+                    <span class="info-box__icon">👨‍🏫</span>
+                    <p>
+                        <strong>Avec Dolphe Yong :</strong> accompagnement personnalisé,
+                        corrections détaillées et suivi régulier — pour ne jamais rester bloqué.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CTA FINALE
+        ============================================================ -->
+        <section class="cta">
+            <div class="cta__container">
+                <h2 class="cta__title">Prêt à commencer votre parcours&nbsp;?</h2>
+                <p class="cta__text">
+                    Rejoignez la formation et faites vos premiers pas en développement web —
+                    avec l'accompagnement de Dolphe Yong.
+                </p>
+                <a href="index.html#contact" class="btn btn--light">Je m'inscris</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <p class="footer__name"><strong>Solofoniaina Rodolphe</strong> — Dolphe Yong</p>
+        <p class="footer__role">Formateur en Informatique — Développement Web &amp; Mobile</p>
+        <div class="footer__bottom">
+            <p>© 2025 Dolphe Yong — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         SCRIPTS
+    ============================================================ -->
+    <script>
+        'use strict';
+
+        /* Navbar effet scroll */
+        (function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+
+            const handleScroll = () => {
+                navbar.classList.toggle('navbar--scrolled', window.scrollY > 20);
+            };
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+        })();
+
+        /* Animations au scroll */
+        (function initScrollReveal() {
+            const elements = document.querySelectorAll('.reveal');
+            if (elements.length === 0) return;
+
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach((el) => el.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+            );
+
+            elements.forEach((el) => observer.observe(el));
+        })();
+
+        /* Année dynamique */
+        (function initDynamicYear() {
+            const yearEl = document.querySelector('.footer__bottom p');
+            if (!yearEl) return;
+            yearEl.textContent = `© ${new Date().getFullYear()} Dolphe Yong — Tous droits réservés`;
+        })();
+    </script>
+
+</body>
+</html>
