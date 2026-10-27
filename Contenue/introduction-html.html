@@ -8,25 +8,49 @@
     <title>Introduction au HTML | Génie Logic</title>
 
     <link rel="stylesheet" href="../../assets/css/lecon.css">
-    <link rel="stylesheet" href="/quiz-local/assets/css/menu.css">
+    <link rel="stylesheet" href="../CSS/menu.css">
+    <script src="../JS/include-menu.js" defer></script>
 </head>
 
 <body>
-<script src="/quiz-local/assets/js/menu.js" defer></script>
 <header class="header">
+  <!-- ============================================================
+     MENU DE NAVIGATION — Dolphe Yong
+     Inclure dans le <body> au tout début
+     ============================================================ -->
 
-    <div class="header-container">
+    <header class="main-navbar" id="mainNavbar">
+        <div class="main-navbar__container">
 
-        <a href="../index.php" class="logo">
-            GÉNIE <span>LOGIC</span>
-        </a>
+            <!-- Logo -->
+            <a href="index.html" class="main-navbar__logo" aria-label="Dolphe Yong — Accueil">
+                <span class="main-navbar__logo-dot" aria-hidden="true"></span>
+                Dolphe <strong>Yong</strong>
+            </a>
 
-        <div class="course-label">
-            Développement Web
+            <!-- Bouton burger mobile -->
+            <button class="main-navbar__toggle" id="mainNavToggle" aria-label="Ouvrir le menu" aria-expanded="false"
+                aria-controls="mainNavMenu" type="button">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav class="main-navbar__nav" id="mainNavMenu" aria-label="Navigation principale">
+
+                <a href="../index.html" class="main-navbar__link">Accueil</a>
+                <a href="programme-formation.html" class="main-navbar__link">Programme</a>
+                <a href="lecon-css.html" class="main-navbar__link">CSS</a>
+                <a href="lecon-javascript.html" class="main-navbar__link">JavaScript</a>
+                <a href="../index.html#contact" class="main-navbar__link main-navbar__cta">
+                    Je m'inscris
+                </a>
+
+            </nav>
+
         </div>
-
-    </div>
-
+    </header>
 </header>
 
 
