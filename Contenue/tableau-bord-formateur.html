@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tableau de bord formateur — Suivi des quiz pré-test et post-test. Formation Dolphe Yong.">
+
+    <title>Tableau de bord formateur | Dolphe Yong</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARIABLES
+        ============================================================ */
+        :root {
+            --bleu-profond: #0A2540;
+            --bleu-vif: #2563EB;
+            --cyan: #06B6D4;
+            --cyan-clair: #22D3EE;
+            --vert: #10B981;
+            --vert-fonce: #047857;
+            --orange: #F59E0B;
+            --rouge: #EF4444;
+            --violet: #8B5CF6;
+            --rose: #EC4899;
+
+            --fond-clair: #F8FAFC;
+            --fond-alt: #EEF2FF;
+            --blanc: #FFFFFF;
+            --gris-texte: #475569;
+            --gris-clair: #E2E8F0;
+            --gris-fonce: #1E293B;
+
+            --gradient-primary: linear-gradient(135deg, #0A2540 0%, #2563EB 100%);
+            --gradient-accent: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            --gradient-hero: linear-gradient(135deg, #0A2540 0%, #1E40AF 50%, #2563EB 100%);
+            --gradient-success: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+            --gradient-warning: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+
+            --shadow-sm: 0 2px 4px rgba(10, 37, 64, 0.06);
+            --shadow-md: 0 4px 12px rgba(10, 37, 64, 0.08);
+            --shadow-lg: 0 10px 30px rgba(10, 37, 64, 0.12);
+            --shadow-xl: 0 20px 50px rgba(10, 37, 64, 0.18);
+
+            --font-titre: 'Poppins', sans-serif;
+            --font-texte: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-full: 999px;
+
+            --container: 1280px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-texte);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gris-fonce);
+            background: var(--fond-clair);
+            min-height: 100vh;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; }
+
+        h1, h2, h3, h4 { font-family: var(--font-titre); line-height: 1.25; color: var(--bleu-profond); }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 3px solid var(--cyan);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        .navbar {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gris-clair);
+        }
+
+        .navbar__container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .navbar__logo {
+            font-family: var(--font-titre);
+            font-size: 1.3rem; font-weight: 600;
+            color: var(--bleu-profond);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        .navbar__logo strong { color: var(--bleu-vif); font-weight: 800; }
+
+        .navbar__logo-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--gradient-accent);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+        }
+
+        .navbar__actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .navbar__link {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-size: 0.88rem; font-weight: 500;
+            color: var(--gris-texte);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--gris-clair);
+            transition: var(--transition);
+        }
+
+        .navbar__link:hover {
+            color: var(--bleu-vif);
+            border-color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--blanc);
+            padding: 3rem 1.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute; top: -100px; right: -100px;
+            width: 400px; height: 400px; border-radius: 50%;
+            background: rgba(6, 182, 212, 0.15);
+            filter: blur(60px); pointer-events: none;
+        }
+
+        .hero__container {
+            max-width: var(--container);
+            margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+
+        .hero__label {
+            display: inline-block;
+            font-size: 0.8rem; font-weight: 600;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--cyan-clair);
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.35rem 1rem; border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .hero__title {
+            font-size: clamp(1.6rem, 4vw, 2.3rem);
+            color: var(--blanc);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero__title-accent {
+            background: linear-gradient(135deg, #22D3EE, #60A5FA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero__subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 720px;
+        }
+
+        /* ============================================================
+           MAIN CONTAINER
+        ============================================================ */
+        .main {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ============================================================
+           TOOLBAR (recherche + filtres + export)
+        ============================================================ */
+        .toolbar {
+            background: var(--blanc);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toolbar__filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.65rem 1rem 0.65rem 2.5rem;
+            border: 2px solid var(--gris-clair);
+            border-radius: var(--radius-full);
+            font-family: var(--font-texte);
+            font-size: 0.9rem;
+            background: var(--fond-clair) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748B' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E") no-repeat 1rem center;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--bleu-vif);
+            background-color: var(--blanc);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .select-filter {
+            padding: 0.65rem 1rem;
+            border: 2px solid var(--gris-clair);
+            border-radius: var(--radius-full);
+            font-family: var(--font-texte);
+            font-size: 0.9rem;
+            background: var(--fond-clair);
+            color: var(--gris-fonce);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .select-filter:focus {
+            outline: none;
+            border-color: var(--bleu-vif);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1.25rem;
+            font-family: var(--font-texte);
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn--primary {
+            background: var(--gradient-accent);
+            color: var(--blanc);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn--secondary {
+            background: var(--blanc);
+            color: var(--bleu-vif);
+            border: 2px solid var(--bleu-vif);
+        }
+
+        .btn--secondary:hover {
+            background: var(--bleu-vif);
+            color: var(--blanc);
+        }
+
+        .btn--danger {
+            background: var(--blanc);
+            color: var(--rouge);
+            border: 2px solid var(--rouge);
+        }
+
+        .btn--danger:hover {
+            background: var(--rouge);
+            color: var(--blanc);
+        }
+
+        /* ============================================================
+           STATISTIQUES GLOBALES
+        ============================================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--blanc);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--bleu-vif);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-card--primary { border-left-color: var(--bleu-vif); }
+        .stat-card--success { border-left-color: var(--vert); }
+        .stat-card--warning { border-left-color: var(--orange); }
+        .stat-card--danger { border-left-color: var(--rouge); }
+        .stat-card--info { border-left-color: var(--cyan); }
+
+        .stat-card__label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gris-texte);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .stat-card__value {
+            font-family: var(--font-titre);
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--bleu-profond);
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-card__value small {
+            font-size: 1rem;
+            color: var(--gris-texte);
+            font-weight: 500;
+        }
+
+        .stat-card__desc {
+            font-size: 0.82rem;
+            color: var(--gris-texte);
+        }
+
+        .stat-card--success .stat-card__value { color: var(--vert); }
+        .stat-card--warning .stat-card__value { color: var(--orange); }
+        .stat-card--danger .stat-card__value { color: var(--rouge); }
+        .stat-card--info .stat-card__value { color: var(--cyan); }
+
+        /* ============================================================
+           GRAPHIQUES
+        ============================================================ */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-card {
+            background: var(--blanc);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-card__title {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bleu-profond);
+        }
+
+        /* Histogramme */
+        .histogram {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            height: 200px;
+            padding: 0 0.5rem;
+            border-bottom: 2px solid var(--gris-clair);
+            position: relative;
+        }
+
+        .histogram__bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .histogram__bar:hover {
+            transform: scaleY(1.03);
+            transform-origin: bottom;
+        }
+
+        .histogram__fill {
+            width: 100%;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            min-height: 2px;
+        }
+
+        .histogram__bar:hover .histogram__fill {
+            background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
+        }
+
+        .histogram__value {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--bleu-profond);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .histogram__bar:hover .histogram__value {
+            opacity: 1;
+        }
+
+        .histogram__label {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gris-texte);
+            white-space: nowrap;
+        }
+
+        /* Progression pré vs post (graphique comparatif) */
+        .comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .comparison__row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .comparison__labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gris-texte);
+        }
+
+        .comparison__bars {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .comparison__bar-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison__bar-label {
+            width: 60px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gris-texte);
+        }
+
+        .comparison__bar-track {
+            flex: 1;
+            height: 20px;
+            background: var(--fond-clair);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .comparison__bar-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--blanc);
+            min-width: 2rem;
+        }
+
+        .comparison__bar-fill--pre {
+            background: linear-gradient(90deg, #94A3B8, #64748B);
+        }
+
+        .comparison__bar-fill--post {
+            background: var(--gradient-accent);
+        }
+
+        /* ============================================================
+           TABLEAU DES APPRENANTS
+        ============================================================ */
+        .table-card {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .table-card__header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gris-clair);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .table-card__title {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .table-card__count {
+            font-size: 0.82rem;
+            color: var(--gris-texte);
+            background: var(--fond-clair);
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .learners-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        .learners-table thead {
+            background: var(--bleu-profond);
+        }
+
+        .learners-table th {
+            color: var(--blanc);
+            padding: 0.9rem 1rem;
+            text-align: left;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .learners-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .learners-table th.sortable:hover {
+            background: #153A5C;
+        }
+
+        .learners-table th.sortable::after {
+            content: '↕';
+            margin-left: 0.5rem;
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        .learners-table th.sortable.sort-asc::after { content: '↑'; opacity: 1; }
+        .learners-table th.sortable.sort-desc::after { content: '↓'; opacity: 1; }
+
+        .learners-table tbody tr {
+            border-bottom: 1px solid var(--gris-clair);
+            transition: var(--transition);
+        }
+
+        .learners-table tbody tr:hover {
+            background: rgba(37, 99, 235, 0.04);
+        }
+
+        .learners-table td {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--gris-fonce);
+            vertical-align: middle;
+        }
+
+        .learner-name {
+            font-weight: 600;
+            color: var(--bleu-profond);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .learner-avatar {
+            flex-shrink: 0;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: var(--blanc);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .learner-email {
+            font-size: 0.78rem;
+            color: var(--gris-texte);
+            font-weight: 400;
+            margin-top: 0.15rem;
+        }
+
+        /* Badges de score */
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 700;
+            font-family: var(--font-titre);
+            min-width: 60px;
+        }
+
+        .score-badge--excellent {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--vert-fonce);
+        }
+
+        .score-badge--good {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--bleu-vif);
+        }
+
+        .score-badge--average {
+            background: rgba(245, 158, 11, 0.15);
+            color: #B45309;
+        }
+
+        .score-badge--poor {
+            background: rgba(239, 68, 68, 0.15);
+            color: #991B1B;
+        }
+
+        .score-badge--empty {
+            background: var(--fond-clair);
+            color: var(--gris-texte);
+            font-weight: 500;
+        }
+
+        /* Delta de progression */
+        .delta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .delta--positive { color: var(--vert); }
+        .delta--negative { color: var(--rouge); }
+        .delta--neutral { color: var(--gris-texte); }
+
+        /* Barre de progression inline */
+        .inline-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 100px;
+        }
+
+        .inline-progress__track {
+            height: 6px;
+            background: var(--gris-clair);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .inline-progress__fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .inline-progress__fill--pre {
+            background: linear-gradient(90deg, #94A3B8, #64748B);
+        }
+
+        .inline-progress__fill--post {
+            background: var(--gradient-accent);
+        }
+
+        .inline-progress__text {
+            font-size: 0.72rem;
+            color: var(--gris-texte);
+            font-weight: 600;
+        }
+
+        /* Statut */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-badge--complete {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--vert-fonce);
+        }
+
+        .status-badge--partial {
+            background: rgba(245, 158, 11, 0.15);
+            color: #B45309;
+        }
+
+        .status-badge--pending {
+            background: rgba(239, 68, 68, 0.15);
+            color: #991B1B;
+        }
+
+        /* Actions par ligne */
+        .row-actions {
+            display: flex;
+            gap: 0.35rem;
+        }
+
+        .icon-btn {
+            width: 32px; height: 32px;
+            border-radius: var(--radius-sm);
+            background: var(--fond-clair);
+            border: 1px solid var(--gris-clair);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .icon-btn:hover {
+            background: var(--bleu-vif);
+            border-color: var(--bleu-vif);
+            color: var(--blanc);
+            transform: scale(1.1);
+        }
+
+        .icon-btn--danger:hover {
+            background: var(--rouge);
+            border-color: var(--rouge);
+        }
+
+        /* Empty state */
+        .empty-state {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .empty-state__icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state__title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--bleu-profond);
+        }
+
+        .empty-state__text {
+            color: var(--gris-texte);
+            margin-bottom: 1.5rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================================
+           MODAL (ajout/modification apprenant)
+        ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 37, 64, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.is-open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: modalIn 0.3s ease-out;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal__header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gris-clair);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal__title {
+            font-size: 1.2rem;
+        }
+
+        .modal__close {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--fond-clair);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gris-texte);
+            transition: var(--transition);
+        }
+
+        .modal__close:hover {
+            background: var(--rouge);
+            color: var(--blanc);
+        }
+
+        .modal__body {
+            padding: 1.5rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gris-fonce);
+        }
+
+        .form-input {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gris-clair);
+            border-radius: var(--radius-md);
+            font-family: var(--font-texte);
+            font-size: 0.95rem;
+            color: var(--gris-fonce);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--bleu-vif);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .modal__footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--gris-clair);
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           TOAST (notification)
+        ============================================================ */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bleu-profond);
+            color: var(--blanc);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transform: translateY(150%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+            max-width: 90vw;
+        }
+
+        .toast.is-visible {
+            transform: translateY(0);
+        }
+
+        .toast--success { border-left: 5px solid var(--vert); }
+        .toast--error { border-left: 5px solid var(--rouge); }
+        .toast--info { border-left: 5px solid var(--cyan); }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .footer {
+            background: var(--bleu-profond);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 2rem 1.5rem 1.25rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer__text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer__text strong { color: var(--cyan-clair); }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1024px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 2.5rem 1.25rem 3rem; }
+            .main { padding: 1.5rem 1rem 3rem; }
+            .toolbar { flex-direction: column; align-items: stretch; }
+            .toolbar__filters { flex-direction: column; }
+            .search-input { width: 100%; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-card { padding: 1.25rem; }
+            .stat-card__value { font-size: 1.6rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .navbar__container { padding: 0.85rem 1rem; }
+            .toast { bottom: 1rem; right: 1rem; left: 1rem; max-width: none; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 15px; }
+            .navbar__logo { font-size: 1.1rem; }
+            .navbar__link { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+            .hero { padding: 2rem 1rem 2.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-card__value { font-size: 1.75rem; }
+            .table-card__header { padding: 1rem; }
+            .modal { margin: 1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVBAR
+    ============================================================ -->
+    <header class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <span class="navbar__logo-dot"></span>
+                Dolphe <strong>Yong</strong>
+            </a>
+            <div class="navbar__actions">
+                <a href="preacquis.html" class="navbar__link">← Pré-acquis</a>
+                <a href="quiz-preacquis.html" class="navbar__link">🎯 Quiz</a>
+                <button class="navbar__link" id="resetAllBtn" style="color: var(--rouge); border-color: var(--rouge);">
+                    🗑️ Réinitialiser
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero">
+        <div class="hero__container">
+            <span class="hero__label">Formateur</span>
+            <h1 class="hero__title">
+                Tableau de bord — <span class="hero__title-accent">Suivi des apprenants</span>
+            </h1>
+            <p class="hero__subtitle">
+                Consultez les scores de pré-test et post-test de vos apprenants,
+                analysez leur progression et exportez les résultats.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         MAIN
+    ============================================================ -->
+    <main class="main">
+
+        <!-- ============================================================
+             TOOLBAR
+        ============================================================ -->
+        <div class="toolbar">
+            <div class="toolbar__filters">
+                <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un apprenant (nom, email)…">
+                <select class="select-filter" id="filterStatus">
+                    <option value="all">Tous les statuts</option>
+                    <option value="complete">✅ Complet (pré + post)</option>
+                    <option value="partial">⏳ En cours</option>
+                    <option value="pending">❌ Aucun test</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn--primary" id="addLearnerBtn">➕ Ajouter un apprenant</button>
+                <button class="btn btn--secondary" id="exportCsvBtn">📥 Export CSV</button>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             STATISTIQUES
+        ============================================================ -->
+        <div class="stats-grid">
+            <div class="stat-card stat-card--primary">
+                <div class="stat-card__label">👥 Apprenants</div>
+                <div class="stat-card__value" id="statTotal">0</div>
+                <div class="stat-card__desc">Total enregistrés</div>
+            </div>
+
+            <div class="stat-card stat-card--success">
+                <div class="stat-card__label">📝 Pré-test moyen</div>
+                <div class="stat-card__value" id="statPreAvg">—</div>
+                <div class="stat-card__desc" id="statPreCount">0 test effectué(s)</div>
+            </div>
+
+            <div class="stat-card stat-card--info">
+                <div class="stat-card__label">🎓 Post-test moyen</div>
+                <div class="stat-card__value" id="statPostAvg">—</div>
+                <div class="stat-card__desc" id="statPostCount">0 test effectué(s)</div>
+            </div>
+
+            <div class="stat-card stat-card--warning">
+                <div class="stat-card__label">📈 Progression moyenne</div>
+                <div class="stat-card__value" id="statDelta">—</div>
+                <div class="stat-card__desc" id="statDeltaDesc">Entre pré et post-test</div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             GRAPHIQUES
+        ============================================================ -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3 class="chart-card__title">📊 Répartition des scores (Post-test)</h3>
+                <div class="histogram" id="histogram">
+                    <div class="histogram__bar" data-range="0-20">
+                        <span class="histogram__value" id="histo0">0</span>
+                        <div class="histogram__fill" id="histoFill0" style="height: 0%;"></div>
+                        <span class="histogram__label">0-20</span>
+                    </div>
+                    <div class="histogram__bar" data-range="21-40">
+                        <span class="histogram__value" id="histo1">0</span>
+                        <div class="histogram__fill" id="histoFill1" style="height: 0%;"></div>
+                        <span class="histogram__label">21-40</span>
+                    </div>
+                    <div class="histogram__bar" data-range="41-60">
+                        <span class="histogram__value" id="histo2">0</span>
+                        <div class="histogram__fill" id="histoFill2" style="height: 0%;"></div>
+                        <span class="histogram__label">41-60</span>
+                    </div>
+                    <div class="histogram__bar" data-range="61-80">
+                        <span class="histogram__value" id="histo3">0</span>
+                        <div class="histogram__fill" id="histoFill3" style="height: 0%;"></div>
+                        <span class="histogram__label">61-80</span>
+                    </div>
+                    <div class="histogram__bar" data-range="81-100">
+                        <span class="histogram__value" id="histo4">0</span>
+                        <div class="histogram__fill" id="histoFill4" style="height: 0%;"></div>
+                        <span class="histogram__label">81-100</span>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; font-size: 0.82rem; color: var(--gris-texte); text-align: center;">
+                    Nombre d'apprenants par tranche de score (%)
+                </p>
+            </div>
+
+            <div class="chart-card">
+                <h3 class="chart-card__title">📈 Top 5 — Progression pré → post</h3>
+                <div class="comparison" id="topProgress">
+                    <div class="empty-state" style="padding: 2rem; text-align: center;">
+                        <p style="color: var(--gris-texte); font-size: 0.9rem;">
+                            Aucune donnée disponible.<br>
+                            Ajoutez des apprenants pour voir la progression.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             TABLEAU
+        ============================================================ -->
+        <div class="table-card">
+            <div class="table-card__header">
+                <h2 class="table-card__title">👥 Liste des apprenants</h2>
+                <span class="table-card__count" id="tableCount">0 apprenant</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="learners-table" id="learnersTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="name">Apprenant</th>
+                            <th class="sortable" data-sort="pre">Pré-test</th>
+                            <th class="sortable" data-sort="post">Post-test</th>
+                            <th class="sortable" data-sort="delta">Progression</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="learnersTbody">
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    <div class="empty-state__icon">👥</div>
+                                    <h3 class="empty-state__title">Aucun apprenant enregistré</h3>
+                                    <p class="empty-state__text">
+                                        Cliquez sur « Ajouter un apprenant » pour commencer
+                                        le suivi des résultats de vos quiz.
+                                    </p>
+                                    <button class="btn btn--primary" onclick="document.getElementById('addLearnerBtn').click()">
+                                        ➕ Ajouter le premier apprenant
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================================
+         MODAL — Ajouter / Modifier
+    ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title" id="modalTitle">Ajouter un apprenant</h2>
+                <button class="modal__close" id="modalClose" aria-label="Fermer">✕</button>
+            </div>
+
+            <div class="modal__body">
+                <div class="form-group">
+                    <label class="form-label" for="inputName">Nom complet *</label>
+                    <input type="text" class="form-input" id="inputName" placeholder="Ex: Solofoniaina Rodolphe" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="inputEmail">Email (optionnel)</label>
+                    <input type="email" class="form-input" id="inputEmail" placeholder="exemple@email.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="inputPre">Score Pré-test / 10</label>
+                        <input type="number" class="form-input" id="inputPre" min="0" max="10" step="1" placeholder="—">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="inputPost">Score Post-test / 10</label>
+                        <input type="number" class="form-input" id="inputPost" min="0" max="10" step="1" placeholder="—">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="modalCancel">Annuler</button>
+                <button class="btn btn--primary" id="modalSave">💾 Enregistrer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TOAST
+    ============================================================ -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <p class="footer__text">
+            <strong>Dolphe Yong</strong> — Tableau de bord formateur · Données stockées localement (localStorage)
+        </p>
+    </footer>
+
+    <!-- ============================================================
+         SCRIPT
+    ============================================================ -->
+    <script>
+        'use strict';
+
+        /* ============================================================
+           CONSTANTES
+        ============================================================ */
+        const STORAGE_KEY = 'dolphe-quiz-learners';
+        const TOTAL_QUESTIONS = 10;
+
+        /* ============================================================
+           ÉTAT
+        ============================================================ */
+        let learners = [];
+        let editingId = null;
+        let sortConfig = { key: 'name', direction: 'asc' };
+        let filters = { search: '', status: 'all' };
+
+        /* ============================================================
+           INITIALISATION
+        ============================================================ */
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLearners();
+            renderAll();
+            initEventListeners();
+
+            // Données de démo si premier lancement et aucun apprenant
+            if (learners.length === 0) {
+                // On ne force pas, on laisse l'empty state
+            }
+        });
+
+        /* ============================================================
+           CHARGEMENT / SAUVEGARDE
+        ============================================================ */
+        function loadLearners() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                learners = stored ? JSON.parse(stored) : [];
+            } catch {
+                learners = [];
+            }
+        }
+
+        function saveLearners() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(learners));
+            } catch {
+                showToast('Erreur : impossible de sauvegarder', 'error');
+            }
+        }
+
+        /* ============================================================
+           RENDU GLOBAL
+        ============================================================ */
+        function renderAll() {
+            renderStats();
+            renderHistogram();
+            renderTopProgress();
+            renderTable();
+        }
+
+        /* ============================================================
+           STATISTIQUES GLOBALES
+        ============================================================ */
+        function renderStats() {
+            const total = learners.length;
+
+            const preScores = learners.filter(l => l.pre !== null && l.pre !== undefined).map(l => l.pre);
+            const postScores = learners.filter(l => l.post !== null && l.post !== undefined).map(l => l.post);
+
+            const preAvg = preScores.length ? (preScores.reduce((a, b) => a + b, 0) / preScores.length) : null;
+            const postAvg = postScores.length ? (postScores.reduce((a, b) => a + b, 0) / postScores.length) : null;
+
+            const deltas = learners
+                .filter(l => l.pre !== null && l.pre !== undefined && l.post !== null && l.post !== undefined)
+                .map(l => l.post - l.pre);
+            const avgDelta = deltas.length ? (deltas.reduce((a, b) => a + b, 0) / deltas.length) : null;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statPreAvg').textContent = preAvg !== null ? preAvg.toFixed(1) + '/10' : '—';
+            document.getElementById('statPreCount').textContent = `${preScores.length} test${preScores.length > 1 ? 's' : ''} effectué${preScores.length > 1 ? 's' : ''}`;
+            document.getElementById('statPostAvg').textContent = postAvg !== null ? postAvg.toFixed(1) + '/10' : '—';
+            document.getElementById('statPostCount').textContent = `${postScores.length} test${postScores.length > 1 ? 's' : ''} effectué${postScores.length > 1 ? 's' : ''}`;
+
+            if (avgDelta !== null) {
+                const sign = avgDelta > 0 ? '+' : '';
+                document.getElementById('statDelta').textContent = sign + avgDelta.toFixed(1);
+                document.getElementById('statDeltaDesc').textContent = deltas.length + ` apprenant${deltas.length > 1 ? 's' : ''} comparé${deltas.length > 1 ? 's' : ''}`;
+            } else {
+                document.getElementById('statDelta').textContent = '—';
+                document.getElementById('statDeltaDesc').textContent = 'Aucune comparaison possible';
+            }
+        }
+
+        /* ============================================================
+           HISTOGRAMME
+        ============================================================ */
+        function renderHistogram() {
+            const ranges = [
+                { min: 0, max: 20, count: 0 },
+                { min: 21, max: 40, count: 0 },
+                { min: 41, max: 60, count: 0 },
+                { min: 61, max: 80, count: 0 },
+                { min: 81, max: 100, count: 0 }
+            ];
+
+            learners.forEach(l => {
+                if (l.post !== null && l.post !== undefined) {
+                    const percent = (l.post / TOTAL_QUESTIONS) * 100;
+                    const range = ranges.find(r => percent >= r.min && percent <= r.max);
+                    if (range) range.count++;
+                }
+            });
+
+            const maxCount = Math.max(...ranges.map(r => r.count), 1);
+
+            ranges.forEach((r, i) => {
+                const fill = document.getElementById(`histoFill${i}`);
+                const value = document.getElementById(`histo${i}`);
+                if (!fill || !value) return;
+
+                const heightPercent = (r.count / maxCount) * 100;
+                fill.style.height = (r.count === 0 ? 0 : Math.max(heightPercent, 8)) + '%';
+                value.textContent = r.count;
+            });
+        }
+
+        /* ============================================================
+           TOP 5 PROGRESSION
+        ============================================================ */
+        function renderTopProgress() {
+            const container = document.getElementById('topProgress');
+            if (!container) return;
+
+            const withDelta = learners
+                .filter(l => l.pre !== null && l.pre !== undefined && l.post !== null && l.post !== undefined)
+                .map(l => ({ ...l, delta: l.post - l.pre }))
+                .sort((a, b) => b.delta - a.delta)
+                .slice(0, 5);
+
+            if (withDelta.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="padding: 2rem; text-align: center;">
+                        <p style="color: var(--gris-texte); font-size: 0.9rem;">
+                            Aucune donnée disponible.<br>
+                            Les apprenants doivent avoir fait <strong>les deux tests</strong>.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = withDelta.map(l => {
+                const prePercent = (l.pre / TOTAL_QUESTIONS) * 100;
+                const postPercent = (l.post / TOTAL_QUESTIONS) * 100;
+                const sign = l.delta > 0 ? '+' : '';
+
+                return `
+                    <div class="comparison__row">
+                        <div class="comparison__labels">
+                            <span>${escapeHtml(l.name)}</span>
+                            <span class="delta delta--${l.delta > 0 ? 'positive' : l.delta < 0 ? 'negative' : 'neutral'}">
+                                ${sign}${l.delta}
+                            </span>
+                        </div>
+                        <div class="comparison__bars">
+                            <div class="comparison__bar-group">
+                                <span class="comparison__bar-label">Pré</span>
+                                <div class="comparison__bar-track">
+                                    <div class="comparison__bar-fill comparison__bar-fill--pre" style="width: ${prePercent}%;">
+                                        ${prePercent > 15 ? l.pre : ''}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comparison__bar-group">
+                                <span class="comparison__bar-label">Post</span>
+                                <div class="comparison__bar-track">
+                                    <div class="comparison__bar-fill comparison__bar-fill--post" style="width: ${postPercent}%;">
+                                        ${postPercent > 15 ? l.post : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        /* ============================================================
+           TABLEAU
+        ============================================================ */
+        function renderTable() {
+            const tbody = document.getElementById('learnersTbody');
+            const countEl = document.getElementById('tableCount');
+
+            // Filtrer
+            let filtered = learners.filter(l => {
+                const search = filters.search.toLowerCase();
+                const matchSearch = !search ||
+                    l.name.toLowerCase().includes(search) ||
+                    (l.email && l.email.toLowerCase().includes(search));
+
+                const matchStatus = filters.status === 'all' ||
+                    (filters.status === 'complete' && l.pre !== null && l.post !== null) ||
+                    (filters.status === 'partial' && (l.pre !== null || l.post !== null) && !(l.pre !== null && l.post !== null)) ||
+                    (filters.status === 'pending' && l.pre === null && l.post === null);
+
+                return matchSearch && matchStatus;
+            });
+
+            // Trier
+            filtered.sort((a, b) => {
+                let valA, valB;
+                switch (sortConfig.key) {
+                    case 'name':
+                        valA = a.name.toLowerCase();
+                        valB = b.name.toLowerCase();
+                        break;
+                    case 'pre':
+                        valA = a.pre ?? -1;
+                        valB = b.pre ?? -1;
+                        break;
+                    case 'post':
+                        valA = a.post ?? -1;
+                        valB = b.post ?? -1;
+                        break;
+                    case 'delta':
+                        valA = (a.pre !== null && a.post !== null) ? (a.post - a.pre) : -999;
+                        valB = (b.pre !== null && b.post !== null) ? (b.post - b.pre) : -999;
+                        break;
+                    default:
+                        return 0;
+                }
+                if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
+                if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            countEl.textContent = `${filtered.length} apprenant${filtered.length > 1 ? 's' : ''}`;
+
+            if (filtered.length === 0) {
+                if (learners.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    <div class="empty-state__icon">👥</div>
+                                    <h3 class="empty-state__title">Aucun apprenant enregistré</h3>
+                                    <p class="empty-state__text">
+                                        Cliquez sur « Ajouter un apprenant » pour commencer
+                                        le suivi des résultats de vos quiz.
+                                    </p>
+                                    <button class="btn btn--primary" onclick="document.getElementById('addLearnerBtn').click()">
+                                        ➕ Ajouter le premier apprenant
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state" style="padding: 2.5rem;">
+                                    <div class="empty-state__icon">🔍</div>
+                                    <h3 class="empty-state__title">Aucun résultat</h3>
+                                    <p class="empty-state__text">
+                                        Aucun apprenant ne correspond à vos filtres.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(l => {
+                const preBadge = getScoreBadge(l.pre);
+                const postBadge = getScoreBadge(l.post);
+
+                let deltaHtml = '<span class="delta delta--neutral">—</span>';
+                if (l.pre !== null && l.pre !== undefined && l.post !== null && l.post !== undefined) {
+                    const d = l.post - l.pre;
+                    const cls = d > 0 ? 'positive' : d < 0 ? 'negative' : 'neutral';
+                    const sign = d > 0 ? '+' : '';
+                    const icon = d > 0 ? '↑' : d < 0 ? '↓' : '=';
+                    deltaHtml = `<span class="delta delta--${cls}">${icon} ${sign}${d}</span>`;
+                }
+
+                const status = getStatusBadge(l);
+
+                return `
+                    <tr data-id="${l.id}">
+                        <td>
+                            <div class="learner-name">
+                                <div class="learner-avatar">${getInitials(l.name)}</div>
+                                <div>
+                                    <div>${escapeHtml(l.name)}</div>
+                                    ${l.email ? `<div class="learner-email">${escapeHtml(l.email)}</div>` : ''}
+                                </div>
+                            </div>
+                        </td>
+                        <td>${preBadge}</td>
+                        <td>${postBadge}</td>
+                        <td>${deltaHtml}</td>
+                        <td>${status}</td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="icon-btn" data-action="edit" data-id="${l.id}" title="Modifier">✏️</button>
+                                <button class="icon-btn icon-btn--danger" data-action="delete" data-id="${l.id}" title="Supprimer">🗑️</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Attacher les events
+            tbody.querySelectorAll('[data-action]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const action = btn.dataset.action;
+                    const id = btn.dataset.id;
+                    if (action === 'edit') editLearner(id);
+                    if (action === 'delete') deleteLearner(id);
+                });
+            });
+        }
+
+        /* ============================================================
+           HELPERS
+        ============================================================ */
+        function getScoreBadge(score) {
+            if (score === null || score === undefined) {
+                return '<span class="score-badge score-badge--empty">—</span>';
+            }
+            const percent = (score / TOTAL_QUESTIONS) * 100;
+            let cls;
+            if (percent >= 80) cls = 'excellent';
+            else if (percent >= 60) cls = 'good';
+            else if (percent >= 40) cls = 'average';
+            else cls = 'poor';
+            return `<span class="score-badge score-badge--${cls}">${score}/10</span>`;
+        }
+
+        function getStatusBadge(l) {
+            const hasPre = l.pre !== null && l.pre !== undefined;
+            const hasPost = l.post !== null && l.post !== undefined;
+
+            if (hasPre && hasPost) {
+                return '<span class="status-badge status-badge--complete">✅ Complet</span>';
+            } else if (hasPre || hasPost) {
+                return '<span class="status-badge status-badge--partial">⏳ En cours</span>';
+            } else {
+                return '<span class="status-badge status-badge--pending">❌ Aucun test</span>';
+            }
+        }
+
+        function getInitials(name) {
+            return name
+                .split(' ')
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(w => w[0])
+                .join('')
+                .toUpperCase();
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function generateId() {
+            return 'l_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        }
+
+        /* ============================================================
+           ÉVÉNEMENTS
+        ============================================================ */
+        function initEventListeners() {
+            // Recherche
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                filters.search = e.target.value;
+                renderTable();
+            });
+
+            // Filtre statut
+            document.getElementById('filterStatus').addEventListener('change', (e) => {
+                filters.status = e.target.value;
+                renderTable();
+            });
+
+            // Tri
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const key = th.dataset.sort;
+                    if (sortConfig.key === key) {
+                        sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        sortConfig.key = key;
+                        sortConfig.direction = 'asc';
+                    }
+                    document.querySelectorAll('th.sortable').forEach(t => t.classList.remove('sort-asc', 'sort-desc'));
+                    th.classList.add(sortConfig.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                    renderTable();
+                });
+            });
+
+            // Modale
+            document.getElementById('addLearnerBtn').addEventListener('click', () => openModal());
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalCancel').addEventListener('click', closeModal);
+            document.getElementById('modalSave').addEventListener('click', saveLearner);
+            document.getElementById('modalOverlay').addEventListener('click', (e) => {
+                if (e.target.id === 'modalOverlay') closeModal();
+            });
+
+            // Escape pour fermer la modale
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Export CSV
+            document.getElementById('exportCsvBtn').addEventListener('click', exportCSV);
+
+            // Reset tout
+            document.getElementById('resetAllBtn').addEventListener('click', () => {
+                if (confirm('⚠️ Êtes-vous sûr de vouloir supprimer TOUS les apprenants ?\n\nCette action est irréversible.')) {
+                    if (confirm('Dernière confirmation : toutes les données seront perdues. Continuer ?')) {
+                        learners = [];
+                        saveLearners();
+                        renderAll();
+                        showToast('✅ Tous les apprenants ont été supprimés', 'success');
+                    }
+                }
+            });
+        }
+
+        /* ============================================================
+           MODALE
+        ============================================================ */
+        function openModal(learner = null) {
+            const modal = document.getElementById('modalOverlay');
+            const title = document.getElementById('modalTitle');
+            const inputName = document.getElementById('inputName');
+            const inputEmail = document.getElementById('inputEmail');
+            const inputPre = document.getElementById('inputPre');
+            const inputPost = document.getElementById('inputPost');
+
+            if (learner) {
+                editingId = learner.id;
+                title.textContent = 'Modifier l\'apprenant';
+                inputName.value = learner.name;
+                inputEmail.value = learner.email || '';
+                inputPre.value = learner.pre ?? '';
+                inputPost.value = learner.post ?? '';
+            } else {
+                editingId = null;
+                title.textContent = 'Ajouter un apprenant';
+                inputName.value = '';
+                inputEmail.value = '';
+                inputPre.value = '';
+                inputPost.value = '';
+            }
+
+            modal.classList.add('is-open');
+            setTimeout(() => inputName.focus(), 100);
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('is-open');
+            editingId = null;
+        }
+
+        function saveLearner() {
+            const name = document.getElementById('inputName').value.trim();
+            const email = document.getElementById('inputEmail').value.trim();
+            const preRaw = document.getElementById('inputPre').value;
+            const postRaw = document.getElementById('inputPost').value;
+
+            if (!name) {
+                showToast('Le nom est obligatoire', 'error');
+                document.getElementById('inputName').focus();
+                return;
+            }
+
+            const pre = preRaw === '' ? null : Math.max(0, Math.min(10, parseInt(preRaw, 10)));
+            const post = postRaw === '' ? null : Math.max(0, Math.min(10, parseInt(postRaw, 10)));
+
+            if (editingId) {
+                const index = learners.findIndex(l => l.id === editingId);
+                if (index !== -1) {
+                    learners[index] = { ...learners[index], name, email, pre, post };
+                    showToast('✅ Apprenant modifié', 'success');
+                }
+            } else {
+                learners.push({
+                    id: generateId(),
+                    name,
+                    email,
+                    pre,
+                    post,
+                    createdAt: new Date().toISOString()
+                });
+                showToast('✅ Apprenant ajouté', 'success');
+            }
+
+            saveLearners();
+            renderAll();
+            closeModal();
+        }
+
+        function editLearner(id) {
+            const learner = learners.find(l => l.id === id);
+            if (learner) openModal(learner);
+        }
+
+        function deleteLearner(id) {
+            const learner = learners.find(l => l.id === id);
+            if (!learner) return;
+
+            if (confirm(`Supprimer « ${learner.name} » ?`)) {
+                learners = learners.filter(l => l.id !== id);
+                saveLearners();
+                renderAll();
+                showToast('🗑️ Apprenant supprimé', 'success');
+            }
+        }
+
+        /* ============================================================
+           EXPORT CSV
+        ============================================================ */
+        function exportCSV() {
+            if (learners.length === 0) {
+                showToast('Aucune donnée à exporter', 'error');
+                return;
+            }
+
+            const header = ['Nom', 'Email', 'Pré-test', 'Post-test', 'Delta', 'Statut', 'Date création'];
+            const rows = learners.map(l => {
+                const hasBoth = l.pre !== null && l.pre !== undefined && l.post !== null && l.post !== undefined;
+                const delta = hasBoth ? (l.post - l.pre) : '';
+                let status = 'Aucun test';
+                if (hasBoth) status = 'Complet';
+                else if (l.pre !== null || l.post !== null) status = 'En cours';
+
+                return [
+                    l.name,
+                    l.email || '',
+                    l.pre ?? '',
+                    l.post ?? '',
+                    delta,
+                    status,
+                    l.createdAt ? new Date(l.createdAt).toLocaleDateString('fr-FR') : ''
+                ];
+            });
+
+            const csv = [header, ...rows]
+                .map(row => row.map(cell => {
+                    const str = String(cell);
+                    return str.includes(',') || str.includes('"') || str.includes('\n')
+                        ? `"${str.replace(/"/g, '""')}"`
+                        : str;
+                }).join(','))
+                .join('\n');
+
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `apprenants-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('📥 Fichier CSV téléchargé', 'success');
+        }
+
+        /* ============================================================
+           TOAST
+        ============================================================ */
+        let toastTimer;
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast toast--' + type + ' is-visible';
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('is-visible');
+            }, 3000);
+        }
+
+    </script>
+
+</body>
+</html>

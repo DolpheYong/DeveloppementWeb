@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz Pré-test et Post-test — Pré-acquis VS Code, Git, GitHub, GitHub Pages. Formation Dolphe Yong.">
+
+    <title>Quiz Pré-test & Post-test | Dolphe Yong</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARIABLES
+        ============================================================ */
+        :root {
+            --bleu-profond: #0A2540;
+            --bleu-vif: #2563EB;
+            --cyan: #06B6D4;
+            --cyan-clair: #22D3EE;
+            --vert: #10B981;
+            --vert-fonce: #047857;
+            --orange: #F59E0B;
+            --rouge: #EF4444;
+            --rouge-fonce: #B91C1C;
+
+            --fond-clair: #F8FAFC;
+            --fond-alt: #EEF2FF;
+            --blanc: #FFFFFF;
+            --gris-texte: #475569;
+            --gris-clair: #E2E8F0;
+            --gris-fonce: #1E293B;
+
+            --gradient-primary: linear-gradient(135deg, #0A2540 0%, #2563EB 100%);
+            --gradient-accent: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            --gradient-hero: linear-gradient(135deg, #0A2540 0%, #1E40AF 50%, #2563EB 100%);
+
+            --shadow-sm: 0 2px 4px rgba(10, 37, 64, 0.06);
+            --shadow-md: 0 4px 12px rgba(10, 37, 64, 0.08);
+            --shadow-lg: 0 10px 30px rgba(10, 37, 64, 0.12);
+            --shadow-xl: 0 20px 50px rgba(10, 37, 64, 0.18);
+
+            --font-titre: 'Poppins', sans-serif;
+            --font-texte: 'Inter', sans-serif;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-full: 999px;
+
+            --container: 900px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+        body {
+            font-family: var(--font-texte);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--gris-fonce);
+            background: var(--fond-clair);
+            min-height: 100vh;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; }
+
+        h1, h2, h3, h4 { font-family: var(--font-titre); line-height: 1.25; color: var(--bleu-profond); }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--cyan);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        .navbar {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .navbar--scrolled {
+            border-bottom-color: rgba(37, 99, 235, 0.1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar__container {
+            max-width: 1180px; margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .navbar__logo {
+            font-family: var(--font-titre);
+            font-size: 1.3rem; font-weight: 600;
+            color: var(--bleu-profond);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        .navbar__logo strong { color: var(--bleu-vif); font-weight: 800; }
+
+        .navbar__logo-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--gradient-accent);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+        }
+
+        .navbar__back {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; font-weight: 500; color: var(--gris-texte);
+            padding: 0.5rem 1rem; border-radius: var(--radius-full);
+            border: 1px solid var(--gris-clair);
+            transition: var(--transition);
+        }
+
+        .navbar__back:hover {
+            color: var(--bleu-vif);
+            border-color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--blanc);
+            padding: 4rem 1.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute; top: -100px; right: -100px;
+            width: 400px; height: 400px; border-radius: 50%;
+            background: rgba(6, 182, 212, 0.15);
+            filter: blur(60px); pointer-events: none;
+        }
+
+        .hero__container {
+            max-width: var(--container);
+            margin: 0 auto; text-align: center;
+            position: relative; z-index: 1;
+        }
+
+        .hero__label {
+            display: inline-block;
+            font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--cyan-clair);
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.4rem 1.1rem; border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero__title {
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+            color: var(--blanc);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero__title-accent {
+            background: linear-gradient(135deg, #22D3EE, #60A5FA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero__subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 640px; margin: 0 auto;
+        }
+
+        /* ============================================================
+           SELECTEUR DE MODE (Pré-test / Post-test)
+        ============================================================ */
+        .mode-selector {
+            max-width: var(--container);
+            margin: -2.5rem auto 2rem;
+            padding: 0 1.5rem;
+            position: relative; z-index: 10;
+        }
+
+        .mode-selector__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .mode-card {
+            background: var(--blanc);
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            border: 3px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mode-card.is-active {
+            border-color: var(--bleu-vif);
+        }
+
+        .mode-card.is-active::before {
+            content: '✓';
+            position: absolute;
+            top: 12px; right: 16px;
+            width: 28px; height: 28px;
+            background: var(--bleu-vif);
+            color: var(--blanc);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .mode-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .mode-card__title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mode-card__desc {
+            font-size: 0.9rem;
+            color: var(--gris-texte);
+        }
+
+        /* ============================================================
+           CONTAINER
+        ============================================================ */
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ============================================================
+           INFO BANNER
+        ============================================================ */
+        .info-banner {
+            background: linear-gradient(135deg, #DBEAFE, #CFFAFE);
+            border-left: 5px solid var(--bleu-vif);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+            display: flex; gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-banner__icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-banner__content { flex: 1; }
+
+        .info-banner__title {
+            font-weight: 700;
+            color: var(--bleu-profond);
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .info-banner__text {
+            color: var(--bleu-profond);
+            font-size: 0.95rem;
+        }
+
+        .info-banner--pre {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-left-color: var(--orange);
+        }
+
+        .info-banner--pre .info-banner__title { color: #92400E; }
+        .info-banner--pre .info-banner__text { color: #92400E; }
+
+        .info-banner--post {
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            border-left-color: var(--vert);
+        }
+
+        .info-banner--post .info-banner__title { color: var(--vert-fonce); }
+        .info-banner--post .info-banner__text { color: var(--vert-fonce); }
+
+        /* ============================================================
+           BARRE DE PROGRESSION DU QUIZ
+        ============================================================ */
+        .quiz-progress {
+            background: var(--blanc);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 75px;
+            z-index: 50;
+        }
+
+        .quiz-progress__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .quiz-progress__label {
+            color: var(--gris-texte);
+        }
+
+        .quiz-progress__count {
+            color: var(--bleu-vif);
+            font-family: var(--font-titre);
+        }
+
+        .quiz-progress__bar {
+            height: 8px;
+            background: var(--gris-clair);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .quiz-progress__fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-full);
+            transition: width 0.4s ease;
+        }
+
+        /* ============================================================
+           QUESTION
+        ============================================================ */
+        .question {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--bleu-vif);
+            transition: var(--transition);
+            scroll-margin-top: 160px;
+        }
+
+        .question.is-correct {
+            border-left-color: var(--vert);
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+        }
+
+        .question.is-wrong {
+            border-left-color: var(--rouge);
+            background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+        }
+
+        .question__header {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .question__num {
+            flex-shrink: 0;
+            width: 40px; height: 40px;
+            background: var(--gradient-accent);
+            color: var(--blanc);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-titre);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .question.is-correct .question__num { background: var(--vert); }
+        .question.is-wrong .question__num { background: var(--rouge); }
+
+        .question__text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--bleu-profond);
+            flex: 1;
+            padding-top: 0.4rem;
+        }
+
+        .question__options {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        /* Option */
+        .option {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            padding: 1rem 1.15rem;
+            background: var(--fond-clair);
+            border: 2px solid var(--gris-clair);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--gris-fonce);
+            width: 100%;
+        }
+
+        .option:hover:not(.option--disabled) {
+            border-color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.04);
+        }
+
+        .option--disabled {
+            cursor: not-allowed;
+        }
+
+        .option__bullet {
+            flex-shrink: 0;
+            width: 24px; height: 24px;
+            border: 2px solid var(--gris-clair);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: transparent;
+            transition: var(--transition);
+            background: var(--blanc);
+        }
+
+        .option__text { flex: 1; padding-top: 0.05rem; }
+
+        .option__icon {
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        /* États sélection */
+        .option.is-selected {
+            border-color: var(--bleu-vif);
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .option.is-selected .option__bullet {
+            border-color: var(--bleu-vif);
+            background: var(--bleu-vif);
+            color: var(--blanc);
+        }
+
+        /* États après validation (post-test) */
+        .option.is-correct {
+            border-color: var(--vert);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .option.is-correct .option__bullet {
+            border-color: var(--vert);
+            background: var(--vert);
+            color: var(--blanc);
+        }
+
+        .option.is-correct .option__icon {
+            opacity: 1;
+            color: var(--vert);
+        }
+
+        .option.is-wrong {
+            border-color: var(--rouge);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .option.is-wrong .option__bullet {
+            border-color: var(--rouge);
+            background: var(--rouge);
+            color: var(--blanc);
+        }
+
+        .option.is-wrong .option__icon {
+            opacity: 1;
+            color: var(--rouge);
+        }
+
+        /* Explication après réponse */
+        .question__explanation {
+            margin-top: 1.25rem;
+            padding: 1rem 1.25rem;
+            background: rgba(37, 99, 235, 0.06);
+            border-left: 4px solid var(--bleu-vif);
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            color: var(--gris-texte);
+            display: none;
+        }
+
+        .question__explanation.is-visible { display: block; }
+
+        .question__explanation strong {
+            color: var(--bleu-vif);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        /* ============================================================
+           BOUTONS
+        ============================================================ */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            font-family: var(--font-texte);
+            font-size: 1rem; font-weight: 600;
+            border-radius: var(--radius-full);
+            border: none; cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn--primary {
+            background: var(--gradient-accent);
+            color: var(--blanc);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn--primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn--primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn--secondary {
+            background: var(--blanc);
+            color: var(--bleu-vif);
+            border: 2px solid var(--bleu-vif);
+        }
+
+        .btn--secondary:hover {
+            background: var(--bleu-vif);
+            color: var(--blanc);
+        }
+
+        .btn--large {
+            padding: 1.1rem 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* ============================================================
+           ACTIONS FINALES
+        ============================================================ */
+        .quiz-actions {
+            background: var(--blanc);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .quiz-actions__hint {
+            font-size: 0.92rem;
+            color: var(--gris-texte);
+            margin-bottom: 1.25rem;
+        }
+
+        .quiz-actions__buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           RÉSULTAT FINAL
+        ============================================================ */
+        .result {
+            background: var(--blanc);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            border-top: 6px solid transparent;
+            background-image:
+                linear-gradient(var(--blanc), var(--blanc)),
+                var(--gradient-accent);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            display: none;
+        }
+
+        .result.is-visible {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result__emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .result__title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .result__score {
+            font-size: 3rem;
+            font-family: var(--font-titre);
+            font-weight: 800;
+            color: var(--bleu-vif);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .result__score small {
+            font-size: 1.25rem;
+            color: var(--gris-texte);
+            font-weight: 600;
+        }
+
+        .result__message {
+            font-size: 1.05rem;
+            color: var(--gris-texte);
+            margin-bottom: 2rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .result__details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .result__detail {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background: var(--fond-clair);
+        }
+
+        .result__detail-value {
+            font-family: var(--font-titre);
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
+
+        .result__detail-label {
+            font-size: 0.8rem;
+            color: var(--gris-texte);
+        }
+
+        .result__detail--ok .result__detail-value { color: var(--vert); }
+        .result__detail--ko .result__detail-value { color: var(--rouge); }
+
+        .result__actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================================
+           SECTION QUIZ (cachée par défaut)
+        ============================================================ */
+        .quiz-section {
+            display: none;
+        }
+
+        .quiz-section.is-visible {
+            display: block;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .footer {
+            background: var(--bleu-profond);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 2.5rem 1.5rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer__name {
+            font-family: var(--font-titre);
+            font-size: 1.05rem;
+            color: var(--blanc);
+            margin-bottom: 0.35rem;
+        }
+
+        .footer__role {
+            font-size: 0.9rem;
+            color: var(--cyan-clair);
+            margin-bottom: 1rem;
+        }
+
+        .footer__bottom {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.25rem 4rem; }
+            .mode-selector { padding: 0 1.25rem; }
+            .mode-selector__grid { grid-template-columns: 1fr; }
+            .question { padding: 1.5rem; }
+            .quiz-progress { top: 68px; }
+            .result { padding: 2rem 1.25rem; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 15px; }
+            .navbar__container { padding: 0.85rem 1rem; }
+            .navbar__logo { font-size: 1.15rem; }
+            .hero { padding: 2.5rem 1rem 3.5rem; }
+            .question { padding: 1.25rem; }
+            .question__num { width: 34px; height: 34px; font-size: 0.9rem; }
+            .question__text { font-size: 0.98rem; }
+            .option { padding: 0.85rem 1rem; font-size: 0.9rem; }
+            .result__score { font-size: 2.5rem; }
+            .result__emoji { font-size: 3rem; }
+            .btn { padding: 0.8rem 1.5rem; font-size: 0.92rem; }
+            .btn--large { padding: 1rem 2rem; font-size: 1rem; }
+            .quiz-actions { padding: 1.5rem 1.25rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVBAR
+    ============================================================ -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <span class="navbar__logo-dot"></span>
+                Dolphe <strong>Yong</strong>
+            </a>
+            <a href="preacquis.html" class="navbar__back">← Pré-acquis</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO
+        ============================================================ -->
+        <section class="hero">
+            <div class="hero__container">
+                <span class="hero__label">Évaluation</span>
+                <h1 class="hero__title">
+                    Quiz <span class="hero__title-accent">Pré-test &amp; Post-test</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Mesurez vos connaissances sur VS Code, Git, GitHub et GitHub Pages
+                    avant et après la formation.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SÉLECTEUR DE MODE
+        ============================================================ -->
+        <div class="mode-selector" id="modeSelector">
+            <div class="mode-selector__grid">
+
+                <button class="mode-card is-active" data-mode="pre" type="button">
+                    <div class="mode-card__icon">📝</div>
+                    <h2 class="mode-card__title">Pré-test</h2>
+                    <p class="mode-card__desc">
+                        Évaluez vos connaissances de départ<br>
+                        <strong>Avant</strong> la formation
+                    </p>
+                </button>
+
+                <button class="mode-card" data-mode="post" type="button">
+                    <div class="mode-card__icon">🎓</div>
+                    <h2 class="mode-card__title">Post-test</h2>
+                    <p class="mode-card__desc">
+                        Mesurez vos acquis<br>
+                        <strong>Après</strong> la formation
+                    </p>
+                </button>
+
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 3rem;">
+
+            <!-- Bannière info (changée selon mode) -->
+            <div class="info-banner info-banner--pre" id="infoBanner">
+                <span class="info-banner__icon" id="infoIcon">📝</span>
+                <div class="info-banner__content">
+                    <span class="info-banner__title" id="infoTitle">Mode Pré-test</span>
+                    <p class="info-banner__text" id="infoText">
+                        Ce test évalue vos connaissances <strong>avant</strong> la formation.
+                        Il n'y a pas de correction immédiate : répondez à toutes les questions,
+                        puis cliquez sur « Voir mes résultats » pour connaître votre score de départ.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Barre de progression -->
+            <div class="quiz-progress">
+                <div class="quiz-progress__top">
+                    <span class="quiz-progress__label">Progression</span>
+                    <span class="quiz-progress__count">
+                        <span id="progressCurrent">0</span> / <span id="progressTotal">10</span>
+                    </span>
+                </div>
+                <div class="quiz-progress__bar">
+                    <div class="quiz-progress__fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 QUESTIONS
+            ============================================================ -->
+            <div id="quizContainer">
+
+                <!-- Q1 -->
+                <div class="question" data-question="1" data-correct="b">
+                    <div class="question__header">
+                        <div class="question__num">1</div>
+                        <p class="question__text">Qu'est-ce que Git ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Un site web pour stocker des fichiers</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">Un logiciel de gestion de versions local</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Un éditeur de code</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Un langage de programmation</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Git est un logiciel de gestion de versions décentralisé qui fonctionne sur votre ordinateur, sans connexion Internet. GitHub, c'est le service en ligne qui héberge des dépôts Git.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="question" data-question="2" data-correct="c">
+                    <div class="question__header">
+                        <div class="question__num">2</div>
+                        <p class="question__text">Quelle est la différence principale entre Git et GitHub ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Ce sont deux noms pour la même chose</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">Git est payant, GitHub est gratuit</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Git est local, GitHub est en ligne</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Git est pour les pros, GitHub pour les débutants</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Git fonctionne en local sur votre ordinateur. GitHub est le service cloud qui héberge vos dépôts Git en ligne. Git fonctionne sans GitHub, mais GitHub a besoin de Git.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="question" data-question="3" data-correct="b">
+                    <div class="question__header">
+                        <div class="question__num">3</div>
+                        <p class="question__text">Quelle commande prépare un fichier avant un commit ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text"><code>git commit</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text"><code>git add</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text"><code>git push</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text"><code>git init</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        <code>git add</code> place les modifications dans la "zone de préparation" (staging area). <code>git commit</code> enregistre ensuite la version, et <code>git push</code> l'envoie sur GitHub.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="question" data-question="4" data-correct="d">
+                    <div class="question__header">
+                        <div class="question__num">4</div>
+                        <p class="question__text">Que fait la commande <code>git commit -m "Mon message"</code> ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Elle envoie le code sur GitHub</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">Elle crée un nouveau dépôt Git</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Elle supprime les modifications</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Elle enregistre une version du projet avec un message</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        <code>git commit</code> prend une "photo" de votre projet à un instant donné. Le message (<code>-m</code>) décrit ce qui a changé. Le commit est <strong>local</strong> : il faut ensuite <code>git push</code> pour l'envoyer sur GitHub.
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="question" data-question="5" data-correct="a">
+                    <div class="question__header">
+                        <div class="question__num">5</div>
+                        <p class="question__text">Quelle commande permet d'envoyer ses commits sur GitHub ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text"><code>git push</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text"><code>git add</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text"><code>git commit</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text"><code>git pull</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        <code>git push</code> envoie les commits locaux vers le dépôt distant (GitHub). <code>git pull</code> fait l'inverse : il récupère les modifications distantes.
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="question" data-question="6" data-correct="b">
+                    <div class="question__header">
+                        <div class="question__num">6</div>
+                        <p class="question__text">Quel nom de fichier est obligatoire pour la page d'accueil d'un site GitHub Pages ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text"><code>home.html</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text"><code>index.html</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text"><code>main.html</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text"><code>default.html</code></span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        GitHub Pages (comme la plupart des serveurs web) cherche automatiquement un fichier <code>index.html</code> à la racine du dépôt. C'est la <strong>cause n°1</strong> des erreurs 404 sur GitHub Pages.
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="question" data-question="7" data-correct="c">
+                    <div class="question__header">
+                        <div class="question__num">7</div>
+                        <p class="question__text">Où configure-t-on GitHub Pages dans un dépôt ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Dans l'onglet Code</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">Dans l'onglet Issues</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Dans Settings → Pages</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Dans l'onglet Actions</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Le chemin est : <strong>Settings → Pages → Source : Deploy from a branch → main → / (root) → Save</strong>. L'URL publique apparaît ensuite après 1 à 10 minutes.
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="question" data-question="8" data-correct="b">
+                    <div class="question__header">
+                        <div class="question__num">8</div>
+                        <p class="question__text">Que fait l'extension Live Server de VS Code ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Elle envoie le code sur GitHub automatiquement</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">Elle lance un serveur local et recharge la page à chaque sauvegarde</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Elle formate le code automatiquement</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Elle traduit VS Code en français</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Live Server crée un petit serveur web local (typiquement sur <code>http://127.0.0.1:5500</code>) et recharge automatiquement la page dans le navigateur à chaque <kbd>Ctrl</kbd>+<kbd>S</kbd>. Très pratique pour voir ses modifications en direct.
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="question" data-question="9" data-correct="a">
+                    <div class="question__header">
+                        <div class="question__num">9</div>
+                        <p class="question__text">Quel terminal faut-il privilégier sous Windows pour suivre les tutoriels Git ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">Git Bash</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">PowerShell</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">Invite de commandes (cmd)</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">Windows Terminal uniquement</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Git Bash est fourni avec Git for Windows et utilise les mêmes commandes que les tutoriels en ligne (Linux / macOS). C'est plus proche des exemples que vous trouverez sur le web.
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="question" data-question="10" data-correct="d">
+                    <div class="question__header">
+                        <div class="question__num">10</div>
+                        <p class="question__text">Quel est le cycle de travail typique avec Git ?</p>
+                    </div>
+                    <div class="question__options">
+                        <button class="option" data-answer="a" type="button">
+                            <span class="option__bullet">A</span>
+                            <span class="option__text">commit → add → push</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="b" type="button">
+                            <span class="option__bullet">B</span>
+                            <span class="option__text">push → commit → add</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="c" type="button">
+                            <span class="option__bullet">C</span>
+                            <span class="option__text">add → push → commit</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                        <button class="option" data-answer="d" type="button">
+                            <span class="option__bullet">D</span>
+                            <span class="option__text">add → commit → push</span>
+                            <span class="option__icon">✓</span>
+                        </button>
+                    </div>
+                    <div class="question__explanation">
+                        <strong>💡 Explication</strong>
+                        Le cycle est toujours : <strong>modifier → <code>git add</code> → <code>git commit -m "message"</code> → <code>git push</code></strong>. L'ordre est important : on prépare, on enregistre localement, puis on envoie en ligne.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ============================================================
+                 ACTIONS FINALES
+            ============================================================ -->
+            <div class="quiz-actions" id="quizActions">
+                <p class="quiz-actions__hint" id="quizHint">
+                    Répondez à toutes les questions pour voir votre résultat.
+                </p>
+                <div class="quiz-actions__buttons">
+                    <button class="btn btn--primary btn--large" id="submitBtn" disabled>
+                        Voir mes résultats
+                    </button>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 RÉSULTAT FINAL
+            ============================================================ -->
+            <div class="result" id="result">
+                <span class="result__emoji" id="resultEmoji">🎉</span>
+                <h2 class="result__title" id="resultTitle">Félicitations !</h2>
+                <div class="result__score">
+                    <span id="resultScore">0</span>
+                    <small>/ 10</small>
+                </div>
+                <p class="result__message" id="resultMessage"></p>
+
+                <div class="result__details">
+                    <div class="result__detail result__detail--ok">
+                        <div class="result__detail-value" id="resultCorrect">0</div>
+                        <div class="result__detail-label">Bonnes réponses</div>
+                    </div>
+                    <div class="result__detail result__detail--ko">
+                        <div class="result__detail-value" id="resultWrong">0</div>
+                        <div class="result__detail-label">Erreurs</div>
+                    </div>
+                    <div class="result__detail">
+                        <div class="result__detail-value" id="resultPercent">0 %</div>
+                        <div class="result__detail-label">Réussite</div>
+                    </div>
+                </div>
+
+                <div class="result__actions">
+                    <button class="btn btn--secondary" id="retryBtn">
+                        🔄 Refaire le quiz
+                    </button>
+                    <a href="preacquis.html" class="btn btn--primary">
+                        ← Retour aux pré-acquis
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <p class="footer__name"><strong>Solofoniaina Rodolphe</strong> — Dolphe Yong</p>
+        <p class="footer__role">Formateur en Informatique — Développement Web &amp; Mobile</p>
+        <div class="footer__bottom">
+            <p>© 2025 Dolphe Yong — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         SCRIPT
+    ============================================================ -->
+    <script>
+        'use strict';
+
+        /* ============================================================
+           ÉTAT DU QUIZ
+        ============================================================ */
+        const state = {
+            mode: 'pre',           // 'pre' ou 'post'
+            answers: {},           // { 1: 'b', 2: 'c', ... }
+            submitted: false
+        };
+
+        const totalQuestions = document.querySelectorAll('.question').length;
+        const answersNeeded = totalQuestions;
+
+        /* ============================================================
+           RÉFÉRENCES DOM
+        ============================================================ */
+        const modeCards = document.querySelectorAll('.mode-card');
+        const infoBanner = document.getElementById('infoBanner');
+        const infoIcon = document.getElementById('infoIcon');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoText = document.getElementById('infoText');
+        const progressCurrent = document.getElementById('progressCurrent');
+        const progressTotal = document.getElementById('progressTotal');
+        const progressFill = document.getElementById('progressFill');
+        const submitBtn = document.getElementById('submitBtn');
+        const quizHint = document.getElementById('quizHint');
+        const resultEl = document.getElementById('result');
+        const retryBtn = document.getElementById('retryBtn');
+        const questions = document.querySelectorAll('.question');
+
+        progressTotal.textContent = totalQuestions;
+
+        /* ============================================================
+           CHANGER DE MODE (Pré-test / Post-test)
+        ============================================================ */
+        modeCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                if (state.submitted) {
+                    if (!confirm('Changer de mode va réinitialiser le quiz. Continuer ?')) return;
+                    resetQuiz();
+                }
+
+                modeCards.forEach((c) => c.classList.remove('is-active'));
+                card.classList.add('is-active');
+
+                state.mode = card.dataset.mode;
+
+                // Mettre à jour la bannière info
+                if (state.mode === 'pre') {
+                    infoBanner.className = 'info-banner info-banner--pre';
+                    infoIcon.textContent = '📝';
+                    infoTitle.textContent = 'Mode Pré-test';
+                    infoText.innerHTML = 'Ce test évalue vos connaissances <strong>avant</strong> la formation. Il n\'y a pas de correction immédiate : répondez à toutes les questions, puis cliquez sur « Voir mes résultats » pour connaître votre score de départ.';
+                } else {
+                    infoBanner.className = 'info-banner info-banner--post';
+                    infoIcon.textContent = '🎓';
+                    infoTitle.textContent = 'Mode Post-test';
+                    infoText.innerHTML = 'Ce test mesure vos acquis <strong>après</strong> la formation. Vous verrez immédiatement si vos réponses sont correctes, avec les explications détaillées, et un score final motivant.';
+                }
+            });
+        });
+
+        /* ============================================================
+           SÉLECTIONNER UNE RÉPONSE
+        ============================================================ */
+        questions.forEach((question) => {
+            const qNum = question.dataset.question;
+            const options = question.querySelectorAll('.option');
+
+            options.forEach((option) => {
+                option.addEventListener('click', () => {
+                    if (state.submitted) return;
+
+                    // Retirer la sélection précédente
+                    options.forEach((o) => o.classList.remove('is-selected'));
+                    option.classList.add('is-selected');
+
+                    state.answers[qNum] = option.dataset.answer;
+
+                    updateProgress();
+                });
+            });
+        });
+
+        /* ============================================================
+           MISE À JOUR PROGRESSION
+        ============================================================ */
+        function updateProgress() {
+            const answered = Object.keys(state.answers).length;
+            progressCurrent.textContent = answered;
+            const percent = (answered / totalQuestions) * 100;
+            progressFill.style.width = percent + '%';
+
+            const allAnswered = answered === answersNeeded;
+            submitBtn.disabled = !allAnswered;
+
+            if (!allAnswered) {
+                const remaining = answersNeeded - answered;
+                quizHint.textContent = `Encore ${remaining} question${remaining > 1 ? 's' : ''} à répondre.`;
+            } else {
+                quizHint.textContent = '✅ Toutes les questions sont répondues. Cliquez sur « Voir mes résultats ».';
+            }
+        }
+
+        /* ============================================================
+           SOUMETTRE LE QUIZ
+        ============================================================ */
+        submitBtn.addEventListener('click', () => {
+            if (state.submitted) return;
+            state.submitted = true;
+
+            let correct = 0;
+            let wrong = 0;
+
+            questions.forEach((question) => {
+                const qNum = question.dataset.question;
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = state.answers[qNum];
+                const options = question.querySelectorAll('.option');
+
+                options.forEach((option) => {
+                    option.classList.add('option--disabled');
+                    const answer = option.dataset.answer;
+
+                    // Marquer la bonne réponse
+                    if (answer === correctAnswer) {
+                        option.classList.add('is-correct');
+                    }
+
+                    // Marquer la mauvaise réponse de l'utilisateur
+                    if (answer === userAnswer && userAnswer !== correctAnswer) {
+                        option.classList.add('is-wrong');
+                    }
+                });
+
+                // Marquer la question
+                if (userAnswer === correctAnswer) {
+                    question.classList.add('is-correct');
+                    correct++;
+                } else {
+                    question.classList.add('is-wrong');
+                    wrong++;
+                }
+
+                // Afficher l'explication
+                const explanation = question.querySelector('.question__explanation');
+                if (explanation) explanation.classList.add('is-visible');
+            });
+
+            // Afficher le résultat
+            showResult(correct, wrong);
+        });
+
+        /* ============================================================
+           AFFICHER LE RÉSULTAT
+        ============================================================ */
+        function showResult(correct, wrong) {
+            const percent = Math.round((correct / totalQuestions) * 100);
+
+            document.getElementById('resultScore').textContent = correct;
+            document.getElementById('resultCorrect').textContent = correct;
+            document.getElementById('resultWrong').textContent = wrong;
+            document.getElementById('resultPercent').textContent = percent + ' %';
+
+            let emoji, title, message;
+
+            if (percent === 100) {
+                emoji = '🏆';
+                title = 'Parfait !';
+                message = state.mode === 'pre'
+                    ? 'Vous maîtrisez déjà ces notions. La formation sera une confirmation de vos acquis.'
+                    : 'Score impeccable ! Vous maîtrisez parfaitement ces pré-acquis. Bravo !';
+            } else if (percent >= 80) {
+                emoji = '🎉';
+                title = 'Excellent !';
+                message = state.mode === 'pre'
+                    ? 'Vous avez de très bonnes bases. La formation vous permettra de consolider et d\'aller plus loin.'
+                    : 'Très bon score ! Vous êtes prêt pour la suite de la formation.';
+            } else if (percent >= 60) {
+                emoji = '👍';
+                title = 'Bien !';
+                message = state.mode === 'pre'
+                    ? 'Vous avez quelques bases. La formation vous aidera à combler les lacunes et à progresser.'
+                    : 'Bon score. Quelques points à revoir, mais l\'essentiel est acquis.';
+            } else if (percent >= 40) {
+                emoji = '📚';
+                title = 'À consolider';
+                message = state.mode === 'pre'
+                    ? 'Quelques notions à découvrir. Pas d\'inquiétude : c\'est exactement pour ça que la formation existe !'
+                    : 'Des points importants sont à revoir. Relisez les sections correspondantes des pré-acquis.';
+            } else {
+                emoji = '💡';
+                title = 'À découvrir';
+                message = state.mode === 'pre'
+                    ? 'Vous débutez, c\'est parfait ! La formation va vous apporter toutes les bases nécessaires.'
+                    : 'Beaucoup de notions restent à consolider. Reprenez les pré-acquis et n\'hésitez pas à poser des questions.';
+            }
+
+            document.getElementById('resultEmoji').textContent = emoji;
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultMessage').textContent = message;
+
+            // Cacher les actions, montrer le résultat
+            document.getElementById('quizActions').style.display = 'none';
+            resultEl.classList.add('is-visible');
+
+            // Scroll vers le résultat
+            setTimeout(() => {
+                resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
+        }
+
+        /* ============================================================
+           RECOMMENCER
+        ============================================================ */
+        retryBtn.addEventListener('click', () => {
+            resetQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function resetQuiz() {
+            state.answers = {};
+            state.submitted = false;
+
+            // Réinitialiser les questions
+            questions.forEach((question) => {
+                question.classList.remove('is-correct', 'is-wrong');
+                const options = question.querySelectorAll('.option');
+                options.forEach((option) => {
+                    option.classList.remove('is-selected', 'is-correct', 'is-wrong', 'option--disabled');
+                });
+                const explanation = question.querySelector('.question__explanation');
+                if (explanation) explanation.classList.remove('is-visible');
+            });
+
+            // Cacher le résultat, montrer les actions
+            resultEl.classList.remove('is-visible');
+            document.getElementById('quizActions').style.display = 'block';
+
+            // Réinitialiser la progression
+            progressCurrent.textContent = '0';
+            progressFill.style.width = '0%';
+            submitBtn.disabled = true;
+            quizHint.textContent = 'Répondez à toutes les questions pour voir votre résultat.';
+        }
+
+        /* ============================================================
+           NAVBAR EFFET SCROLL
+        ============================================================ */
+        (function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            const handleScroll = () => {
+                navbar.classList.toggle('navbar--scrolled', window.scrollY > 20);
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+        })();
+
+        /* ============================================================
+           ANNÉE DYNAMIQUE
+        ============================================================ */
+        (function initDynamicYear() {
+            const yearEl = document.querySelector('.footer__bottom p');
+            if (!yearEl) return;
+            yearEl.textContent = `© ${new Date().getFullYear()} Dolphe Yong — Tous droits réservés`;
+        })();
+
+    </script>
+
+</body>
+</html>
