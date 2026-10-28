@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pré-acquis du cours Développement Web — Installer et maîtriser VS Code, Git, GitHub et GitHub Pages. Formation Dolphe Yong.">
+    <meta name="description"
+        content="Pré-acquis du cours Développement Web — Installer et maîtriser VS Code, Git, GitHub et GitHub Pages. Formation Dolphe Yong.">
 
     <title>Pré-acquis — VS Code, Git, GitHub, GitHub Pages | Dolphe Yong</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../CSS/preacquis.css">
 </head>
+
 <body>
 
     <!-- ============================================================
@@ -24,6 +29,7 @@
                 Dolphe <strong>Yong</strong>
             </a>
             <a href="../index.html" class="navbar__back">← Retour à l'accueil</a>
+
         </div>
     </header>
 
@@ -92,6 +98,7 @@
         <section class="section section--alt" id="avant-live">
             <div class="container">
                 <div class="section__header reveal">
+
                     <span class="section__label">Étape 0</span>
                     <h2 class="section__title">Avant le live</h2>
                     <p class="section__intro">
@@ -100,6 +107,9 @@
                 </div>
 
                 <div class="prep-card reveal">
+                    <a href="quiz-preacquis.html" class="btn btn--primary btn--large">
+                        🎯 Faire le quiz Pré-test / Post-test
+                    </a>
                     <h3 class="prep-card__title">🛠️ À installer avant la séance</h3>
 
                     <div class="prep-list">
@@ -107,7 +117,8 @@
                             <div class="prep-item__num">1</div>
                             <div class="prep-item__content">
                                 <p class="prep-item__title">Installer Git pour Windows</p>
-                                <a href="https://git-scm.com/download/win" target="_blank" rel="noopener" class="prep-item__link">https://git-scm.com/download/win</a>
+                                <a href="https://git-scm.com/download/win" target="_blank" rel="noopener"
+                                    class="prep-item__link">https://git-scm.com/download/win</a>
                                 <p class="prep-item__desc">Laisser toutes les options par défaut.</p>
                             </div>
                         </div>
@@ -116,7 +127,8 @@
                             <div class="prep-item__num">2</div>
                             <div class="prep-item__content">
                                 <p class="prep-item__title">Installer VS Code</p>
-                                <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="prep-item__link">https://code.visualstudio.com/</a>
+                                <a href="https://code.visualstudio.com/" target="_blank" rel="noopener"
+                                    class="prep-item__link">https://code.visualstudio.com/</a>
                                 <p class="prep-item__desc">Options par défaut. Cocher « Ajouter au PATH ».</p>
                             </div>
                         </div>
@@ -125,7 +137,8 @@
                             <div class="prep-item__num">3</div>
                             <div class="prep-item__content">
                                 <p class="prep-item__title">Créer un compte GitHub</p>
-                                <a href="https://github.com/signup" target="_blank" rel="noopener" class="prep-item__link">https://github.com/signup</a>
+                                <a href="https://github.com/signup" target="_blank" rel="noopener"
+                                    class="prep-item__link">https://github.com/signup</a>
                                 <p class="prep-item__desc">Bien valider l'email — indispensable pour pusher.</p>
                             </div>
                         </div>
@@ -135,7 +148,8 @@
                         <span class="callout__icon">⚠️</span>
                         <div class="callout__content">
                             <span class="callout__title">Notez toute erreur ou blocage</span>
-                            <p>On les traite en début de live. Pas de panique si ça ne marche pas, on répare ensemble.</p>
+                            <p>On les traite en début de live. Pas de panique si ça ne marche pas, on répare ensemble.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -161,11 +175,12 @@
                         <div class="callout callout--script">
                             <span class="callout__icon">💬</span>
                             <div class="callout__content">
-                                </div>
+                            </div>
                         </div>
 
                         <h3>1.2 — Vérifier Git</h3>
-                        <p>Ouvrir le terminal : <strong>Menu Démarrer → taper « Git Bash » → Entrée</strong>. Puis taper :</p>
+                        <p>Ouvrir le terminal : <strong>Menu Démarrer → taper « Git Bash » → Entrée</strong>. Puis taper
+                            :</p>
                         <div class="code-block">
                             <div class="code-block__header">
                                 <span class="code-block__lang">bash</span>
@@ -182,29 +197,36 @@
                                 <ul style="margin: 0.5rem 0 0 1rem;">
                                     <li>Git n'est pas installé → réinstaller</li>
                                     <li>Redémarrer VS Code / le terminal après installation</li>
-                                    <li>Réinstaller en cochant « Git from the command line and also from 3rd-party software »</li>
+                                    <li>Réinstaller en cochant « Git from the command line and also from 3rd-party
+                                        software »</li>
                                 </ul>
                             </div>
                         </div>
 
                         <h3>1.3 — Vérifier VS Code</h3>
-                        <p>Ouvrir VS Code → <strong>Fichier → Ouvrir le dossier</strong> → créer un dossier <code>mon-site</code> sur le Bureau et l'ouvrir.</p>
+                        <p>Ouvrir VS Code → <strong>Fichier → Ouvrir le dossier</strong> → créer un dossier
+                            <code>mon-site</code> sur le Bureau et l'ouvrir.</p>
                         <p>Vérifier que tout le monde voit le dossier vide dans la barre latérale gauche.</p>
 
                         <h3>1.4 — Vérifier GitHub</h3>
-                        <p>Ouvrir le navigateur → <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--bleu-vif); text-decoration: underline;">github.com</a> → se connecter. Si la page d'accueil GitHub s'affiche, c'est bon.</p>
+                        <p>Ouvrir le navigateur → <a href="https://github.com" target="_blank" rel="noopener"
+                                style="color: var(--bleu-vif); text-decoration: underline;">github.com</a> → se
+                            connecter. Si la page d'accueil GitHub s'affiche, c'est bon.</p>
 
                         <div class="callout callout--warn">
                             <span class="callout__icon">⚠️</span>
                             <div class="callout__content">
                                 <span class="callout__title">Point de vigilance</span>
-                                <p>Certains n'ont pas validé leur email → le compte ne fonctionne pas pour push. Vérifier la boîte mail.</p>
+                                <p>Certains n'ont pas validé leur email → le compte ne fonctionne pas pour push.
+                                    Vérifier la boîte mail.</p>
                             </div>
                         </div>
 
                         <h3>1.5 — Tour de table rapide</h3>
-                        <p>Dans le chat : <strong>✅</strong> si les 3 sont OK, <strong>❌ + le problème</strong> sinon.</p>
-                        <p>Traiter les ❌ un par un, ou proposer un suivi après le live sur le groupe Facebook pour ne pas bloquer tout le monde.</p>
+                        <p>Dans le chat : <strong>✅</strong> si les 3 sont OK, <strong>❌ + le problème</strong> sinon.
+                        </p>
+                        <p>Traiter les ❌ un par un, ou proposer un suivi après le live sur le groupe Facebook pour ne
+                            pas bloquer tout le monde.</p>
                     </div>
                 </article>
             </div>
@@ -226,16 +248,22 @@
 
                     <div class="sequence__body">
                         <h3>2.1 — Configurer le terminal par défaut en Git Bash</h3>
-                        <p><strong>Pourquoi :</strong> PowerShell affiche des messages Git moins lisibles et certaines commandes diffèrent. Git Bash est plus proche des tutos en ligne.</p>
+                        <p><strong>Pourquoi :</strong> PowerShell affiche des messages Git moins lisibles et certaines
+                            commandes diffèrent. Git Bash est plus proche des tutos en ligne.</p>
                         <ol style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> → taper « Terminal: Select Default Profile »</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Choisir <strong>Git Bash</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Ouvrir le terminal intégré : <kbd>Ctrl</kbd> + <kbd>ù</kbd></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Vérifier que le prompt ressemble à <code>user@machine MINGW64 ~/Desktop/mon-site</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
+                                <kbd>P</kbd> → taper « Terminal: Select Default Profile »</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Choisir <strong>Git Bash</strong>
+                            </li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Ouvrir le terminal intégré :
+                                <kbd>Ctrl</kbd> + <kbd>ù</kbd></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Vérifier que le prompt ressemble à
+                                <code>user@machine MINGW64 ~/Desktop/mon-site</code></li>
                         </ol>
 
                         <h3>2.2 — Installer les 4 extensions</h3>
-                        <p>Cliquer sur l'icône Extensions à gauche (4 carrés) ou <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>.</p>
+                        <p>Cliquer sur l'icône Extensions à gauche (4 carrés) ou
+                            <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>.</p>
 
                         <div class="table-wrapper">
                             <table>
@@ -250,7 +278,8 @@
                                     <tr>
                                         <td><strong>Live Server</strong></td>
                                         <td><code>Live Server</code> (Ritwick Dey)</td>
-                                        <td>Recharge automatiquement la page dans le navigateur à chaque sauvegarde.</td>
+                                        <td>Recharge automatiquement la page dans le navigateur à chaque sauvegarde.
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Prettier</strong></td>
@@ -279,16 +308,20 @@
                                     <li><kbd>Ctrl</kbd> + <kbd>,</kbd> (paramètres)</li>
                                     <li>Chercher « format on save »</li>
                                     <li>Cocher <strong>Editor: Format On Save</strong></li>
-                                    <li>Chercher « default formatter » → choisir <strong>Prettier - Code formatter</strong></li>
+                                    <li>Chercher « default formatter » → choisir <strong>Prettier - Code
+                                            formatter</strong></li>
                                 </ol>
                             </div>
                         </div>
 
                         <h3>2.3 — Créer et tester index.html</h3>
                         <ol style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Clic droit dans la barre latérale → <strong>Nouveau fichier</strong> → nommer <code>index.html</code></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Taper <code>!</code> puis <kbd>Tab</kbd> → VS Code génère la structure HTML (Emmet)</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Modifier le <code>&lt;title&gt;</code> et le <code>&lt;body&gt;</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Clic droit dans la barre latérale →
+                                <strong>Nouveau fichier</strong> → nommer <code>index.html</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Taper <code>!</code> puis
+                                <kbd>Tab</kbd> → VS Code génère la structure HTML (Emmet)</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Modifier le
+                                <code>&lt;title&gt;</code> et le <code>&lt;body&gt;</code></li>
                         </ol>
 
                         <div class="code-block">
@@ -320,16 +353,20 @@
                         </div>
 
                         <ol start="4" style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><kbd>Ctrl</kbd> + <kbd>S</kbd> pour sauvegarder</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Clic droit sur <code>index.html</code> → <strong>Open with Live Server</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Le navigateur s'ouvre sur <code>http://127.0.0.1:5500/index.html</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><kbd>Ctrl</kbd> + <kbd>S</kbd> pour
+                                sauvegarder</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Clic droit sur
+                                <code>index.html</code> → <strong>Open with Live Server</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Le navigateur s'ouvre sur
+                                <code>http://127.0.0.1:5500/index.html</code></li>
                         </ol>
 
                         <div class="callout callout--success">
                             <span class="callout__icon">✨</span>
                             <div class="callout__content">
                                 <span class="callout__title">Effet « waouh »</span>
-                                <p>Changer le <code>&lt;h1&gt;</code>, sauvegarder (<kbd>Ctrl</kbd>+<kbd>S</kbd>), constater que la page se met à jour toute seule.</p>
+                                <p>Changer le <code>&lt;h1&gt;</code>, sauvegarder (<kbd>Ctrl</kbd>+<kbd>S</kbd>),
+                                    constater que la page se met à jour toute seule.</p>
                             </div>
                         </div>
                     </div>
@@ -358,7 +395,12 @@
                             <span class="callout__icon">💬</span>
                             <div class="callout__content">
                                 <span class="callout__title">Ce que dit le formateur</span>
-                                <p>« Avant de taper des commandes, une image. Git, c'est un appareil photo avec un album, sur votre ordinateur. À chaque fois que vous faites un commit, vous prenez une photo de votre projet. L'album garde toutes les photos, dans l'ordre. Vous pouvez revenir à une ancienne photo si vous cassez quelque chose. GitHub, c'est le cloud où vous rangez et partagez cet album. <strong>Git fonctionne sans GitHub. GitHub a besoin de Git.</strong> Ce ne sont pas la même chose. »</p>
+                                <p>« Avant de taper des commandes, une image. Git, c'est un appareil photo avec un
+                                    album, sur votre ordinateur. À chaque fois que vous faites un commit, vous prenez
+                                    une photo de votre projet. L'album garde toutes les photos, dans l'ordre. Vous
+                                    pouvez revenir à une ancienne photo si vous cassez quelque chose. GitHub, c'est le
+                                    cloud où vous rangez et partagez cet album. <strong>Git fonctionne sans GitHub.
+                                        GitHub a besoin de Git.</strong> Ce ne sont pas la même chose. »</p>
                             </div>
                         </div>
 
@@ -366,12 +408,14 @@
                             <div class="metaphor__card metaphor__card--git">
                                 <div class="metaphor__icon">📸</div>
                                 <h4 class="metaphor__title">Git</h4>
-                                <p class="metaphor__text">L'appareil photo + l'album sur votre ordinateur. Prend des photos (commits) et garde l'historique.</p>
+                                <p class="metaphor__text">L'appareil photo + l'album sur votre ordinateur. Prend des
+                                    photos (commits) et garde l'historique.</p>
                             </div>
                             <div class="metaphor__card metaphor__card--github">
                                 <div class="metaphor__icon">☁️</div>
                                 <h4 class="metaphor__title">GitHub</h4>
-                                <p class="metaphor__text">Le cloud où vous rangez et partagez votre album. Nécessite Git pour fonctionner.</p>
+                                <p class="metaphor__text">Le cloud où vous rangez et partagez votre album. Nécessite Git
+                                    pour fonctionner.</p>
                             </div>
                         </div>
 
@@ -388,7 +432,8 @@ git config --global user.email "ton.email@exemple.com"'>Copier</button>
 <span class="c-cmd">git</span> config --global user.email <span class="c-str">"ton.email@exemple.com"</span></code></pre>
                         </div>
 
-                        <p>Ces infos apparaîtront dans l'historique de chaque commit. Utilisez l'email de votre compte GitHub.</p>
+                        <p>Ces infos apparaîtront dans l'historique de chaque commit. Utilisez l'email de votre compte
+                            GitHub.</p>
 
                         <h3>3.3 — Initialiser le dépôt</h3>
 
@@ -400,7 +445,8 @@ git config --global user.email "ton.email@exemple.com"'>Copier</button>
                             <pre><code><span class="c-cmd">git</span> init</code></pre>
                         </div>
 
-                        <p>Git commence à surveiller ce dossier. Il a créé un dossier caché <code>.git</code> qui contient tout l'historique. <strong>Ne le touchez jamais à la main.</strong></p>
+                        <p>Git commence à surveiller ce dossier. Il a créé un dossier caché <code>.git</code> qui
+                            contient tout l'historique. <strong>Ne le touchez jamais à la main.</strong></p>
 
                         <div class="code-block">
                             <div class="code-block__header">
@@ -410,7 +456,8 @@ git config --global user.email "ton.email@exemple.com"'>Copier</button>
                             <pre><code><span class="c-cmd">git</span> status</code></pre>
                         </div>
 
-                        <p>Résultat attendu : <code>index.html</code> apparaît en rouge dans « Untracked files ». <strong>Rouge = Git voit le fichier mais ne le suit pas encore.</strong></p>
+                        <p>Résultat attendu : <code>index.html</code> apparaît en rouge dans « Untracked files ».
+                            <strong>Rouge = Git voit le fichier mais ne le suit pas encore.</strong></p>
 
                         <h3>3.4 — Premier add + commit</h3>
 
@@ -424,12 +471,14 @@ git status'>Copier</button>
 <span class="c-cmd">git</span> status</code></pre>
                         </div>
 
-                        <p>Maintenant il est en vert dans « Changes to be committed ». C'est la <strong>salle d'attente</strong> avant la photo.</p>
+                        <p>Maintenant il est en vert dans « Changes to be committed ». C'est la <strong>salle
+                                d'attente</strong> avant la photo.</p>
 
                         <div class="code-block">
                             <div class="code-block__header">
                                 <span class="code-block__lang">bash</span>
-                                <button class="code-block__copy" data-copy='git commit -m "Première version de ma page"'>Copier</button>
+                                <button class="code-block__copy"
+                                    data-copy='git commit -m "Première version de ma page"'>Copier</button>
                             </div>
                             <pre><code><span class="c-cmd">git</span> commit -m <span class="c-str">"Première version de ma page"</span></code></pre>
                         </div>
@@ -463,7 +512,8 @@ git log --oneline'>Copier</button>
 <span class="c-cmd">git</span> log --oneline</code></pre>
                         </div>
 
-                        <p>Résultat attendu : deux lignes dans le log. Vous avez maintenant <strong>deux photos</strong> de votre projet.</p>
+                        <p>Résultat attendu : deux lignes dans le log. Vous avez maintenant <strong>deux photos</strong>
+                            de votre projet.</p>
 
                         <h3>3.6 — Récapitulatif des 3 commandes</h3>
 
@@ -500,15 +550,21 @@ git log --oneline'>Copier</button>
                     <div class="sequence__body">
                         <h3>4.1 — Créer le dépôt sur GitHub</h3>
                         <ol style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Sur github.com, cliquer sur <strong>+</strong> en haut à droite → <strong>New repository</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Repository name : <code>mon-site</code></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><strong>Public</strong> (obligatoire pour GitHub Pages gratuit)</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><strong>NE PAS cocher</strong> « Add a README file »</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Cliquer sur <strong>Create repository</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Sur github.com, cliquer sur
+                                <strong>+</strong> en haut à droite → <strong>New repository</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Repository name :
+                                <code>mon-site</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><strong>Public</strong> (obligatoire
+                                pour GitHub Pages gratuit)</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;"><strong>NE PAS cocher</strong> « Add
+                                a README file »</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Cliquer sur <strong>Create
+                                    repository</strong></li>
                         </ol>
 
                         <h3>4.2 — Connecter le dépôt local à GitHub</h3>
-                        <p>Copier l'URL du dépôt (bouton vert <strong>Code</strong> → <strong>HTTPS</strong> → copier).</p>
+                        <p>Copier l'URL du dépôt (bouton vert <strong>Code</strong> → <strong>HTTPS</strong> → copier).
+                        </p>
 
                         <div class="code-block">
                             <div class="code-block__header">
@@ -526,9 +582,15 @@ git push -u origin main'>Copier</button>
                             <span class="callout__icon">⚠️</span>
                             <div class="callout__content">
                                 <span class="callout__title">Point de vigilance n°1 — l'authentification</span>
-                                <p>Git Credential Manager (installé avec Git for Windows) ouvre une fenêtre navigateur → se connecter normalement. C'est le cas le plus courant en 2025.</p>
-                                <p>Si ça demande un mot de passe en ligne de commande et que ça échoue : GitHub n'accepte plus les mots de passe classiques. Il faut un <strong>Personal Access Token</strong>.</p>
-                                <p><strong>Filet de sécurité :</strong> <a href="https://desktop.github.com/" target="_blank" rel="noopener" style="color: var(--bleu-vif); text-decoration: underline;">GitHub Desktop</a> pour publier en 2 clics.</p>
+                                <p>Git Credential Manager (installé avec Git for Windows) ouvre une fenêtre navigateur →
+                                    se connecter normalement. C'est le cas le plus courant en 2025.</p>
+                                <p>Si ça demande un mot de passe en ligne de commande et que ça échoue : GitHub
+                                    n'accepte plus les mots de passe classiques. Il faut un <strong>Personal Access
+                                        Token</strong>.</p>
+                                <p><strong>Filet de sécurité :</strong> <a href="https://desktop.github.com/"
+                                        target="_blank" rel="noopener"
+                                        style="color: var(--bleu-vif); text-decoration: underline;">GitHub Desktop</a>
+                                    pour publier en 2 clics.</p>
                             </div>
                         </div>
 
@@ -536,18 +598,24 @@ git push -u origin main'>Copier</button>
 
                         <h3>4.3 — Publier avec GitHub Pages</h3>
                         <ol style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Dans le dépôt, onglet <strong>Settings</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Menu de gauche → <strong>Pages</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Source : <strong>Deploy from a branch</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Branch : <code>main</code>, dossier <code>/ (root)</code> → <strong>Save</strong></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Attendre 1 à 2 minutes, rafraîchir → l'URL apparaît : <code>https://TON_USERNAME.github.io/mon-site/</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Dans le dépôt, onglet
+                                <strong>Settings</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Menu de gauche →
+                                <strong>Pages</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Source : <strong>Deploy from a
+                                    branch</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Branch : <code>main</code>, dossier
+                                <code>/ (root)</code> → <strong>Save</strong></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Attendre 1 à 2 minutes, rafraîchir →
+                                l'URL apparaît : <code>https://TON_USERNAME.github.io/mon-site/</code></li>
                         </ol>
 
                         <div class="callout callout--warn">
                             <span class="callout__icon">⏳</span>
                             <div class="callout__content">
                                 <span class="callout__title">Point de vigilance n°2 — la latence</span>
-                                <p>GitHub Pages peut mettre jusqu'à <strong>10 minutes</strong> à publier la première fois. Ce n'est pas un bug. Pendant ce temps, on fait le quiz.</p>
+                                <p>GitHub Pages peut mettre jusqu'à <strong>10 minutes</strong> à publier la première
+                                    fois. Ce n'est pas un bug. Pendant ce temps, on fait le quiz.</p>
                             </div>
                         </div>
 
@@ -555,12 +623,14 @@ git push -u origin main'>Copier</button>
                             <span class="callout__icon">🚫</span>
                             <div class="callout__content">
                                 <span class="callout__title">Si la page affiche une erreur 404</span>
-                                <p>Vérifier que le fichier s'appelle bien exactement <code>index.html</code> (minuscules, bonne extension), et que la branche est bien <code>main</code>.</p>
+                                <p>Vérifier que le fichier s'appelle bien exactement <code>index.html</code>
+                                    (minuscules, bonne extension), et que la branche est bien <code>main</code>.</p>
                             </div>
                         </div>
 
                         <h3>4.4 — Validation en direct</h3>
-                        <p>Dans le chat : <strong>coller votre lien GitHub Pages dès qu'il fonctionne</strong>. Le formateur vérifie en direct, valide, encourage.</p>
+                        <p>Dans le chat : <strong>coller votre lien GitHub Pages dès qu'il fonctionne</strong>. Le
+                            formateur vérifie en direct, valide, encourage.</p>
                     </div>
                 </article>
             </div>
@@ -585,36 +655,47 @@ git push -u origin main'>Copier</button>
 
                         <div class="quiz__list">
                             <div class="quiz__item">
-                                <p class="quiz__question"><span class="quiz__q-num">Q1.</span> Git et GitHub, c'est pareil ?</p>
-                                <div class="quiz__answer"><strong>Réponse :</strong> Non. Git = local, GitHub = cloud.</div>
+                                <p class="quiz__question"><span class="quiz__q-num">Q1.</span> Git et GitHub, c'est
+                                    pareil ?</p>
+                                <div class="quiz__answer"><strong>Réponse :</strong> Non. Git = local, GitHub = cloud.
+                                </div>
                             </div>
 
                             <div class="quiz__item">
-                                <p class="quiz__question"><span class="quiz__q-num">Q2.</span> Quelle commande prépare un fichier avant le commit ?</p>
+                                <p class="quiz__question"><span class="quiz__q-num">Q2.</span> Quelle commande prépare
+                                    un fichier avant le commit ?</p>
                                 <div class="quiz__answer"><strong>Réponse :</strong> <code>git add</code></div>
                             </div>
 
                             <div class="quiz__item">
-                                <p class="quiz__question"><span class="quiz__q-num">Q3.</span> Quelle commande enregistre une version ?</p>
-                                <div class="quiz__answer"><strong>Réponse :</strong> <code>git commit -m "message"</code></div>
+                                <p class="quiz__question"><span class="quiz__q-num">Q3.</span> Quelle commande
+                                    enregistre une version ?</p>
+                                <div class="quiz__answer"><strong>Réponse :</strong>
+                                    <code>git commit -m "message"</code></div>
                             </div>
 
                             <div class="quiz__item">
-                                <p class="quiz__question"><span class="quiz__q-num">Q4.</span> Où configure-t-on GitHub Pages ?</p>
+                                <p class="quiz__question"><span class="quiz__q-num">Q4.</span> Où configure-t-on GitHub
+                                    Pages ?</p>
                                 <div class="quiz__answer"><strong>Réponse :</strong> <code>Settings → Pages</code></div>
                             </div>
 
                             <div class="quiz__item">
-                                <p class="quiz__question"><span class="quiz__q-num">Q5.</span> Quel nom de fichier est obligatoire pour la page d'accueil ?</p>
+                                <p class="quiz__question"><span class="quiz__q-num">Q5.</span> Quel nom de fichier est
+                                    obligatoire pour la page d'accueil ?</p>
                                 <div class="quiz__answer"><strong>Réponse :</strong> <code>index.html</code></div>
                             </div>
                         </div>
 
                         <h3>5.2 — Devoir pour la prochaine fois</h3>
                         <ol style="margin: 0.75rem 0 1rem 1.5rem; color: var(--gris-texte);">
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Modifier <code>index.html</code> (ajouter une image, un paragraphe, changer les couleurs)</li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Refaire : <code>git add index.html</code>, <code>git commit -m "Mes modifications"</code>, <code>git push</code></li>
-                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Attendre 1-2 minutes, recharger le lien GitHub Pages : les modifications doivent apparaître.</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Modifier <code>index.html</code>
+                                (ajouter une image, un paragraphe, changer les couleurs)</li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Refaire :
+                                <code>git add index.html</code>, <code>git commit -m "Mes modifications"</code>,
+                                <code>git push</code></li>
+                            <li style="margin-bottom: 0.4rem; list-style: decimal;">Attendre 1-2 minutes, recharger le
+                                lien GitHub Pages : les modifications doivent apparaître.</li>
                         </ol>
 
                         <div class="callout callout--success">
@@ -626,7 +707,8 @@ git push -u origin main'>Copier</button>
                         </div>
 
                         <h3>5.3 — Où poser les questions</h3>
-                        <p>Le groupe Facebook reste ouvert pour vos questions. Collez-y vos messages d'erreur (copier-coller du terminal, pas de capture d'écran floue). Réponse sous 24-48h.</p>
+                        <p>Le groupe Facebook reste ouvert pour vos questions. Collez-y vos messages d'erreur
+                            (copier-coller du terminal, pas de capture d'écran floue). Réponse sous 24-48h.</p>
                         <p><strong>Prochaine séance :</strong> HTML/CSS, et on utilisera Git dès le premier jour.</p>
                     </div>
                 </article>
@@ -699,7 +781,8 @@ git push -u origin main'>Copier</button>
                         <div class="vigilance-item__num">1</div>
                         <div class="vigilance-item__content">
                             <p class="vigilance-item__title">git push = moment de blocage n°1</p>
-                            <p class="vigilance-item__text">Prévoir <strong>GitHub Desktop</strong> en secours. Ne laisser personne quitter sans son lien.</p>
+                            <p class="vigilance-item__text">Prévoir <strong>GitHub Desktop</strong> en secours. Ne
+                                laisser personne quitter sans son lien.</p>
                         </div>
                     </div>
 
@@ -707,7 +790,8 @@ git push -u origin main'>Copier</button>
                         <div class="vigilance-item__num">2</div>
                         <div class="vigilance-item__content">
                             <p class="vigilance-item__title">GitHub Pages peut mettre jusqu'à 10 min</p>
-                            <p class="vigilance-item__text">Occuper ce temps avec le quiz, pas avec des rafraîchissements collectifs.</p>
+                            <p class="vigilance-item__text">Occuper ce temps avec le quiz, pas avec des
+                                rafraîchissements collectifs.</p>
                         </div>
                     </div>
 
@@ -715,7 +799,8 @@ git push -u origin main'>Copier</button>
                         <div class="vigilance-item__num">3</div>
                         <div class="vigilance-item__content">
                             <p class="vigilance-item__title">index.html doit s'appeler exactement comme ça</p>
-                            <p class="vigilance-item__text">C'est la <strong>cause n°1</strong> des erreurs 404 sur GitHub Pages.</p>
+                            <p class="vigilance-item__text">C'est la <strong>cause n°1</strong> des erreurs 404 sur
+                                GitHub Pages.</p>
                         </div>
                     </div>
 
@@ -723,7 +808,8 @@ git push -u origin main'>Copier</button>
                         <div class="vigilance-item__num">4</div>
                         <div class="vigilance-item__content">
                             <p class="vigilance-item__title">Terminal = Git Bash, pas PowerShell</p>
-                            <p class="vigilance-item__text">Configurer le terminal par défaut dès le début de la séance.</p>
+                            <p class="vigilance-item__text">Configurer le terminal par défaut dès le début de la séance.
+                            </p>
                         </div>
                     </div>
 
@@ -731,7 +817,8 @@ git push -u origin main'>Copier</button>
                         <div class="vigilance-item__num">5</div>
                         <div class="vigilance-item__content">
                             <p class="vigilance-item__title">Ne pas cocher « Add a README » à la création du dépôt</p>
-                            <p class="vigilance-item__text">Sinon conflit au premier push (erreur <em>rejected</em>).</p>
+                            <p class="vigilance-item__text">Sinon conflit au premier push (erreur <em>rejected</em>).
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -754,11 +841,13 @@ git push -u origin main'>Copier</button>
                     <div class="checklist__items">
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">Git est installé et <code>git --version</code> fonctionne</span>
+                            <span class="checklist__text">Git est installé et <code>git --version</code>
+                                fonctionne</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">VS Code est installé avec les 4 extensions (Live Server, Prettier, French Pack, Material Icons)</span>
+                            <span class="checklist__text">VS Code est installé avec les 4 extensions (Live Server,
+                                Prettier, French Pack, Material Icons)</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
@@ -766,11 +855,13 @@ git push -u origin main'>Copier</button>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">Le fichier <code>index.html</code> est créé et s'ouvre avec Live Server</span>
+                            <span class="checklist__text">Le fichier <code>index.html</code> est créé et s'ouvre avec
+                                Live Server</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">L'identité Git est configurée (<code>user.name</code> et <code>user.email</code>)</span>
+                            <span class="checklist__text">L'identité Git est configurée (<code>user.name</code> et
+                                <code>user.email</code>)</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
@@ -778,15 +869,18 @@ git push -u origin main'>Copier</button>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">Le dépôt GitHub est créé et <code>git push</code> a fonctionné</span>
+                            <span class="checklist__text">Le dépôt GitHub est créé et <code>git push</code> a
+                                fonctionné</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">GitHub Pages est activé (Settings → Pages → main → /root)</span>
+                            <span class="checklist__text">GitHub Pages est activé (Settings → Pages → main →
+                                /root)</span>
                         </div>
                         <div class="checklist__item" data-check>
                             <span class="checklist__box">✓</span>
-                            <span class="checklist__text">Le lien public <code>https://USERNAME.github.io/mon-site/</code> fonctionne</span>
+                            <span class="checklist__text">Le lien public
+                                <code>https://USERNAME.github.io/mon-site/</code> fonctionne</span>
                         </div>
                     </div>
                 </div>
@@ -803,7 +897,7 @@ git push -u origin main'>Copier</button>
                     Vous avez maintenant votre page en ligne. Prochaine étape :
                     HTML et CSS en profondeur, avec Git dès le premier jour.
                 </p>
-                <a href="index.html#programme" class="btn btn--light">Voir le programme complet</a>
+                <a href="../index.html#programme" class="btn btn--light">Voir le programme complet</a>
             </div>
         </section>
 
@@ -901,4 +995,5 @@ git push -u origin main'>Copier</button>
     </script>
 
 </body>
+
 </html>
