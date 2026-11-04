@@ -1,34 +1,78 @@
-<!-- ============================================================
-     MENU DE NAVIGATION — Dolphe Yong
-     Fichier inclus dynamiquement par JS/include-menu.js
-     ⚠️ NE PAS ouvrir directement ce fichier dans un navigateur.
-     ============================================================ -->
-
 <header class="main-navbar" id="mainNavbar">
     <div class="main-navbar__container">
 
         <!-- Logo -->
-        <a href="index.html" class="main-navbar__logo" aria-label="Dolphe Yong — Accueil">
+        <a href="index.html" class="main-navbar__logo"
+           aria-label="Dolphe Yong — Accueil">
             <span class="main-navbar__logo-dot" aria-hidden="true"></span>
             Dolphe <strong>Yong</strong>
         </a>
 
         <!-- Bouton burger mobile -->
-        <button class="main-navbar__toggle" id="mainNavToggle" aria-label="Ouvrir le menu" aria-expanded="false"
-            aria-controls="mainNavMenu" type="button">
+        <button class="main-navbar__toggle"
+                id="mainNavToggle"
+                aria-label="Ouvrir le menu"
+                aria-expanded="false"
+                aria-controls="mainNavMenu"
+                type="button">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </button>
 
-        <!-- Navigation -->
-        <nav class="main-navbar__nav" id="mainNavMenu" aria-label="Navigation principale">
+        <!-- Navigation principale -->
+        <nav class="main-navbar__nav"
+             id="mainNavMenu"
+             aria-label="Navigation principale">
 
-            <a href="Contenue/conception.html" class="main-navbar_link">Concevoir</a>
-            <a href="Contenue/introduction-html.html" class="main-navbar__link">Introduction Html</a>
-            <a href="Contenue/lecons-html.html" class="main-navbar__link">HTML</a>
-            <a href="Contenue/lecon-css.html" class="main-navbar__link">CSS</a>
-            <a href="Contenue/lecon-javascript.html" class="main-navbar__link">JavaScript</a>
+            <a href="index.html" class="main-navbar__link">Accueil</a>
+
+            <a href="Contenue/preacquis.html"
+               class="main-navbar__link">
+                Commencer ici
+            </a>
+
+            <a href="Contenue/programme-formation.html"
+               class="main-navbar__link">
+                Parcours
+            </a>
+
+            <!-- Sous-menu des cours -->
+            <details class="main-navbar__dropdown">
+                <summary class="main-navbar__link">Cours</summary>
+
+                <div class="main-navbar__dropdown-menu">
+                    <a href="Contenue/conception.html"
+                       class="main-navbar__link">
+                        Conception web
+                    </a>
+
+                    <a href="Contenue/introduction-html.html"
+                       class="main-navbar__link">
+                        Introduction au HTML
+                    </a>
+
+                    <a href="Contenue/lecons-html.html"
+                       class="main-navbar__link">
+                        HTML
+                    </a>
+
+                    <a href="Contenue/lecon-css.html"
+                       class="main-navbar__link">
+                        CSS
+                    </a>
+
+                    <a href="Contenue/lecon-javascript.html"
+                       class="main-navbar__link">
+                        JavaScript
+                    </a>
+                </div>
+            </details>
+
+            <a href="Contenue/quiz-preacquis.html"
+               class="main-navbar__link">
+                Quiz
+            </a>
 
         </nav>
     </div>

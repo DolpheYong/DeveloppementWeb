@@ -3,27 +3,1401 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concevoir avant coder</title>
+
+    <title>Leçon Conception </title>
+
     <link rel="stylesheet" href="../CSS/lecon.css">
     <link rel="stylesheet" href="../CSS/menu.css">
     <script src="../JS/include-menu.js" defer></script>
 </head>
 
 <body>
-    <div class="layout">
+
+    <!-- ================= PAGE ================= -->
+
+    <div class="page-container">
+
+        <!-- SIDEBAR -->
+
         <aside class="sidebar">
-            <h3>Sommaire</h3>
-            <a href="#">1. Intoduction</a>
+
+            <h3>Dans cette leçon</h3>
+
+            <nav>
+                <a href="#cycle-vie">1. Cycle de vie d'un projet</a>
+                <a href="#ui-ux">2. UI et UX</a>
+                <a href="#piliers">3. Piliers de la conception</a>
+                <a href="#mobile-first">4. Mobile-First</a>
+                <a href="#ecoconception">5. Écoconception</a>
+                <a href="#wireframe">6. Wireframes</a>
+                <a href="#outils">7. Outils : Pencil, Figma, IA</a>
+                <a href="#prototype">8. Prototype et test</a>
+                <a href="#exercices">Exercices</a>
+                <a href="#resume">À retenir</a>
+            </nav>
+
         </aside>
+
+
+        <!-- CONTENU -->
+
+        <main class="content">
+
+            <!-- INTRODUCTION -->
+
+            <section class="hero">
+
+                <span class="chapter">
+                    LEÇON CONCEPTION
+                </span>
+
+                <h1>
+                    UX/UI, écoconception, wireframes et prototypage
+                </h1>
+
+                <p>
+                    Un site réussi n'est pas seulement du code qui fonctionne :
+                    c'est une expérience claire, légère et respectueuse. Apprenez
+                    à penser et à concevoir avant d'écrire la moindre ligne de code.
+                </p>
+
+                <p>
+                    <em>Nov 4, 2026 · @Dolphe</em>
+                </p>
+
+            </section>
+
+
+            <!-- OBJECTIFS -->
+
+            <section class="lesson-section">
+
+                <div class="section-number">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h2>
+                        Objectifs
+                    </h2>
+
+                    <p>
+                        À la fin de cette leçon, l'apprenant sera capable de :
+                    </p>
+
+                    <ul>
+                        <li>décrire les six étapes du cycle de vie d'un projet web ;</li>
+                        <li>distinguer l'UI (interface) de l'UX (expérience) ;</li>
+                        <li>appliquer les quatre piliers : hiérarchie visuelle, navigation, cohérence, accessibilité ;</li>
+                        <li>concevoir un écran en approche Mobile-First ;</li>
+                        <li>réduire le poids d'une page grâce aux principes d'écoconception ;</li>
+                        <li>réaliser un wireframe basse-fidélité, puis un prototype cliquable dans Figma ;</li>
+                        <li>mener un test utilisateur en observant sans aider.</li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- 1. CYCLE DE VIE -->
+
+            <section id="cycle-vie" class="lesson-section">
+
+                <div class="section-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h2>
+                        Le cycle de vie d'un projet web
+                    </h2>
+
+                    <p>
+                        Un site ne naît pas par magie : il suit un chemin
+                        structuré appelé le cycle de vie du développement.
+                        Chaque compétence de la formation s'inscrit dans l'une
+                        de ses six étapes. Fil rouge de cette leçon : le site
+                        d'un petit restaurant qui veut présenter son menu et
+                        recevoir des réservations.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Analyse des besoins</h3>
+
+                    <span class="generation-type">Le « Pourquoi »</span>
+
+                    <p>
+                        Phase d'enquête et de stratégie : pour qui et pourquoi
+                        créons-nous ce site ?
+                    </p>
+
+                    <ul>
+                        <li>Comprendre les utilisateurs, leurs attentes et frustrations</li>
+                        <li>Définir les objectifs (vendre, informer, créer une communauté)</li>
+                        <li>Noter budget, délais et contraintes</li>
+                        <li>Livrable : le <strong>cahier des charges</strong></li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Conception UX et wireframes</h3>
+
+                    <span class="generation-type">Le « Quoi »</span>
+
+                    <p>
+                        L'idée prend forme sous la forme de plans en
+                        « boîtes grises ». C'est le cœur de cette leçon.
+                    </p>
+
+                    <ul>
+                        <li>Structure des pages</li>
+                        <li>Position des éléments (menus, boutons, textes)</li>
+                        <li>Parcours de navigation</li>
+                        <li>Exemple : où placer le bouton « Réserver » ?</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Conception graphique (UI)</h3>
+
+                    <span class="generation-type">L'habillage</span>
+
+                    <p>
+                        Les designers habillent les wireframes avec l'identité
+                        visuelle du projet.
+                    </p>
+
+                    <ul>
+                        <li>Choix des couleurs et des typographies</li>
+                        <li>Création des icônes, choix des images</li>
+                        <li>Livrable : la <strong>maquette graphique</strong> (mockup)</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">04</span>
+
+                    <h3>Développement</h3>
+
+                    <span class="generation-type">Le « Comment »</span>
+
+                    <p>
+                        La phase la plus longue : les maquettes deviennent un
+                        site fonctionnel.
+                    </p>
+
+                    <ul>
+                        <li><strong>Front-End</strong> : HTML, CSS, JavaScript (partie visible)</li>
+                        <li><strong>Back-End</strong> : serveur et base de données (partie immergée)</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">05</span>
+
+                    <h3>Tests et déploiement</h3>
+
+                    <span class="generation-type">Rigueur</span>
+
+                    <p>
+                        On vérifie que tout fonctionne comme prévu, puis on
+                        met le site en ligne.
+                    </p>
+
+                    <ul>
+                        <li>Navigateurs, écrans, formulaires, liens, vitesse</li>
+                        <li>Correction de chaque bug détecté</li>
+                        <li>Mise en ligne sur un serveur, accessible par son adresse web</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">06</span>
+
+                    <h3>Maintenance</h3>
+
+                    <span class="generation-type">Amélioration continue</span>
+
+                    <p>
+                        Le déploiement n'est pas la fin : un site vit et évolue.
+                    </p>
+
+                    <ul>
+                        <li>Surveillance : site en ligne et performant</li>
+                        <li>Mises à jour : correctifs de sécurité, technologies</li>
+                        <li>Évolutions : retours des utilisateurs et statistiques</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <!-- 2. UI ET UX -->
+
+            <section id="ui-ux" class="lesson-section">
+
+                <div class="section-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h2>
+                        UI et UX : au-delà du « joli »
+                    </h2>
+
+                    <p>
+                        Les acronymes UX et UI sont souvent confondus. Ils
+                        désignent pourtant deux facettes complémentaires, mais
+                        distinctes, d'un produit numérique. Comprendre leur rôle
+                        permet de voir un site comme un service, une
+                        conversation, une expérience, et non comme une simple page.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🍅
+                </div>
+
+                <div>
+
+                    <h3>L'analogie de la bouteille de ketchup</h3>
+
+                    <ul>
+                        <li><strong>UI (User Interface)</strong> : l'aspect et le ressenti. La forme de la bouteille, la
+                            couleur de l'étiquette, la typographie du logo. Question : « Est-ce esthétique et lisible ? »
+                        </li>
+                        <li><strong>UX (User Experience)</strong> : la sensation globale et l'efficacité. Faut-il taper
+                            sur le fond (mauvaise UX) ou presser doucement une bouteille souple (bonne UX) ? Question :
+                            « Mon problème est-il résolu simplement et agréablement ? »</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">UI</span>
+
+                    <h3>L'interface</h3>
+
+                    <span class="generation-type">La peau et le squelette</span>
+
+                    <p>
+                        La disposition des éléments, les couleurs, la forme
+                        des boutons, le style des icônes.
+                    </p>
+
+                    <ul>
+                        <li>Ce bouton est-il visible et cohérent ?</li>
+                        <li>Défaut type : texte gris clair sur fond blanc</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">UX</span>
+
+                    <h3>L'expérience</h3>
+
+                    <span class="generation-type">Le cerveau et le système nerveux</span>
+
+                    <p>
+                        La logique derrière l'interface : parcours, confiance,
+                        facilité à trouver l'information.
+                    </p>
+
+                    <ul>
+                        <li>Peut-on réserver une table en moins d'une minute ?</li>
+                        <li>Défaut type : formulaire de dix champs obligatoires</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>À retenir :</strong>
+
+                <p>
+                    Une UI magnifique ne sauvera jamais une UX désastreuse.
+                    L'UI est le moyen, l'UX est la fin. Les deux sont les
+                    faces d'une même pièce : une bonne UI sert la UX, et une
+                    bonne UX a besoin d'une UI intuitive pour guider l'utilisateur.
+                </p>
+
+            </div>
+
+
+            <!-- 3. PILIERS -->
+
+            <section id="piliers" class="lesson-section">
+
+                <div class="section-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h2>
+                        Les quatre piliers d'une conception efficace
+                    </h2>
+
+                    <p>
+                        Des principes universels guident le travail de tout
+                        concepteur. Hiérarchie visuelle, navigation, cohérence
+                        et accessibilité forment leur langage commun.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Hiérarchie visuelle</h3>
+
+                    <span class="generation-type">Guider le regard</span>
+
+                    <p>
+                        L'attention est une ressource limitée : on priorise
+                        l'information du plus au moins important.
+                    </p>
+
+                    <ul>
+                        <li><strong>Taille</strong> : le <code>&lt;h1&gt;</code> est le texte le plus grand</li>
+                        <li><strong>Couleur et contraste</strong> : un bouton vif sur fond neutre</li>
+                        <li><strong>Position</strong> : lecture en « F » ou en « Z », haut gauche vu en premier</li>
+                        <li><strong>Espaces blancs</strong> : « moins, c'est plus »</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Navigation intuitive</h3>
+
+                    <span class="generation-type">Don't make me think</span>
+
+                    <p>
+                        L'utilisateur ne doit jamais se demander « Où suis-je ? »
+                        ni « Où cliquer ? » (principe de Steve Krug).
+                    </p>
+
+                    <ul>
+                        <li><strong>Clarté</strong> : « Services », « Contact » plutôt que « Notre univers »</li>
+                        <li><strong>Prévisibilité</strong> : le logo ramène à l'accueil, menu toujours au même endroit
+                        </li>
+                        <li><strong>Feedback</strong> : un lien change au survol, un formulaire confirme l'envoi</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Cohérence</h3>
+
+                    <span class="generation-type">Un site unifié</span>
+
+                    <p>
+                        La cohérence rassure en créant un environnement
+                        familier et prévisible.
+                    </p>
+
+                    <ul>
+                        <li><strong>Visuelle</strong> : mêmes couleurs, polices et icônes partout</li>
+                        <li><strong>Fonctionnelle</strong> : des éléments identiques se comportent pareil</li>
+                        <li><strong>Design System</strong> : le « code de la route » d'une marque (ex. Material Design)
+                        </li>
+                    </ul>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">04</span>
+
+                    <h3>Accessibilité (a11y)</h3>
+
+                    <span class="generation-type">Utilisable par tous</span>
+
+                    <p>
+                        Handicaps permanents (cécité, surdité, handicap moteur)
+                        ou temporaires (bras cassé, soleil sur l'écran). Une
+                        responsabilité, pas une option.
+                    </p>
+
+                    <ul>
+                        <li>Texte alternatif pour chaque image</li>
+                        <li>Contrastes suffisants texte/fond</li>
+                        <li>Navigation complète au clavier</li>
+                        <li>Jamais d'information par la seule couleur</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <!-- 4. MOBILE-FIRST -->
+
+            <section id="mobile-first" class="lesson-section">
+
+                <div class="section-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h2>
+                        Le principe stratégique : Mobile-First
+                    </h2>
+
+                    <p>
+                        Autrefois, on créait un site pour ordinateur puis on
+                        tentait de le « réduire » pour un téléphone, souvent
+                        sans succès. Aujourd'hui, plus de la moitié du trafic
+                        web vient des mobiles : on fait l'inverse.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📱
+                </div>
+
+                <div>
+
+                    <h3>Deux temps</h3>
+
+                    <ol>
+                        <li><strong>Concevoir d'abord pour le plus petit écran.</strong> La contrainte d'espace oblige
+                            à ne garder que l'essentiel : contenu principal et actions principales.</li>
+                        <li><strong>Enrichir pour les écrans plus grands.</strong> Tablettes et ordinateurs permettent
+                            d'afficher plus d'informations et des mises en page plus riches.</li>
+                    </ol>
+
+                    <p>
+                        Résultat : une expérience excellente là où se trouve la
+                        majorité des utilisateurs, et des designs plus clairs,
+                        plus rapides et mieux pensés partout.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5. ÉCOCONCEPTION -->
+
+            <section id="ecoconception" class="lesson-section">
+
+                <div class="section-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h2>
+                        L'écoconception web
+                    </h2>
+
+                    <p>
+                        Le numérique semble immatériel, mais le « cloud » est
+                        un ensemble de data centers qui fonctionnent 24 h sur
+                        24 et consomment beaucoup d'électricité, en partie issue
+                        d'énergies fossiles. Chaque site, application ou e-mail
+                        y contribue. Concevoir des services sobres est une
+                        responsabilité : c'est l'écoconception, ou « Green IT ».
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⚖️
+                </div>
+
+                <div>
+
+                    <h3>Le « poids » d'une page</h3>
+
+                    <p>
+                        C'est la somme de tous les fichiers téléchargés pour
+                        l'afficher : HTML, CSS, JavaScript, polices, images et
+                        vidéos.
+                    </p>
+
+                    <ul>
+                        <li><strong>Serveur</strong> : plus de ressources pour stocker et envoyer la page ;</li>
+                        <li><strong>Réseau</strong> : chaque transfert consomme de l'énergie ;</li>
+                        <li><strong>Utilisateur</strong> : chargement lent, batterie vidée, forfait de données entamé.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Une page plus légère est plus écologique, plus rapide,
+                        plus accessible et moins coûteuse. C'est un enjeu
+                        concret à Madagascar, où beaucoup d'utilisateurs se
+                        connectent en mobile avec des forfaits limités.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header front">
+
+                    <span class="tech-icon">🌱</span>
+
+                    <div>
+                        <h3>Trois piliers de l'écoconception</h3>
+                        <p>Agir à chaque étape</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>A. Sobriété fonctionnelle</h4>
+
+                        <p>
+                            Le code le plus écologique est celui qui n'existe
+                            pas. Avant d'ajouter un élément, demandez-vous s'il
+                            apporte une vraie valeur à l'utilisateur.
+                        </p>
+
+                        <ul>
+                            <li>Carrousels : lourds et peu consultés</li>
+                            <li>Vidéos d'arrière-plan : à éviter</li>
+                            <li>Polices : une ou deux, styles nécessaires seulement</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>B. Optimisation des médias</h4>
+
+                        <p>
+                            Images et vidéos sont les premières causes de
+                            surpoids : ne jamais publier une image brute.
+                        </p>
+
+                        <ul>
+                            <li><strong>Redimensionner</strong> : inutile d'envoyer 4000 px pour un conteneur de 800 px
+                            </li>
+                            <li><strong>Compresser</strong> : TinyPNG, Squoosh, GIMP (jusqu'à plus de 70 % de gain)</li>
+                            <li><strong>Lazy loading</strong> : charger l'image au moment où elle devient visible</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>C. Code et hébergement</h4>
+
+                        <p>
+                            Un code propre et une infrastructure responsable
+                            complètent la démarche.
+                        </p>
+
+                        <ul>
+                            <li>HTML sémantique, plus rapide à interpréter</li>
+                            <li>Dépendances externes limitées au strict nécessaire</li>
+                            <li>Hébergeur engagé (annuaire Green Web Foundation)</li>
+                        </ul>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header framework">
+
+                    <span class="tech-icon">🖼️</span>
+
+                    <div>
+                        <h3>Choisir le bon format d'image</h3>
+                        <p>Le format influence directement le poids</p>
+                    </div>
+
+                </div>
+
+                <div class="framework-list">
+
+                    <div>
+                        <strong>JPEG</strong>
+                        <span>Photographies riches en couleurs ; niveau de compression réglable.</span>
+                    </div>
+
+                    <div>
+                        <strong>PNG</strong>
+                        <span>Quand la transparence est nécessaire ; souvent plus lourd que le JPEG.</span>
+                    </div>
+
+                    <div>
+                        <strong>SVG</strong>
+                        <span>Logos et icônes ; vectoriel, redimensionnable à l'infini, souvent très léger.</span>
+                    </div>
+
+                    <div>
+                        <strong>WebP</strong>
+                        <span>Format moderne avec une excellente compression et la transparence : à privilégier quand
+                            c'est possible.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>Les cinq principes clés :</strong>
+
+                <ol>
+                    <li><strong>Minimalisme</strong> : se concentrer sur les besoins réels, supprimer le superflu ;</li>
+                    <li><strong>Médias optimisés</strong> : WebP, redimensionnement, compression, lazy loading ;</li>
+                    <li><strong>Code responsable</strong> : HTML/CSS propres, solutions natives du navigateur ;</li>
+                    <li><strong>Échanges réseau maîtrisés</strong> : moins de requêtes, cache, données strictement
+                        nécessaires ;</li>
+                    <li><strong>Mesure continue</strong> : on n'améliore que ce que l'on mesure (Lighthouse).</li>
+                </ol>
+
+            </div>
+
+
+            <!-- 6. WIREFRAMES -->
+
+            <section id="wireframe" class="lesson-section">
+
+                <div class="section-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h2>
+                        Le wireframe : le plan de la page
+                    </h2>
+
+                    <p>
+                        Avant de construire une maison, on dessine un plan.
+                        Un wireframe est ce plan pour une page web : une
+                        représentation schématique de sa structure. Son but
+                        n'est pas d'être joli, mais de répondre à trois
+                        questions.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ❓
+                </div>
+
+                <div>
+
+                    <h3>Les trois questions d'un wireframe</h3>
+
+                    <ol>
+                        <li><strong>Quels contenus</strong> sont présents ? (titres, textes, images, boutons)</li>
+                        <li><strong>Où</strong> sont-ils placés ? (organisation spatiale)</li>
+                        <li><strong>Comment</strong> sont-ils hiérarchisés ? (qu'est-ce qui est important ?)</li>
+                    </ol>
+
+                    <p>
+                        Il intervient très tôt, juste après la définition des
+                        besoins, et permet de valider la structure avec le
+                        client et l'équipe avant d'investir dans le design ou
+                        le code.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Clarifier et communiquer</h3>
+
+                    <span class="generation-type">Pourquoi</span>
+
+                    <p>
+                        Un langage universel pour discuter d'une mise en page
+                        sans description technique.
+                    </p>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Se concentrer sur l'essentiel</h3>
+
+                    <span class="generation-type">Pourquoi</span>
+
+                    <p>
+                        Sans couleurs ni design, on juge la structure et le
+                        parcours, pas l'esthétique.
+                    </p>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Gagner du temps et de l'argent</h3>
+
+                    <span class="generation-type">Pourquoi</span>
+
+                    <p>
+                        Un changement prend quelques minutes sur un wireframe,
+                        des heures ou des jours sur un site codé.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header backend">
+
+                    <span class="tech-icon">📏</span>
+
+                    <div>
+                        <h3>Les trois niveaux de fidélité</h3>
+                        <p>Du croquis à la maquette détaillée</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Basse-fidélité : le croquis</h4>
+
+                        <p>
+                            Boîtes et lignes simples, souvent sur papier ou
+                            tableau blanc, avec du texte factice (« Lorem Ipsum »).
+                            Idéal pour le brainstorming.
+                        </p>
+
+                        <p><strong>Niveau privilégié dans cette formation.</strong></p>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Moyenne-fidélité : le schéma numérique</h4>
+
+                        <p>
+                            Réalisé avec un outil numérique, éléments bien
+                            délimités, nuances de gris pour la hiérarchie,
+                            texte plus réaliste. Pour présenter à un client.
+                        </p>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Haute-fidélité : la maquette détaillée</h4>
+
+                        <p>
+                            Presque une maquette finale sans couleurs : images
+                            en noir et blanc, textes définitifs, interactions
+                            précises. Très rarement utilisé pour un wireframe.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <strong>Conventions simples :</strong>
+
+                <ul>
+                    <li>un rectangle barré d'une croix = une image ;</li>
+                    <li>des lignes horizontales = un paragraphe ;</li>
+                    <li>un rectangle avec un libellé = un bouton ;</li>
+                    <li>un rectangle avec texte grisé = un champ de saisie ;</li>
+                    <li>un texte grand et gras = un titre.</li>
+                </ul>
+
+                <p>
+                    <strong>Exemple (restaurant, mobile) :</strong> en-tête avec
+                    logo et icône de menu, grande image du plat vedette, titre
+                    et accroche, bouton « Réserver une table » visible sans
+                    défiler, trois cartes « plats du jour », puis pied de page
+                    (adresse, horaires, téléphone).
+                </p>
+
+            </div>
+
+
+            <!-- 7. OUTILS -->
+
+            <section id="outils" class="lesson-section">
+
+                <div class="section-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h2>
+                        Les outils : Pencil, Figma et IA
+                    </h2>
+
+                    <p>
+                        Plusieurs outils permettent de dessiner un wireframe.
+                        Nous utiliserons Figma, mais il est utile de connaître
+                        les alternatives.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header front">
+
+                    <span class="tech-icon">🖌️</span>
+
+                    <div>
+                        <h3>Trois outils à connaître</h3>
+                        <p>Open-source, professionnel, assisté par IA</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Pencil Project</h4>
+
+                        <p>
+                            Outil open-source et gratuit, compatible GNU/Linux,
+                            macOS et Windows. Il fournit des éléments
+                            préconçus (boutons, champs de saisie) pour des
+                            sites web et des applications mobiles.
+                        </p>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Figma</h4>
+
+                        <p>
+                            Outil professionnel, standard de l'industrie,
+                            utilisable gratuitement dans le navigateur.
+                            Alternative open-source proche : Penpot.
+                        </p>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Assistance IA (Google Stitch)</h4>
+
+                        <p>
+                            On décrit l'interface en langage naturel, l'IA
+                            propose une première version, puis on l'affine et
+                            on peut l'exporter vers Figma.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header framework">
+
+                    <span class="tech-icon">⌨️</span>
+
+                    <div>
+                        <h3>Les outils essentiels de Figma</h3>
+                        <p>Le strict nécessaire pour un wireframe</p>
+                    </div>
+
+                </div>
+
+                <div class="framework-list">
+
+                    <div>
+                        <strong>Frame (F)</strong>
+                        <span>Votre « page » ou « écran ». Commencez par un format téléphone (ex. iPhone 13) pour
+                            respecter le Mobile-First.</span>
+                    </div>
+
+                    <div>
+                        <strong>Rectangle (R)</strong>
+                        <span>Images, boutons, zones de contenu, en-têtes.</span>
+                    </div>
+
+                    <div>
+                        <strong>Texte (T)</strong>
+                        <span>Titres, paragraphes, libellés ; jouez sur la taille et le gras pour la hiérarchie.</span>
+                    </div>
+
+                    <div>
+                        <strong>Alignement</strong>
+                        <span>Panneau de droite : centrer ou distribuer les éléments pour un wireframe propre.</span>
+                    </div>
+
+                    <div>
+                        <strong>Groupement (Ctrl/Cmd + G)</strong>
+                        <span>Regrouper les éléments liés, comme une image et sa légende.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🤖</div>
+
+                <div>
+
+                    <h3>Pourquoi apprendre à la main avant l'IA ?</h3>
+
+                    <p>
+                        C'est comme apprendre à calculer avant d'utiliser une
+                        calculatrice. Pour juger la proposition de l'IA et la
+                        corriger, il faut maîtriser les principes d'UX, de
+                        hiérarchie et de structure. L'IA accélère et aide
+                        contre la page blanche, mais ne remplace pas votre
+                        esprit critique.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 8. PROTOTYPE -->
+
+            <section id="prototype" class="lesson-section">
+
+                <div class="section-number">
+                    08
+                </div>
+
+                <div>
+
+                    <h2>
+                        Du plan à la visite virtuelle : prototype et test
+                    </h2>
+
+                    <p>
+                        Le wireframe est statique. Le prototype ajoute des
+                        « fils » entre les écrans pour simuler la navigation :
+                        on clique sur un bouton et on voit ce qui se passe. On
+                        teste ainsi le parcours utilisateur (« user flow »).
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Prototype basse-fidélité</h3>
+
+                    <span class="generation-type">Notre niveau</span>
+
+                    <p>
+                        Basé sur les wireframes en boîtes grises, avec des
+                        interactions simples (cliquer pour changer de page).
+                        Parfait pour valider la navigation très tôt.
+                    </p>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Prototype haute-fidélité</h3>
+
+                    <span class="generation-type">Plus tard</span>
+
+                    <p>
+                        Basé sur les maquettes graphiques finales, avec
+                        animations et micro-interactions, pour des tests plus fins.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <h3>Créer un prototype dans Figma</h3>
+
+                    <ol>
+                        <li><strong>Préparer</strong> au moins deux Frames (accueil et « Contact »).</li>
+                        <li><strong>Passer</strong> en mode « Prototype » (onglet en haut à droite).</li>
+                        <li><strong>Relier</strong> : sélectionnez le bouton « Contact », puis faites glisser la
+                            poignée bleue vers l'écran de destination.</li>
+                        <li><strong>Configurer</strong> : Trigger « On Click », Action « Navigate To », Animation
+                            « Instant ».</li>
+                        <li><strong>Tester</strong> avec l'icône « Play » : le curseur devient une main sur les
+                            éléments cliquables.</li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-block">
+
+                <div class="technology-header backend">
+
+                    <span class="tech-icon">👀</span>
+
+                    <div>
+                        <h3>Le test utilisateur : observer en silence</h3>
+                        <p>Ne demandez pas « C'est joli ? »</p>
+                    </div>
+
+                </div>
+
+                <div class="technology-grid">
+
+                    <article class="technology">
+
+                        <h4>Le protocole</h4>
+
+                        <ol>
+                            <li>Préparer une tâche claire (« Montrez-moi comment nous envoyer un message »)</li>
+                            <li>Choisir un testeur proche de la cible (3 à 5 personnes idéalement)</li>
+                            <li>Observer où il clique et où il hésite</li>
+                            <li><strong>Ne jamais l'aider</strong></li>
+                            <li>Noter les problèmes et corriger le wireframe</li>
+                        </ol>
+
+                    </article>
+
+                    <article class="technology">
+
+                        <h4>Pourquoi c'est précieux</h4>
+
+                        <p>
+                            Chaque hésitation est un point de friction découvert
+                            gratuitement, avant la moindre ligne de code. Le test
+                            prouve que votre conception est logique pour les
+                            autres, pas seulement pour vous.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXERCICES -->
+
+            <section id="exercices" class="lesson-section">
+
+                <div class="section-number">
+                    ✏️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Exercices
+                    </h2>
+
+                    <p>
+                        Quatre exercices pour mettre en pratique les notions
+                        de cette leçon.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <div class="web-generations">
+
+                <article class="generation">
+
+                    <span class="generation-number">01</span>
+
+                    <h3>Analyser un site</h3>
+
+                    <span class="generation-type">UI / UX</span>
+
+                    <ol>
+                        <li>Choisissez un site que vous visitez souvent.</li>
+                        <li>Notez ce qui attire le regard en premier et pourquoi.</li>
+                        <li>Repérez un intitulé de menu ambigu.</li>
+                        <li>Repérez un défaut d'accessibilité éventuel.</li>
+                    </ol>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">02</span>
+
+                    <h3>Peser une page</h3>
+
+                    <span class="generation-type">Écoconception</span>
+
+                    <ol>
+                        <li>Ouvrez les DevTools (<code>F12</code>), onglet « Réseau ».</li>
+                        <li>Rechargez une page de votre choix.</li>
+                        <li>Notez le poids total et les trois fichiers les plus lourds.</li>
+                        <li>Proposez trois optimisations.</li>
+                    </ol>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">03</span>
+
+                    <h3>Wireframe mobile</h3>
+
+                    <span class="generation-type">Figma ou Pencil</span>
+
+                    <p>
+                        Pour un site de votre choix (restaurant, association,
+                        boutique), dessinez en basse-fidélité la page d'accueil
+                        au format mobile, puis une page « Contact ».
+                    </p>
+
+                </article>
+
+
+                <article class="generation">
+
+                    <span class="generation-number">04</span>
+
+                    <h3>Prototype et test</h3>
+
+                    <span class="generation-type">Projet de fin de leçon</span>
+
+                    <ol>
+                        <li>Reliez vos deux écrans dans Figma.</li>
+                        <li>Faites tester le prototype par une personne, sans l'aider.</li>
+                        <li>Notez tâches réussies, temps pris et hésitations.</li>
+                        <li>Corrigez votre wireframe et listez cinq décisions d'écoconception.</li>
+                    </ol>
+
+                </article>
+
+            </div>
+
+
+            <!-- RESUME -->
+
+            <section id="resume" class="summary">
+
+                <div class="summary-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    À retenir
+                </h2>
+
+                <p>
+                    On conçoit avant de coder : un changement sur un plan
+                    coûte quelques minutes, sur un site codé des heures. Le
+                    wireframe devient le plan du HTML : le header dessiné
+                    deviendra <code>&lt;header&gt;</code>, le titre principal
+                    <code>&lt;h1&gt;</code>, chaque carte
+                    <code>&lt;article&gt;</code>.
+                </p>
+
+                <div class="key-points">
+
+                    <span>Cycle de vie</span>
+                    <span>Cahier des charges</span>
+                    <span>UI</span>
+                    <span>UX</span>
+                    <span>Hiérarchie visuelle</span>
+                    <span>Accessibilité</span>
+                    <span>Mobile-First</span>
+                    <span>Écoconception</span>
+                    <span>Poids d'une page</span>
+                    <span>WebP</span>
+                    <span>Wireframe</span>
+                    <span>Figma</span>
+                    <span>Prototype</span>
+                    <span>Test utilisateur</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="lesson-navigation">
+
+                <a href="../index.html" class="nav-button secondary">
+                    ← Toutes les leçons
+                </a>
+
+                <a href="lecon-html.html" class="nav-button primary">
+                    Leçon suivante →
+                </a>
+
+            </div>
+
+        </main>
+
     </div>
-    <main>
-        <div class="hero">
-            <span class="badge">Concevoir avant coder</span>
-        </div>
 
-    </main>
 
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <strong>GÉNIE LOGIC</strong>
+
+        <p>
+            Centre de formation — Développement Web
+        </p>
+
+        <small>
+            © 2026 Génie Logic
+        </small>
+
+    </footer>
 
 </body>
 
